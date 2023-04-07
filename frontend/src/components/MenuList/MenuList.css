@@ -1,0 +1,165 @@
+
+.swiper {
+    width: 380px;
+    height: fit-content;
+    /*border: red 1px solid;*/
+    border-radius: 10px;
+
+
+}
+
+.swiper-slide {
+
+    /*background: #fff;*/
+
+    display: flex;
+    justify-content: center;
+
+
+}
+.swiper-slide img{
+    width: 100%;
+    /*height: 100%;*/
+    object-fit: cover;
+}
+
+.our-partners{
+    background: #fff;
+    /*padding: 50px 0;*/
+    border-radius: 8px;
+
+}
+.our-partners-text h2{
+    margin: 0;
+    padding: 20px 0;
+    font-family: 'Rubik', sans-serif;
+    font-size: 34px;
+    color: #FE3E19;
+    display: flex;
+    justify-content: center;
+}
+.our-partners-box{
+    display: flex;
+    justify-content: center;
+}
+.our-partners-box img{
+
+    width: 200px;
+}
+.our-partners-img1{
+    padding: 0 20px 0 0;
+}
+.our-partners-img1 img{
+
+
+}
+.our-partners-img2{
+    padding: 0 20px;
+}
+.our-partners-img2 img{
+    width: 180px;
+    height: 50px;
+
+}
+.our-partners-img3{
+    padding: 0 20px;
+}
+.our-partners-img3 img{
+
+    width: 100px;
+    height: 50px;
+}
+.menuList{
+    display: flex;
+    justify-content: center;
+}
+.menuList_box{
+    width: 500px;
+}
+.menuList_tariffs{
+    background: rgba(248, 43, 9);
+    /*background-image: linear-gradient(to left top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1) ;*/
+    border-radius: 8px;
+}
+.menuList_tariffs a{
+    display: flex;
+    justify-content: center;
+
+}
+
+.menuList_services{
+    /*background: rgba(255, 255, 255, .7);*/
+    background: rgba(248, 43, 9);
+
+    border-radius: 8px;
+    margin: 5px 0;
+}
+.menuList_services a{
+    display: flex;
+    justify-content: center;
+}
+@media (max-width: 768px) {
+
+
+
+
+    .our-partners{
+        /*padding: 20px 10px;*/
+
+
+    }
+    .our-partners-text{
+        display: flex;
+        justify-content: center;
+    }
+    .our-partners-text h2{
+        font-size: 32px;
+    }
+    .our-partners-box{
+        display: inline;
+        padding: 0 20px;
+
+    }
+    .our-partners-img1{
+        padding: 10px 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    .our-partners-img2{
+        padding: 10px 0;
+        display: flex;
+        justify-content: center;
+    }
+    .our-partners-img3{
+        padding: 10px 0;
+        display: flex;
+        justify-content: center;
+    }
+    .menuList_box{
+        width: 350px;
+        height: fit-content;
+    }
+    .menuList_tariffs{
+        background: rgba(254, 62, 25, .7);
+        /*background-image: linear-gradient(to left top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1) ;*/
+
+        border-radius: 8px;
+    }
+
+    .menuList_services{
+        /*background: rgba(255, 255, 255, .7);*/
+        background: rgba(254, 62, 25, .7);
+
+        border-radius: 8px;
+        margin: 5px 0;
+    }
+
+}
+@media (min-width: 768px) and (max-width: 1200px) {
+
+}
+@media (min-width: 1200px) {}
+
+
+

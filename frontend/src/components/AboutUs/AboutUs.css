@@ -1,0 +1,639 @@
+.ExpertTeam{
+    width: 100%;
+    height: fit-content;
+    padding: 50px 0;
+    z-index: 2;
+    /*background: mintcream;*/
+
+
+}
+.ExpertTeam h2{
+    font-family: 'Rubik', sans-serif;
+    color: #FE3E19;
+    font-size: 34px;
+    display: flex;
+    justify-content: center;
+    margin: 0 0 60px 0;
+}
+.ExpertTeam p{
+    font-family: 'Rubik', sans-serif;
+    color: #2D2D2D;
+    font-size: 18px;
+}
+.ExpertTeam-two{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: minmax(100px, auto);
+    margin-top: 60px;
+}
+.ExpertTeam-box{
+    width: 80%;
+    margin: 0 auto;
+}
+.ExpertTeam-box h4, p{
+    display: flex;
+    justify-content: center;
+    padding: 0 10px;
+}
+.ExpertTeam-two h4{
+    font-family: 'Rubik', sans-serif;
+    color: #2D2D2D;
+    font-size: 20px;
+}
+.ExpertTeam-icon{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+.ExpertTeam-two{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-auto-rows: minmax(100px, auto);
+    margin-top: 80px;
+}
+.ExpertTeam-icon{
+    width: 200px;
+    text-align: center;
+    margin: 0 auto;
+}
+.ExpertTeam-two h4{
+    display: flex;
+    justify-content: center;
+}
+
+.ExpertTeam_box{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+.ExpertTeam_box h3{
+    font-family: 'Rubik', sans-serif;
+    text-transform: uppercase;
+    font-size: 16px;
+    color: white;
+}
+
+.ExpertTeam_box h4{
+    font-family: 'Rubik', sans-serif;
+    text-transform: uppercase;
+    font-size: 14px;
+    color: white;
+}
+.ExpertTeam_box p{
+    font-family: 'Rubik', sans-serif;
+    text-transform: uppercase;
+    font-size: 12px;
+    color: white;
+}
+
+.four{
+    background: url("../../images/bbu_ceo2.jpg");
+    width: 300px;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 5%;
+    margin: 5%;
+    border-bottom: 3px solid #C8C8C8;
+    box-shadow: 0 0 30px rgb(1 41 112 / 30%);
+    background-position: center;
+
+
+
+}
+.four2{
+    background: url("../../images/bbu_5200.jpg");
+    width: 300px;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 5%;
+    margin: 5%;
+    border-bottom: 3px solid #C8C8C8;
+    box-shadow: 0 0 30px rgb(1 41 112 / 30%);
+    background-position: center;
+
+
+
+}
+.four3{
+    background: url("../../images/bbu-126.jpg");
+    width: 300px;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 5%;
+    margin: 5%;
+    border-bottom: 3px solid #C8C8C8;
+    box-shadow: 0 0 30px rgb(1 41 112 / 30%);
+    background-position: center;
+
+
+
+}
+.four4{
+    background: url("../../images/bbu_5354.jpg");
+    width: 300px;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 5%;
+    margin: 5%;
+    border-bottom: 3px solid #C8C8C8;
+    box-shadow: 0 0 30px rgb(1 41 112 / 30%);
+    background-position: center;
+
+
+
+}
+.four5{
+    background: url("../../images/bbu_5544.jpg");
+    width: 300px;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 5%;
+    margin: 5%;
+    border-bottom: 3px solid #C8C8C8;
+    box-shadow: 0 0 30px rgb(1 41 112 / 30%);
+    background-position: center;
+
+
+
+}
+.four6{
+    background: url("../../images/bbu_5475.jpg");
+    width: 300px;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 5%;
+    margin: 5%;
+    border-bottom: 3px solid #C8C8C8;
+    box-shadow: 0 0 30px rgb(1 41 112 / 30%);
+    background-position: center;
+
+
+
+}
+.four7{
+    background: url("../../images/bbu_5611.jpg");
+    width: 300px;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 5%;
+    margin: 5%;
+    border-bottom: 3px solid #C8C8C8;
+    box-shadow: 0 0 30px rgb(1 41 112 / 30%);
+    background-position: center;
+
+
+
+}
+.four8{
+    /*background: url("../../images/bbu_5611.jpg");*/
+    background: rgba(0, 0, 0, .5);
+    width: 300px;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 5%;
+    margin: 5%;
+    border-bottom: 3px solid #C8C8C8;
+    box-shadow: 0 0 30px rgb(1 41 112 / 30%);
+    background-position: center;
+
+
+
+}
+.four1{
+    width: 300px;
+    height: 300px;
+    position: absolute;
+
+    text-align: center;
+
+    opacity: 0;
+    transform: scale(5);
+    transition: 0.5s;
+}
+.four2_1{
+    width: 300px;
+    height: 300px;
+    position: absolute;
+
+    text-align: center;
+
+    opacity: 0;
+    transform: scale(5);
+    transition: 0.5s;
+}
+.four3_1{
+    width: 300px;
+    height: 300px;
+    position: absolute;
+
+    text-align: center;
+
+    opacity: 0;
+    transform: scale(5);
+    transition: 0.5s;
+}
+.four4_1{
+    width: 300px;
+    height: 300px;
+    position: absolute;
+
+    text-align: center;
+
+    opacity: 0;
+    transform: scale(5);
+    transition: 0.5s;
+}
+.four5_1{
+    width: 300px;
+    height: 300px;
+    position: absolute;
+
+    text-align: center;
+
+    opacity: 0;
+    transform: scale(5);
+    transition: 0.5s;
+}
+.four6_1{
+    width: 300px;
+    height: 300px;
+    position: absolute;
+
+    text-align: center;
+
+    opacity: 0;
+    transform: scale(5);
+    transition: 0.5s;
+}
+.four7_1{
+    width: 300px;
+    height: 300px;
+    position: absolute;
+
+    text-align: center;
+
+    opacity: 0;
+    transform: scale(5);
+    transition: 0.5s;
+}
+.four8_1{
+    width: 300px;
+    height: 300px;
+    position: absolute;
+
+    text-align: center;
+
+    opacity: 0;
+    transform: scale(5);
+    transition: 0.5s;
+}
+
+.four1 div h3{
+    margin: 0 auto;
+    background: #858585;
+    width: 200px;
+    height: 2px;
+
+}
+.four1 button{
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 12px;
+    background: #08da4e;
+    border: 1px solid #08da4e;
+    border-radius: 5px;
+    color: white;
+    line-height: 24px;
+    transform: translateY(100px);
+    transition: all 0.2s ease-in-out;
+}
+.four2_1 div h3{
+    margin: 0 auto;
+    background: #858585;
+    width: 200px;
+    height: 2px;
+
+}
+.four2_1 button{
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 12px;
+    background: #08da4e;
+    border: 1px solid #08da4e;
+    border-radius: 5px;
+    color: white;
+    line-height: 24px;
+    transform: translateY(100px);
+    transition: all 0.2s ease-in-out;
+}
+.four3_1 div h3{
+    margin: 0 auto;
+    background: #858585;
+    width: 200px;
+    height: 2px;
+
+}
+.four3_1 button{
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 12px;
+    background: #08da4e;
+    border: 1px solid #08da4e;
+    border-radius: 5px;
+    color: white;
+    line-height: 24px;
+    transform: translateY(100px);
+    transition: all 0.2s ease-in-out;
+}
+.four4_1 div h3{
+    margin: 0 auto;
+    background: #858585;
+    width: 200px;
+    height: 2px;
+
+}
+.four4_1 button{
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 12px;
+    background: #08da4e;
+    border: 1px solid #08da4e;
+    border-radius: 5px;
+    color: white;
+    line-height: 24px;
+    transform: translateY(100px);
+    transition: all 0.2s ease-in-out;
+}
+.four5_1 div h3{
+    margin: 0 auto;
+    background: #858585;
+    width: 200px;
+    height: 2px;
+
+}
+.four5_1 button{
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 12px;
+    background: #08da4e;
+    border: 1px solid #08da4e;
+    border-radius: 5px;
+    color: white;
+    line-height: 24px;
+    transform: translateY(100px);
+    transition: all 0.2s ease-in-out;
+}
+.four6_1 div h3{
+    margin: 0 auto;
+    background: #858585;
+    width: 200px;
+    height: 2px;
+
+}
+.four6_1 button{
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 12px;
+    background: #08da4e;
+    border: 1px solid #08da4e;
+    border-radius: 5px;
+    color: white;
+    line-height: 24px;
+    transform: translateY(100px);
+    transition: all 0.2s ease-in-out;
+}
+.four7_1 div h3{
+    margin: 0 auto;
+    background: #858585;
+    width: 200px;
+    height: 2px;
+
+}
+.four7_1 button{
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 12px;
+    background: #08da4e;
+    border: 1px solid #08da4e;
+    border-radius: 5px;
+    color: white;
+    line-height: 24px;
+    transform: translateY(100px);
+    transition: all 0.2s ease-in-out;
+}
+.four8_1 div h3{
+    margin: 0 auto;
+    background: #858585;
+    width: 200px;
+    height: 2px;
+
+}
+.four8_1 button{
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 12px;
+    background: #08da4e;
+    border: 1px solid #08da4e;
+    border-radius: 5px;
+    color: white;
+    line-height: 24px;
+    transform: translateY(100px);
+    transition: all 0.2s ease-in-out;
+}
+.four:hover .four1 {
+    transform: scale(1);
+    opacity: 1;
+    background: rgba(0, 0, 0,.7);
+}
+.four:hover button{
+    transform: translateY(20px);
+    transition-delay: 0.4s;
+}
+.four2:hover .four2_1 {
+    transform: scale(1);
+    opacity: 1;
+    background: rgba(0, 0, 0,.7);
+}
+.four2:hover button{
+    transform: translateY(20px);
+    transition-delay: 0.4s;
+}
+.four3:hover .four3_1 {
+    transform: scale(1);
+    opacity: 1;
+    background: rgba(0, 0, 0,.7);
+}
+.four3:hover button{
+    transform: translateY(20px);
+    transition-delay: 0.4s;
+}
+.four4:hover .four4_1 {
+    transform: scale(1);
+    opacity: 1;
+    background: rgba(0, 0, 0,.7);
+}
+.four4:hover button{
+    transform: translateY(20px);
+    transition-delay: 0.4s;
+}
+.four5:hover .four5_1 {
+    transform: scale(1);
+    opacity: 1;
+    background: rgba(0, 0, 0,.7);
+}
+.four5:hover button{
+    transform: translateY(20px);
+    transition-delay: 0.4s;
+}
+.four6:hover .four6_1 {
+    transform: scale(1);
+    opacity: 1;
+    background: rgba(0, 0, 0,.7);
+}
+.four6:hover button{
+    transform: translateY(20px);
+    transition-delay: 0.4s;
+}
+.four7:hover .four7_1 {
+    transform: scale(1);
+    opacity: 1;
+    background: rgba(0, 0, 0,.7);
+}
+.four7:hover button{
+    transform: translateY(20px);
+    transition-delay: 0.4s;
+}
+.four8:hover .four8_1 {
+    transform: scale(1);
+    opacity: 1;
+    background: rgba(0, 0, 0,.7);
+}
+.four8:hover button{
+    transform: translateY(20px);
+    transition-delay: 0.4s;
+}
+
+
+@media (max-width: 768px) {
+
+    .ExpertTeam{
+        width: 100%;
+        height: fit-content;
+        padding: 50px 0;
+        z-index: 2;
+        /*background: mintcream;*/
+
+
+    }
+    .ExpertTeam h2{
+        font-family: 'Rubik', sans-serif;
+        color: #FE3E19;
+        font-size: 34px;
+        display: flex;
+        justify-content: center;
+        margin: 20px 0 60px 0;
+    }
+    .ExpertTeam p{
+        font-family: 'Rubik', sans-serif;
+        color: #2D2D2D;
+        font-size: 18px;
+    }
+    .ExpertTeam-two{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: minmax(100px, auto);
+        margin-top: 60px;
+    }
+    .ExpertTeam-box{
+        width: 80%;
+        margin: 0 auto;
+    }
+    .ExpertTeam-box h4, p{
+        display: flex;
+        justify-content: center;
+        padding: 0 10px;
+    }
+    .ExpertTeam-two h4{
+        font-family: 'Rubik', sans-serif;
+        color: #2D2D2D;
+        font-size: 20px;
+    }
+    .ExpertTeam-icon{
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        margin: 0 auto;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+    }
+    .ExpertTeam-two{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-auto-rows: minmax(100px, auto);
+        margin-top: 80px;
+    }
+    .ExpertTeam-icon{
+        width: 200px;
+        text-align: center;
+        margin: 0 auto;
+    }
+    .ExpertTeam-two h4{
+        display: flex;
+        justify-content: center;
+    }
+    .ExpertTeam_box{
+        display: block;
+    }
+    .ExpertTeam_box p{
+
+        font-size: 12px;
+        color: white;
+    }
+    .four{
+        margin: 10px auto;
+    }
+    .four2{
+        margin: 10px auto;
+    }
+    .four3{
+        margin: 10px auto;
+    }
+    .four4{
+        margin: 10px auto;
+    }
+    .four5{
+        margin: 10px auto;
+    }
+    .four6{
+        margin: 10px auto;
+    }
+    .four7{
+        margin: 10px auto;
+    }
+    .four8{
+        margin: 10px auto;
+    }
+
+
+    .four1 p{
+        font-size: 12px;
+        color: white;
+
+    }
+}
+@media (min-width: 768px) and (max-width: 1200px) {
+
+}
+@media (min-width: 1200px) {}

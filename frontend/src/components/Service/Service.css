@@ -1,0 +1,103 @@
+.services{
+    width: 100%;
+    height: 400px;
+
+}
+.service{
+
+    width: 100%;
+    /*background: url("../../images/bbu-131.jpg");*/
+    height: 800px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    padding-top: 50px;
+
+}
+.service-container{
+    display: flex;
+    justify-content: space-around;
+}
+.service h2{
+    font-family: 'Rubik', sans-serif;
+    color: #F33009;
+    font-size: 36px;
+    display: flex;
+    justify-content: center;
+}
+.service p{
+    font-size: 32px;
+    color: #F33009;
+    font-family: 'Rubik', sans-serif;
+    display: flex;
+    justify-content: center;
+}
+
+.service-box{
+    display: flex;
+    width: 380px;
+    height: 400px;
+
+    background: rgba(255, 255, 255,.8);
+    border-radius: 15px;
+    margin: 40px 0 0 0;
+
+}
+.service-box p{
+    color: #2D2D2D;
+    padding-left: 20px;
+}
+
+.service-box li{
+    font-family: 'Rubik', sans-serif;
+    font-size: 18px;
+    color: #2D2D2D;
+}
+.service-icon{
+    margin: 20px 0 0 20px;
+    display: flex;
+}
+.service-text p{
+    font-size: 24px;
+    margin: 0;
+    color: #F33009;
+}
+.service-text{
+    margin: 20px 0 0 0;
+    width: 300px;
+}
+@media (max-width: 768px) {
+
+    .service{
+        height: fit-content;
+        width: 100%;
+        /*background: url("../../images/bbu-132.jpg");*/
+        padding-top: 1px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+
+
+    }
+    .service p{
+        font-size: 26px;
+
+    }
+    .service-container{
+        display: block;
+        padding-bottom: 10%;
+
+        /*margin: 0;*/
+    }
+    .service-text{
+        margin: 0 auto;
+    }
+    .service-box{
+        width: fit-content;
+    }
+
+}
+@media (min-width: 768px) and (max-width: 1200px) {
+
+}
+@media (min-width: 1200px) {}

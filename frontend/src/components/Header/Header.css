@@ -1,0 +1,82 @@
+
+.header{
+    /*position: fixed;*/
+    /*top: 0;*/
+    /*right: 0;*/
+    background: rgba(45, 45, 45, .1);
+    height: 100%;
+    /*width: 64px;*/
+}
+.header_box{
+
+    position: fixed;
+    z-index: 3;
+    /*right: 0;*/
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.header a{
+    /*display: block;*/
+
+}
+/*.header_box a{*/
+    /*background: rgba(45, 45, 45, .2);*/
+    /*border-top-right-radius: 10px;*/
+    /*border-bottom-right-radius: 10px;*/
+    /*border-radius: 10px;*/
+    /*height: 40px;*/
+    /*width: 40px;*/
+    /*width: 80px;*/
+    /*border: #F33009 1px solid;*/
+    /*color: #F33009;*/
+    /*margin: 5px;*/
+/*}*/
+.header_box button{
+    /*background: rgba(45, 45, 45, .2);*/
+    /*border-top-right-radius: 10px;*/
+    /*border-bottom-right-radius: 10px;*/
+    border-radius: 10px;
+    height: 40px;
+    /*width: 40px;*/
+    /*width: fit-content;*/
+    min-width: 80px;
+    max-width: fit-content;
+    border: #F33009 1px solid;
+    color: #F33009;
+    margin: 5px;
+
+}
+.header_box span{
+    font-size: medium;
+    width: fit-content;
+
+}
+.header_box a{
+    text-decoration: none;
+
+}
+
+@media (max-width: 768px) {
+    .header{
+        position: fixed;
+        z-index: 3;
+        height: 100%;
+    }
+    .header_box{
+        background: rgba(45, 45, 45, .2);
+        position: fixed;
+        height: 50px;
+
+        bottom: 0;
+
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+}
+@media (min-width: 768px) and (max-width: 1200px) {
+
+}
+@media (min-width: 1200px) {}

@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
+
+/*.main{*/
+/*    background: url("../../images/1119.jpg");*/
+/*    background-repeat: no-repeat;*/
+/*object-fit: cover;*/
+/*color: black;*/
+/*height: 100vh;*/
+/*width: 100vw;*/
+/**/
+/**/
+/*}*/
+.logo_box{
+
+    display: flex;
+    justify-content: space-between;
+
+    /*background: url("../../images/bbu-124.jpg");*/
+
+}
+.logo{
+    display: flex;
+    align-items: center;
+}
+.logo img{
+    width: 150px;
+    height: 70px;
+
+
+
+}
+.logo_text{
+    display: flex;
+}
+.logo_text p{
+    font-family: 'Rubik', sans-serif;
+    /*width: 350px;*/
+    /*color: #2D2D2D;*/
+    color: #FF2E06;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.social {
+    display: flex;
+    /*width: 100%;*/
+    align-items: center;
+    justify-content: center;
+
+}
+.social-box{
+    /*width: 600px;*/
+    display: flex;
+    justify-content: center;
+
+
+}
+.social_icons {
+    width: 50px;
+    height: 50px;
+    /*border: white 1px solid;*/
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*margin: 0 10px;*/
+
+}
+.social_icons a{
+    color: #F33009;
+
+}
+
+.social_icons:hover{
+    /*background: #F33009;*/
+    /*border: #F33009;*/
+    /*width: 52px;*/
+    /*height: 52px;*/
+
+
+}
+
+
+.social_icons svg:hover{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*color: #DF3212;*/
+    transform: scale(1.1);
+    cursor: pointer;
+    /*background: #F33009;*/
+    /*color: white;*/
+    /*border: #F33009;*/
+    /*border: #DF3212 1px solid;*/
+    animation: animate 1s ease-in-out infinite;
+}
+
+@keyframes animate {
+    0%, 100% {
+        width: 30px;
+        height: 30px;
+    }
+    50% {
+        width: 20px;
+        height: 20px;
+    }
+}
