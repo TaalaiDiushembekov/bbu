@@ -4,7 +4,9 @@ import colors from 'colors'
 
 dotenv.config()
 
-const url = process.env.MONGO_URL
+let PORT = 8080
+let url = "mongodb+srv://admin:qwe1716618zxc@cluster0.sfofj.mongodb.net/babbyboom?retryWrites=true&w=majority"
+// const url = process.env.MONGO_URL
 
 const connectDB = async () => {
     try {

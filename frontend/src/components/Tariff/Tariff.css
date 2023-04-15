@@ -1,24 +1,28 @@
-
 .tariffs{
     width: 100%;
     height: fit-content;
-
 }
 .tariffs-one{
     padding: 50px 50px;
-
 }
 
 .tariffs-one h2{
-    font-family: 'Rubik', sans-serif;
+    /* font-family: 'Rubik', sans-serif; */
     font-size: 34px;
     color: #FE3E19;
     display: flex;
     justify-content: center;
 }
-.tariffs p{
-    font-family: 'Rubik', sans-serif;
+
+.tariffs ul{
+    padding: 0 10px 0;
+}
+
+.tariffs li{
+    /* font-family: 'Rubik', sans-serif; */
     font-size: 18px;
+    margin: 18px 0;
+    list-style: none;
 }
 .tariffs-two{
     display: grid;
@@ -28,23 +32,22 @@
 
 }
 .tariffs-two h2{
-    font-family: 'Rubik', sans-serif;
+    /* font-family: 'Rubik', sans-serif; */
     font-size: 32px;
     color: #FE3E19;
 }
 .tariffs-two h3{
     color: #2D2D2D;
     font-size: 26px;
-    font-family: 'Rubik', sans-serif;
+    /* font-family: 'Rubik', sans-serif; */
 }
 .tariffs-three{
-
     border-bottom: 3px solid #C8C8C8;
     box-shadow: 0 0 30px rgb(1 41 112 / 15%);
     transition: 0.3s;
     border-radius: 5px;
     height: 600px;
-    padding: 10px 30px;
+    padding: 10px 20px;
     margin: 15px;
     text-align: center;
 }
