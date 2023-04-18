@@ -1,0 +1,14 @@
+button{
+    font-family: Montserrat, serif;
+    cursor: pointer;
+}
+
+.about-menu{
+    color: white;
+    background-color: transparent;
+    width: 100%;
+    border: none;
+    font-size: 20px;
+    text-transform: uppercase;
+    padding: 10px 0;
+}

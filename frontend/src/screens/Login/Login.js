@@ -6,14 +6,14 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
-import Grid from "@material-ui/core/Grid";
-
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import {userLoginAction} from "../../actions/userAction"
 import {useHistory, useLocation, Link} from "react-router-dom"
-import Message from "../message.js";
+import Message from "../../components/message";
+import Logo from "../../components/Logo/Logo";
+import Header from "../../components/Header/Header";
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -44,18 +44,22 @@ const Login = () => {
     const location = useLocation()
     const {userInfo, error} = useSelector((s) => s.userLogin)
     const redirect = location.search ? location.search.split('=')[1] : '/'
+
     const handleSubmit = (e) => {
         e.preventDefault()
         dispatch(userLoginAction(email, password))
-    }
+    };
+
     useEffect(() => {
         if (userInfo){
             history.push(redirect)
         }
-    }, [userInfo, dispatch, history])
+    }, [userInfo, dispatch, history]);
 
     return (
-        <Container component="main" maxWidth="xs">
+        <div>
+            <Logo />
+            <Container component="main" maxWidth="xs">
             <CssBaseline />
             <div className={classes.paper}>
                 <Avatar className={classes.avatar}>
@@ -114,9 +118,9 @@ const Login = () => {
             </div>
 
         </Container>
-    )
-}
-
-
+            <Header />
+        </div>
+    );
+};
 
 export default Login;

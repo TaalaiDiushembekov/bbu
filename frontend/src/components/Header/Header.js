@@ -38,7 +38,7 @@ const Header = () => {
                             <AssessmentIcon/>
                         </IconButton>
                     </Link>
-                    <Link  to='/menu'>
+                    <Link  to='/team'>
                         <IconButton>
                             <MenuIcon/>
                         </IconButton>

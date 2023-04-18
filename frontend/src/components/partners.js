@@ -22,20 +22,19 @@ const Partners = () => {
             {/*<Typography variant="h4" component="h3">*/}
             {/*    all partners*/}
             {/*</Typography>*/}
-            {
-                isLoading ? <Spinner /> : (
-                    <Box mt={3}>
-
-                        <Grid container spacing={3}>
-                            {
-                                partners?.map((partner) => (
-                                    <Partner partner={partner} />))
-                            }
-                        </Grid>
-                    </Box>
-                )
-            }
-
+            {isLoading ? <Spinner /> : (
+                <Box mt={3}>
+                    <Grid container spacing={3}>
+                        {
+                            partners?.map((partner) => (
+                                <Partner
+                                    key={partner._id}
+                                    partner={partner} 
+                                />))
+                        }
+                    </Grid>
+                </Box>
+            )}
         </>
     );
 };

@@ -1,12 +1,15 @@
 import React from 'react';
-import './AboutUs.css'
-import Container from "@material-ui/core/Container";
+import Logo from "../../components/Logo/Logo.js";
+import Header from "../../components/Header/Header.js";
+import './Team.css';
 
-const AboutUs = () => {
+const Team = () => {
     return (
-        <div className="ExpertTeam" id="team">
-            <Container>
-
+        <>
+            <Logo/>
+            <Header/>
+            <div className="ExpertTeam" id="team">
+            <div className='container'>
                 <div>
                     <h2>Команда профессионалов</h2>
                     <p>Специалисты команды "Точка Бюро Бухгалтерских услуг"- это опытные профессионалы в своей сфере, которые выполняют работу под ключ. Помощь опытного бухгалтера на сегодняшний день востребована среди тысяч компаний. Каждая организация нуждается в правильном ведении бухучета. Но только профессиональный бухгалтер сможет правильно вести учет, что является залогом отсутствия проблем с налоговой службой.</p>
@@ -90,10 +93,10 @@ const AboutUs = () => {
                    </div>
                     </div>
                 </div>
-           </Container>
-
+           </div>
         </div>
+        </>
     );
 };
 
-export default AboutUs;
+export default Team;

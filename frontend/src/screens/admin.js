@@ -3,7 +3,7 @@ import Register from "./register";
 import AllUsers from "../components/allUsers.js";
 import Grid from "@material-ui/core/Grid";
 import {makeStyles} from "@material-ui/core/styles";
-import Home from "./Home";
+import Home from "./Home/Home";
 import AddProduct from "../components/add_product";
 import Manager from "../components/manager";
 import AllProducts from "../components/allProducts.js";

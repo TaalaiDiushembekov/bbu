@@ -1,6 +1,7 @@
 import React from 'react';
-import './Tariff.css'
-import Container from "@material-ui/core/Container";
+import Logo from "../../components/Logo/Logo.js";
+import Header from "../../components/Header/Header.js";
+import "./Tariffs.css";
 
 const tariffs = [
     {title: 'Нулевой', consultings: '1 час', reportSubmission: 'Подготовка и сдача отчетности'},
@@ -36,10 +37,13 @@ const tariffs = [
     },
 ];
 
-const Tariff = () => {
+const Tariffs = () => {
     return (
-        <div className="tariffs" id="tariffs">
-            <Container>
+        <div>
+            <Logo />
+            <Header />
+            <div className="tariffs" id="tariffs">
+            <div className='container'>
                 <div className="tariffs-one">
                     <div>
                         <h2>Тарифы</h2>
@@ -47,22 +51,22 @@ const Tariff = () => {
                     </div>
                     <div  className="tariffs-two">
                         {tariffs.map(tarif => (
-                            <div className="tariffs-three">
-                            <h2>{tarif.title}</h2>
-                            {/* <div className="tariffs-icon"> */}
-                            {/*    <Filter1 style={{  fontSize: 40  }} />*/}
-                            {/*</div>*/}
-                            {/* <h3>от 8000 сомов</h3> */}
-                            <ul>
-                                {tarif.oneC && <li> Ведение учета в 1С: {tarif.oneC}</li>}
-                                <li>Консультации: {tarif.consultings}</li>
-                                <li>Подготовка и сдача отчетности</li>
-                                {tarif.salary && <li>{tarif.salary}</li>}
-                                {tarif.taxes && <li>{tarif.taxes}</li>}
-                                {tarif.accounts && <li>{tarif.accounts}</li>}
-                                {tarif.ib && <li>{tarif.ib}</li>}
-                            </ul>
-                        </div>
+                            <div className="tariffs-three" key={tarif.title}>
+                                <h2>{tarif.title}</h2>
+                                {/* <div className="tariffs-icon"> */}
+                                {/*    <Filter1 style={{  fontSize: 40  }} />*/}
+                                {/*</div>*/}
+                                {/* <h3>от 8000 сомов</h3> */}
+                                <ul>
+                                    {tarif.oneC && <li> Ведение учета в 1С: {tarif.oneC}</li>}
+                                    <li>Консультации: {tarif.consultings}</li>
+                                    <li>Подготовка и сдача отчетности</li>
+                                    {tarif.salary && <li>{tarif.salary}</li>}
+                                    {tarif.taxes && <li>{tarif.taxes}</li>}
+                                    {tarif.accounts && <li>{tarif.accounts}</li>}
+                                    {tarif.ib && <li>{tarif.ib}</li>}
+                                </ul>
+                            </div>
                         ))}
                         {/* <div className="tariffs-three">
                             <h2>"Нулевой"</h2>
@@ -163,9 +167,10 @@ const Tariff = () => {
                         </div> */}
                     </div>
                 </div>
-            </Container>
+            </div>
+        </div>
         </div>
     );
 };
 
-export default Tariff;
+export default Tariffs;

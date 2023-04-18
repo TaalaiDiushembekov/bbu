@@ -1,13 +1,17 @@
 import React from 'react';
-import './Service.css'
-import Container from "@material-ui/core/Container";
+import Logo from "../../components/Logo/Logo.js";
+import Header from "../../components/Header/Header.js";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Autoplay, Pagination} from "swiper";
+import './Services.css'
 
-const Service = () => {
+const Services = () => {
     return (
-        <div className="service" id="services">
-            <Container>
+        <div>
+            <Logo />
+            <Header />
+            <div className="service" id="services">
+            <div className='container'>
                 {/*<h2>Бухгалтерские услуги заказать недорого </h2>*/}
                 <p>Приоритетные направления деятельности нашей компании - оказание</p>
                 <div className="service-container">
@@ -70,15 +74,12 @@ const Service = () => {
                                 </ul>
                             </div>
                         {/*</SwiperSlide>*/}
-
-
                     {/*</Swiper>*/}
-
                 </div>
-            </Container>
-
+            </div>
+        </div>
         </div>
     );
 };
 
-export default Service;
+export default Services;
