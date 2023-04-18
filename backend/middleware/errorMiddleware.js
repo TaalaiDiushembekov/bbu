@@ -1,15 +1,15 @@
+import ErrorService from "../services/errorService.js"
+
 export const notFound = (req, res, next) => {
     const error = `Not found - ${req.originalUrl}`
     res.status(404)
     next(error)
 }
-export const errorHandler = (error, req, res, next) => {
-    const statusCode = res.statusCode === 200 ? 500 : res.statusCode
-    res.status(statusCode)
-    res.json({
-        message: error.message,
-        stack: process.env.NODE_ENV === 'production' ? null : error.stack
-    })
-    next()
+export const errorHandler = (err, req, res, next) => {
+    if (err instanceof ErrorService) {
+        return res.status(err.status).json({ message: err.message, errors: err.errors });
+      }
+    
+      return res.status(500).json({  message: "Internal server error"  });
 }
 export default { notFound, errorHandler }
