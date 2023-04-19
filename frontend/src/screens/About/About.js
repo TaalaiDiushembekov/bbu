@@ -11,9 +11,7 @@ import './About.css';
 
 const About = () => {
     return (
-        <>
-            <Logo/>
-            <Header/>
+        <div className='container'>
             <div className="menuList">
                 <div className="menuList_box">
                     <div className="menuList_social"></div>
@@ -92,7 +90,7 @@ const About = () => {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

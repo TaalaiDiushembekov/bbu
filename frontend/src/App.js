@@ -15,27 +15,30 @@ import NotFoundPage from "./screens/NotFoundPage.js";
 import Register from "./screens/register.js"
 import Header from "./components/header.js";
 import Footer from "./components/footer.js";
+import Layout from './components/UI/Layout/Layout.js';
 
 function App() {
   return (
     <Router>
-      <Switch>
-          <Route exact path='/' component={() => <Home />} />
-          <Route exact path='/about' component={() => <About />} />
-          <Route exact path='/tariffs' component={() => <Tariffs />} />
-          <Route exact path='/services' component={() => <Services />} />
-          <Route exact path='/team' component={() => <Team />} />
-          <Route exact path='/product/:id' component={() => <ProductDetails />} />
-          <Route exact path='/cart/:id?' component={() => <Cart />} />
-          <Route exact path='/login' component={() => <Login />} />
-          <Route exact path='/profile' component={() => <Profile />} />
-          <Route exact path='/admin' component={() => <Admin />} />
-          <Route exact path='/admin/:id' component={() => <UserDetails />} />
-          
-          {/*<Route exact path='*' component={() => <NotFoundPage />} />*/}
-          {/*<Route exact path='/allUsers' component={() => <AllUsers />} />*/}
-          {/*<Route exact path='/register' component={() => <Register />} />*/}
-      </Switch>
+      <Layout>
+        <Switch>
+            <Route exact path='/' component={() => <Home />} />
+            <Route exact path='/about' component={() => <About />} />
+            <Route exact path='/tariffs' component={() => <Tariffs />} />
+            <Route exact path='/services' component={() => <Services />} />
+            <Route exact path='/team' component={() => <Team />} />
+            <Route exact path='/product/:id' component={() => <ProductDetails />} />
+            <Route exact path='/cart/:id?' component={() => <Cart />} />
+            <Route exact path='/login' component={() => <Login />} />
+            <Route exact path='/profile' component={() => <Profile />} />
+            <Route exact path='/admin' component={() => <Admin />} />
+            <Route exact path='/admin/:id' component={() => <UserDetails />} />
+            
+            {/*<Route exact path='*' component={() => <NotFoundPage />} />*/}
+            {/*<Route exact path='/allUsers' component={() => <AllUsers />} />*/}
+            {/*<Route exact path='/register' component={() => <Register />} />*/}
+        </Switch>
+      </Layout>
     </Router>
   );
 }
