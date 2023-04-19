@@ -6,12 +6,17 @@ import {cartReducer} from "./reducers/cartReducer";
 import {userLoginReducer, userRegisterReducer,usersListReducer, userDetailsReducer,userUploadInfoReducer,userUploadInfoTwoReducer} from "./reducers/userReducer.js"
 import {partnersListReducer} from "./reducers/partnerReducer";
 import userSlice from './slices/userSlice.js';
+import partnerSlice from './slices/partnerSlice.js';
 
 const reducer = combineReducers({
+    user: userSlice.reducer,
+    partner: partnerSlice.reducer,
+
+
+
     productsList: productsListReducer,
     productDetails: productDetailsReducer,
     cart: cartReducer,
-    user: userSlice.reducer,
     // userLogin: userLoginReducer,
     // userRegister: userRegisterReducer,
     // usersList: usersListReducer,
@@ -19,12 +24,12 @@ const reducer = combineReducers({
     // userUploadInfo: userUploadInfoReducer,
     // userUploadInfoTwo: userUploadInfoTwoReducer,
     addProduct: addProductReducer,
-    partnersList: partnersListReducer
+    // partnersList: partnersListReducer
 })
 
 const cartFromStorage = localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : []
 const userFromStorage = localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : null
-const initialState = {cart: {cartItems: cartFromStorage}, userLogin: {userInfo: userFromStorage}}
+const initialState = {cart: {cartItems: cartFromStorage}, user: {userInfo: userFromStorage}}
 const middleware = [thunk]
 
 const store = createStore(reducer, initialState, composeWithDevTools(applyMiddleware(...middleware)))
