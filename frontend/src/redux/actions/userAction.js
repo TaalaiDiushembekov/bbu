@@ -8,7 +8,7 @@ import {
     USERS_REQUEST, USERS_SUCCESS, USERS_FAILED
     , USER_UPLOAD_INFO_REQUEST, USER_UPLOAD_INFO_SUCCESS, USER_UPLOAD_INFO_FAIL,
     USER_UPLOAD_INFO_TWO_REQUEST, USER_UPLOAD_INFO_TWO_SUCCESS, USER_UPLOAD_INFO_TWO_FAIL
-} from "../constants/userConstants"
+} from "../../constants/userConstants"
 
 export const userLoginAction = (email, password) => {
     return async (dispatch, getState) => {

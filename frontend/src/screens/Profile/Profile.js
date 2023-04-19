@@ -3,7 +3,7 @@ import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import {Menu, MenuItem} from "@material-ui/core";
 import {Link, useHistory, useLocation} from "react-router-dom";
-import {logout} from "../../actions/userAction";
+import {logout} from "../../redux/actions/userAction";
 import PersonIcon from "@material-ui/icons/Person";
 import {useSelector} from "react-redux";
 import Typography from "@material-ui/core/Typography";

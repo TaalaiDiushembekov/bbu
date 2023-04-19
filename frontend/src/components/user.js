@@ -9,7 +9,7 @@ import {makeStyles} from "@material-ui/core/styles";
 import {string} from "prop-types";
 import ManagerInfo from "./manager_info.js";
 import {useDispatch, useSelector} from "react-redux";
-import {usersListAction} from "../actions/userAction";
+import {usersListAction} from "../redux/actions/userAction";
 import Manager from "./manager";
 
 

@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {ADD_TO_CART, REMOVE_FROM_CART} from "../constants/cartConstants.js"
+import {ADD_TO_CART, REMOVE_FROM_CART} from "../../constants/cartConstants.js"
 
 export const addToCart = (id, qt) => {
     return async (dispatch, getState) => {

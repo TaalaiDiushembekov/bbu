@@ -10,10 +10,10 @@ import {useDispatch, useSelector} from "react-redux";
 import {Box, MenuItem} from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import Menu from "@material-ui/core/Menu";
-import {logout} from "../../actions/userAction";
+import {logout} from "../../redux/actions/userAction";
 
 const Header = () => {
-    const {userInfo} = useSelector(s => s.userLogin)
+    const {userInfo} = useSelector(s => s.user)
     const dispatch = useDispatch()
     const [anchorEl, setAnchorEl] = React.useState(null);
     const handleClick = (event) => {

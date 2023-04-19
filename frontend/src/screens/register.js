@@ -15,7 +15,7 @@ import Container from '@material-ui/core/Container';
 import {useDispatch, useSelector} from "react-redux";
 import {useHistory, useLocation, Link} from "react-router-dom";
 import axios from 'axios'
-import {userRegisterAction} from "../actions/userAction.js";
+import {userRegisterAction} from "../redux/actions/userAction.js";
 
 // function Copyright() {
 //     return (

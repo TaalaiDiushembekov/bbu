@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 import {useParams, useLocation, Link, useHistory } from 'react-router-dom'
 import {useDispatch, useSelector} from "react-redux"
-import {addToCart, removeFromCart} from "../actions/cartAction.js"
+import {addToCart, removeFromCart} from "../redux/actions/cartAction.js"
 import {Box} from "@material-ui/core";
 import {Typography} from "@material-ui/core";
 import Message from "../components/message.js";

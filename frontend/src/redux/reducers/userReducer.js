@@ -10,7 +10,7 @@ import {
     USER_UPLOAD_INFO_TWO_REQUEST,
     USER_UPLOAD_INFO_TWO_SUCCESS,
     USER_UPLOAD_INFO_TWO_FAIL
-} from "../constants/userConstants.js";
+} from "../../constants/userConstants";
 
 const userLoginReducer = (state = {}, action) => {
     switch (action.type) {
