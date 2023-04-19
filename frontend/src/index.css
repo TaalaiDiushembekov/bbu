@@ -11,6 +11,7 @@
 body {
   margin: 0;
   font-family: Montserrat, sans-serif;
+  box-sizing: border-box;
   /*  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',*/
   /*  sans-serif;*/
   /*-webkit-font-smoothing: antialiased;*/
@@ -21,11 +22,11 @@ body {
 /*  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',*/
 /*    monospace;*/
 /*}*/
-main{
-  font-family: 'Montserrat' sans-serif;
+/* main{ */
+  /* font-family: 'Montserrat' sans-serif; */
   /*min-height: 70vh;*/
-    margin: 0;
-}
+    /* margin: 0; */
+/* } */
 /*.translate img{*/
 /*  width: 40px;*/
 /*  height: 30px;*/

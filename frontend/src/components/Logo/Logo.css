@@ -14,7 +14,10 @@
 
     display: flex;
     justify-content: space-between;
-
+    position: absolute;
+    top: 0;
+    left: 24px;
+    width: 95%;
     /*background: url("../../images/bbu-124.jpg");*/
 
 }
@@ -71,14 +74,14 @@
 
 }
 
-.social_icons:hover{
+/* .social_icons:hover{ */
     /*background: #F33009;*/
     /*border: #F33009;*/
     /*width: 52px;*/
     /*height: 52px;*/
 
 
-}
+/* } */
 
 
 .social_icons svg:hover{

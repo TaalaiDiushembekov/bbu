@@ -5,19 +5,13 @@ import "./Home.css";
 
 const Home = () => {
     return (
-        <>
-            <header>
-                <Header/>
-            </header>
-            <main className="main">
-                <div className='container'>
-                    <Logo/>
-                    <div className="main_text">
-                        <h2>Точка — это свобода от бухгалтерии</h2>
-                    </div>
+        <main className="main">
+            <div className='container'>
+                <div className="main_text">
+                    <h2>Точка — это свобода от бухгалтерии</h2>
                 </div>
-            </main>
-        </>
+            </div>
+        </main>
     );
 };
 
