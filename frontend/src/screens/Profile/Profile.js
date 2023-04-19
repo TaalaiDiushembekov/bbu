@@ -1,5 +1,3 @@
-import Logo from "../../components/Logo/Logo";
-import Header from "../../components/Header/Header";
 import React, {useEffect} from 'react';
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
@@ -41,7 +39,6 @@ const Profile = () => {
 
     return (
         <div>
-           <Logo />
            {userInfo && 
             <Grid item sm={12} md={6} lg={3} xl={3}
                             // key={product._id}
@@ -67,7 +64,6 @@ const Profile = () => {
                     </Card>
                 </Grid>
             }
-           <Header />
         </div>
     );
 };

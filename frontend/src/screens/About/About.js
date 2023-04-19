@@ -1,6 +1,4 @@
 import React from 'react';
-import Header from "../../components/Header/Header.js";
-import Logo from "../../components/Logo/Logo.js";
 import {Link} from "react-router-dom";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";

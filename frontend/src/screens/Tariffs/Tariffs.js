@@ -1,6 +1,4 @@
 import React from 'react';
-import Logo from "../../components/Logo/Logo.js";
-import Header from "../../components/Header/Header.js";
 import "./Tariffs.css";
 
 const tariffs = [
@@ -40,8 +38,6 @@ const tariffs = [
 const Tariffs = () => {
     return (
         <div>
-            <Logo />
-            <Header />
             <div className="tariffs" id="tariffs">
             <div className='container'>
                 <div className="tariffs-one">
