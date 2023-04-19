@@ -1,6 +1,4 @@
 import React from 'react';
-import Header from "../../components/Header/Header.js";
-import Logo from "../../components/Logo/Logo";
 import "./Home.css";
 
 const Home = () => {

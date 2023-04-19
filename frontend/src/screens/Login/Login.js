@@ -12,8 +12,6 @@ import Container from "@material-ui/core/Container";
 import {userLoginAction} from "../../actions/userAction"
 import {useHistory, useLocation, Link} from "react-router-dom"
 import Message from "../../components/message";
-import Logo from "../../components/Logo/Logo";
-import Header from "../../components/Header/Header";
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -58,7 +56,6 @@ const Login = () => {
 
     return (
         <div>
-            <Logo />
             <Container component="main" maxWidth="xs">
             <CssBaseline />
             <div className={classes.paper}>
@@ -116,9 +113,7 @@ const Login = () => {
                     {/*</Grid>*/}
                 </form>
             </div>
-
         </Container>
-            <Header />
         </div>
     );
 };

@@ -1,6 +1,4 @@
 import React from 'react';
-import Logo from "../../components/Logo/Logo.js";
-import Header from "../../components/Header/Header.js";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Autoplay, Pagination} from "swiper";
 import './Services.css'
@@ -8,8 +6,6 @@ import './Services.css'
 const Services = () => {
     return (
         <div>
-            <Logo />
-            <Header />
             <div className="service" id="services">
             <div className='container'>
                 {/*<h2>Бухгалтерские услуги заказать недорого </h2>*/}

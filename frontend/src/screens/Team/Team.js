@@ -1,13 +1,9 @@
 import React from 'react';
-import Logo from "../../components/Logo/Logo.js";
-import Header from "../../components/Header/Header.js";
 import './Team.css';
 
 const Team = () => {
     return (
         <>
-            <Logo/>
-            <Header/>
             <div className="ExpertTeam" id="team">
             <div className='container'>
                 <div>

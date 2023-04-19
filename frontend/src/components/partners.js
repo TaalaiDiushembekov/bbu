@@ -6,7 +6,6 @@ import Typography from "@material-ui/core/Typography";
 import Spinner from "./spinner";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
-
 import Partner from "./Partner/Partner";
 
 const Partners = () => {
