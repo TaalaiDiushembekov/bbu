@@ -11,7 +11,7 @@ import {Link} from "react-router-dom";
 import Box from "@material-ui/core/Box";
 import {makeStyles} from "@material-ui/core/styles";
 import {useDispatch} from "react-redux";
-import {userUploadInfoAction} from "../actions/userAction.js";
+import {userUploadInfoAction} from "../redux/actions/userAction.js";
 import UploadInfoTwo from "./upload_info_two";
 
 

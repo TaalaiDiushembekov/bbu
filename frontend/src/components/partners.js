@@ -1,7 +1,7 @@
 import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import {partnersListAction} from "../actions/partnerAction";
+import {partnersListAction} from "../redux/actions/partnerAction";
 import Typography from "@material-ui/core/Typography";
 import Spinner from "./spinner";
 import Box from "@material-ui/core/Box";

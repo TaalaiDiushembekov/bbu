@@ -12,7 +12,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Rating from "../components/rating.js";
 import Button from "@material-ui/core/Button";
 import {useDispatch, useSelector} from "react-redux";
-import {productDetailsAction} from "../actions/productsAction.js";
+import {productDetailsAction} from "../redux/actions/productsAction.js";
 import Spinner from "../components/spinner.js";
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";

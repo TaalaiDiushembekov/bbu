@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {productsListAction} from "../actions/productsAction";
-import {usersListAction} from "../actions/userAction";
+import {productsListAction} from "../redux/actions/productsAction";
+import {usersListAction} from "../redux/actions/userAction";
 import Spinner from "./spinner";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";

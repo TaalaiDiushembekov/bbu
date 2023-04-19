@@ -12,7 +12,7 @@ import PersonIcon from '@material-ui/icons/Person'
 import {useDispatch, useSelector} from "react-redux";
 import {Menu, MenuItem} from "@material-ui/core";
 import Box from "@material-ui/core/Box";
-import {logout} from "../actions/userAction.js"
+import {logout} from "../redux/actions/userAction.js"
 import CardMedia from "@material-ui/core/CardMedia";
 import flagUK from "../images/Flag_of_the_United_Kingdom.png"
 import flagRU from "../images/Flag_of_Russia.png"

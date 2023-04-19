@@ -9,7 +9,7 @@ import Checkbox from "@material-ui/core/Checkbox";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import {userLoginAction} from "../../actions/userAction"
+import {userLoginAction} from "../../redux/actions/userAction"
 import {useHistory, useLocation, Link} from "react-router-dom"
 import Message from "../../components/message";
 
@@ -40,7 +40,7 @@ const Login = () => {
     const dispatch = useDispatch()
     const history = useHistory()
     const location = useLocation()
-    const {userInfo, error} = useSelector((s) => s.userLogin)
+    const {userInfo, error} = useSelector((s) => s.user)
     const redirect = location.search ? location.search.split('=')[1] : '/'
 
     const handleSubmit = (e) => {

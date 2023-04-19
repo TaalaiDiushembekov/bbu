@@ -4,7 +4,7 @@ import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import {useDispatch, useSelector} from "react-redux";
-import {usersListAction} from "../actions/userAction.js";
+import {usersListAction} from "../redux/actions/userAction.js";
 import User from "../components/user.js"
 
 const AllUsers = () => {
