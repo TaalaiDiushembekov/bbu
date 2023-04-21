@@ -11,9 +11,12 @@ import {Box, MenuItem} from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import Menu from "@material-ui/core/Menu";
 import {logout} from "../../redux/actions/userAction";
+import { removeUser } from '../../redux/auth/userLogin.slice';
 
 const Header = () => {
-    const {userInfo} = useSelector(s => s.user)
+    const userInfo = useSelector(s => s.auth)
+    // const a = useSelector(s => s.auth)
+
     const dispatch = useDispatch()
     const [anchorEl, setAnchorEl] = React.useState(null);
     const handleClick = (event) => {
@@ -24,6 +27,7 @@ const Header = () => {
         setAnchorEl(null);
     };
 
+    // console.log(a)
     return (
         <>
             <div className="header">
@@ -45,7 +49,7 @@ const Header = () => {
                     </Link>
                     <Link>
 
-                        {userInfo ? (
+                        {userInfo.email ? (
                             <Box>
                                 <IconButton color="inherit" aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
                                     {userInfo.name}
@@ -58,16 +62,18 @@ const Header = () => {
                                     onClose={handleClose}
                                 >
                                     <MenuItem onClick={handleClose} component={Link} to="/profile">Profile</MenuItem>
-                                    <MenuItem onClick={() => dispatch(logout())}
+                                    <MenuItem onClick={() => dispatch(removeUser())}
                                               component={Link} to='/'>Logout</MenuItem>
                                 </Menu>
                             </Box>
-                            ):
-                            <Link to='/login'>
+                            ):(
+
+                                <Link to='/login'>
                                 <IconButton>
                                     <PersonIcon/>
                                 </IconButton>
                             </Link>
+                                )
 
                         }
                     </Link>
