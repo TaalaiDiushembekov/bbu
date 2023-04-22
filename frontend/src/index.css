@@ -33,3 +33,9 @@ body {
 /*  border-radius: 10px;*/
 /*}*/
 
+.title {
+  font-size: 34px;
+  color: #FE3E19;
+  text-align: center;
+}
+

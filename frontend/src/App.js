@@ -16,6 +16,7 @@ import Register from "./screens/register.js"
 import Header from "./components/header.js";
 import Footer from "./components/footer.js";
 import Layout from './components/UI/Layout/Layout.js';
+import RegisterUser from './screens/RegisterUser/RegisterUser.js';
 
 function App() {
   return (
@@ -27,11 +28,13 @@ function App() {
             <Route exact path='/tariffs' component={() => <Tariffs />} />
             <Route exact path='/services' component={() => <Services />} />
             <Route exact path='/team' component={() => <Team />} />
+            <Route exact path='/login' component={() => <Login />} />
+            <Route exact path='/admin' component={() => <Admin />} />
+            <Route exact path='/profile' component={() => <Profile />} />
+            <Route exact path='/user-registration' component={() => <RegisterUser />} />
+
             <Route exact path='/product/:id' component={() => <ProductDetails />} />
             <Route exact path='/cart/:id?' component={() => <Cart />} />
-            <Route exact path='/login' component={() => <Login />} />
-            <Route exact path='/profile' component={() => <Profile />} />
-            <Route exact path='/admin' component={() => <Admin />} />
             <Route exact path='/admin/:id' component={() => <UserDetails />} />
             
             {/*<Route exact path='*' component={() => <NotFoundPage />} />*/}
