@@ -1,0 +1,13 @@
+input {
+    outline: none;
+    width: 300px;
+    max-width: 300px;
+    border: 1px solid #eee;
+    padding: 8px 2px;
+    border-radius: 3px;
+    font-size: 16px;
+}
+
+input:focus{
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+}

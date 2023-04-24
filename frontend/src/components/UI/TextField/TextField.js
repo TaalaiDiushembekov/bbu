@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
+import './TextField.css';
 
 const TextField = ({name, id, onChange, label, value, required, type}) => {
     return (

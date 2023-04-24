@@ -30,6 +30,7 @@ const RegisterUser = () => {
 
     const inputChangeHandler = (e) => {
         const {name, value} = e.target;
+        setRegisterData(prev => ({...prev, [name]: value}))
     };
 
     const submitFormHandler = async e => {
