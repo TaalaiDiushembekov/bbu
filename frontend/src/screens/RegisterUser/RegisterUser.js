@@ -1,22 +1,26 @@
 import React, { useState } from "react";
+import { useHistory } from 'react-router-dom';
 import TextField from "../../components/UI/TextField/TextField";
+import Button from "../../components/UI/Button/Button";
 import './RegisterUser.css';
 
 const RegisterUser = () => {
+    const history = useHistory();
+
     const [registerData, setRegisterData] = useState({
         org_name: '',
         PIN: '',
         org_director: '',
         org_director_passport: {
-            series: '',
-            authority: '',
-            date: ''
+            series_dir: '',
+            authority_dir: '',
+            date_dir: ''
         },
         org_accountant: '',
         org_accountant_passport: {
-            series: '',
-            authority: '',
-            date: ''
+            series_acc: '',
+            authority_acc: '',
+            date_acc: ''
         },
         responsible_person: '',
         org_phone: '',
@@ -28,13 +32,42 @@ const RegisterUser = () => {
         email: ''
     });
 
+    const [date_director, setDate_director] = useState('');
+    const [date_accountant, setDate_accountant] = useState('');
+
     const inputChangeHandler = (e) => {
         const {name, value} = e.target;
         setRegisterData(prev => ({...prev, [name]: value}))
     };
 
+    const inputChangeHandlerPassport = (e, title) => {
+        const {name, value} = e.target;
+
+        setRegisterData(prev => ({
+            ...prev,
+            [title]: {
+                ...registerData[title],
+                [name]: value,
+            }
+        }));
+    };
+
     const submitFormHandler = async e => {
         e.preventDefault();
+        console.log(date_accountant);
+        setRegisterData(prev => ({
+            ...prev,
+            org_director_passport: {
+                ...registerData.org_director_passport,
+                date_dir: date_director,
+            },
+            org_accountant_passport: {
+                ...registerData.org_accountant_passport,
+                date_acc: date_accountant,
+            }
+        }));
+
+        // history.push('/');
     };
 
     return (
@@ -87,15 +120,39 @@ const RegisterUser = () => {
                         />
                     </div>
                     <div className="input-wrapper">
-                        <TextField
-                            type="text" 
-                            name="PIN" 
-                            id="PIN"
-                            value={registerData.PIN}
-                            required={true}
-                            onChange={inputChangeHandler}
-                            label="Паспорт"
-                        />
+                        <p className="label-text">Паспортные данные руководителя</p>
+                        <div className="passport-input-wrapper">
+                            <TextField
+                                className="passport-input"
+                                type="text" 
+                                name="series_dir" 
+                                id="series_dir"
+                                value={registerData.org_director_passport.series_dir}
+                                onChange={(e) => inputChangeHandlerPassport(e, 'org_director_passport')}
+                                label="номер"
+                                labelClass="passport-label"
+                            />
+                            <TextField
+                                className="passport-input"
+                                type="text" 
+                                name="authority_dir" 
+                                id="authority_dir"
+                                value={registerData.org_director_passport.authority_dir}
+                                onChange={(e) => inputChangeHandlerPassport(e, 'org_director_passport')}
+                                label="выдан"
+                                labelClass="passport-label"
+                            />
+                            <TextField
+                                className="passport-input"
+                                type="date" 
+                                name="date_director" 
+                                id="date_dir"
+                                value={date_director}
+                                onChange={(e) => setDate_director(e.target.value)}
+                                label="от"
+                                labelClass="passport-label"
+                            />
+                        </div>
                     </div>
                     <div className="input-wrapper">
                         <TextField
@@ -108,14 +165,39 @@ const RegisterUser = () => {
                         />
                     </div>
                     <div className="input-wrapper">
-                        <TextField
-                            type="text" 
-                            name="org_legal" 
-                            id="org_legal"
-                            value={registerData.org_legal}
-                            onChange={inputChangeHandler}
-                            label="Паспорт"
-                        />
+                        <p className="label-text">Паспортные данные гл. бухгалтера</p>
+                        <div className="passport-input-wrapper">
+                            <TextField
+                                className="passport-input"
+                                type="text" 
+                                name="series_acc" 
+                                id="series_acc"
+                                value={registerData.org_accountant_passport.series_acc}
+                                onChange={(e) => inputChangeHandlerPassport(e, 'org_accountant_passport')}
+                                label="номер"
+                                labelClass="passport-label"
+                            />
+                            <TextField
+                                className="passport-input"
+                                type="text" 
+                                name="authority_acc" 
+                                id="authority_acc"
+                                value={registerData.org_accountant_passport.authority_acc}
+                                onChange={(e) => inputChangeHandlerPassport(e, 'org_accountant_passport')}
+                                label="выдан"
+                                labelClass="passport-label"
+                            />
+                            <TextField
+                                className="passport-input"
+                                type="date" 
+                                name="date_accountant" 
+                                id="date_acc"
+                                value={date_accountant}
+                                onChange={(e) => setDate_accountant(e.target.value)}
+                                label="от"
+                                labelClass="passport-label"
+                            />
+                        </div>
                     </div>
                     <div className="input-wrapper">
                         <TextField
@@ -175,9 +257,9 @@ const RegisterUser = () => {
                     <div className="input-wrapper">
                         <TextField
                             type="text" 
-                            name="property_type" 
-                            id="property_type"
-                            value={registerData.property_type}
+                            name="org_legal" 
+                            id="org_legal"
+                            value={registerData.org_legal}
                             required={true}
                             onChange={inputChangeHandler}
                             label="Организационно-правовая форма"
@@ -194,6 +276,11 @@ const RegisterUser = () => {
                             label="Гражданско-правовой статус"
                         />
                     </div>
+                    <Button
+                        type="submit"
+                        title="Отправить"
+                        className="register-btn"
+                    />
                 </form>
             </div>
         </div>

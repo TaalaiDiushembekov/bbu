@@ -1,5 +1,7 @@
 .register-user{
-    padding: 20px 50px 0;
+    max-width: 950px;
+    margin: 0 auto;
+    text-align: center;
 }
 
 .input-wrapper{
@@ -11,4 +13,13 @@
     padding: 4px;
     border-radius: 3px;
     align-items: center;
+}
+
+.label-text{
+    margin: 0;
+    padding: 0;
+}
+
+.input-wrapper:last-child{
+   text-align: right;
 }
