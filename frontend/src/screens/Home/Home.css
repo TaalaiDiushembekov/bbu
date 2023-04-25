@@ -8,11 +8,6 @@
     box-sizing: border-box;
 }
 
-.container{
-    padding: 70px 24px;
-    margin: 0 auto;
-}
-
 .main_text{
     /* display: flex;
     justify-content: center;

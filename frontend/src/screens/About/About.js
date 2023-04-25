@@ -16,6 +16,7 @@ const About = () => {
                     <div className="menuList-item">
                         <Link to="/tariffs">
                             <Button
+                                type="button"
                                 className="about-menu"
                                 title="тарифы"
                             />
@@ -24,6 +25,7 @@ const About = () => {
                     <div className="menuList-item">
                         <Link to="/services">
                             <Button
+                                type="button"
                                 className="about-menu"
                                 title="услуги"
                             />

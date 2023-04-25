@@ -1,0 +1,37 @@
+input {
+    outline: none;
+    width: 300px;
+    max-width: 300px;
+    border: 1px solid #eee;
+    padding: 8px 2px;
+    border-radius: 3px;
+    font-size: 16px;
+    margin-left: auto;
+}
+
+@media (max-width: 400px) {
+    input {
+        width: 95%;
+        margin: 5px auto;
+        padding: 4px 2px;
+    } 
+}
+
+input:focus{
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+}
+
+.passport-input{
+    width: 100px;
+}
+
+.date-input{
+    width: 130px;
+}
+
+.passport-label{
+    margin: 0 3px 0 10px;
+    font-size: 14px;
+}
+
+

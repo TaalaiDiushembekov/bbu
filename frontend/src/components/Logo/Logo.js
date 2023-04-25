@@ -18,19 +18,18 @@ const Logo = () => {
                 <div className="logo_text">
                     <div className="social">
                         <div className="social-box">
-
                             <div className="social_icons">
-                                <a href="https://t.me/+996707807507" target="_blank">
+                                <a href="https://t.me/+996707807507">
                                     <TelegramIcon/>
                                 </a>
                             </div>
                             <div className="social_icons">
-                                <a href="https://www.instagram.com/bbutochka/" target="_blank">
+                                <a href="https://www.instagram.com/bbutochka/">
                                     <InstagramIcon/>
                                 </a>
                             </div>
                             <div className="social_icons">
-                                <a  href="https://wa.me/+996707807507" target="_blank">
+                                <a  href="https://wa.me/+996707807507">
                                     <WhatsAppIcon/>
                                 </a>
                             </div>

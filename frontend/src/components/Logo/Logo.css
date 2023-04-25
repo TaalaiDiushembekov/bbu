@@ -11,7 +11,6 @@
 /**/
 /*}*/
 .logo_box{
-
     display: flex;
     justify-content: space-between;
     position: absolute;
@@ -19,22 +18,22 @@
     left: 24px;
     width: 95%;
     /*background: url("../../images/bbu-124.jpg");*/
-
 }
+
 .logo{
     display: flex;
     align-items: center;
 }
+
 .logo img{
     width: 150px;
     height: 70px;
-
-
-
 }
+
 .logo_text{
     display: flex;
 }
+
 .logo_text p{
     font-family: 'Rubik', sans-serif;
     /*width: 350px;*/
@@ -49,15 +48,14 @@
     /*width: 100%;*/
     align-items: center;
     justify-content: center;
-
 }
+
 .social-box{
     /*width: 600px;*/
     display: flex;
     justify-content: center;
-
-
 }
+
 .social_icons {
     width: 50px;
     height: 50px;
@@ -67,11 +65,10 @@
     justify-content: center;
     align-items: center;
     /*margin: 0 10px;*/
-
 }
+
 .social_icons a{
     color: #F33009;
-
 }
 
 /* .social_icons:hover{ */
@@ -79,10 +76,7 @@
     /*border: #F33009;*/
     /*width: 52px;*/
     /*height: 52px;*/
-
-
 /* } */
-
 
 .social_icons svg:hover{
     display: flex;
@@ -106,5 +100,27 @@
     50% {
         width: 20px;
         height: 20px;
+    }
+}
+
+@media (max-width: 520px) {
+    .logo_box{
+        left: 0px;
+    }
+
+    .logo_text{
+        flex-direction: column;
+    }
+
+    .logo_text p{
+        font-size: 18px;
+        order: -1;
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 400px) {
+    .logo_text p{
+        font-size: 15px;
     }
 }
