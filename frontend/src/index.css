@@ -18,6 +18,11 @@ body {
   /*-moz-osx-font-smoothing: grayscale;*/
 }
 
+.container{
+  padding: 70px 24px;
+  margin: 0 auto;
+}
+
 /*code {*/
 /*  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',*/
 /*    monospace;*/
@@ -40,6 +45,10 @@ body {
 }
 
 @media (max-width: 560px) {
+  .container{
+    padding: 70px 15px;
+  }
+
   .title{
     font-size: 25px;
   }
