@@ -7,12 +7,15 @@ import {userLoginReducer, userRegisterReducer,usersListReducer, userDetailsReduc
 import {partnersListReducer} from "./reducers/partnerReducer";
 import userSlice from './slices/userSlice.js';
 import partnerSlice from './slices/partnerSlice.js';
+import { configureStore } from '@reduxjs/toolkit';
+import { setupListeners } from '@reduxjs/toolkit/dist/query/index.js';
+import { userApi } from './auth/User.api.js';
+import { authReducer } from './auth/userLogin.slice.js';
 
 const reducer = combineReducers({
     user: userSlice.reducer,
-    partner: partnerSlice.reducer,
-
-
+    
+    
 
     productsList: productsListReducer,
     productDetails: productDetailsReducer,
@@ -32,6 +35,20 @@ const userFromStorage = localStorage.getItem('userInfo') ? JSON.parse(localStora
 const initialState = {cart: {cartItems: cartFromStorage}, user: {userInfo: userFromStorage}}
 const middleware = [thunk]
 
-const store = createStore(reducer, initialState, composeWithDevTools(applyMiddleware(...middleware)))
+// const store = createStore(reducer, initialState, composeWithDevTools(applyMiddleware(...middleware)))
+export const store = configureStore({
+    initialState,
+    reducer: {
+        [userApi.reducerPath] : userApi.reducer,
+        auth: authReducer,
+        partner: partnerSlice.reducer,
+        user: userSlice.reducer,
+        // github: githubReducer
+    },
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware().concat(userApi.middleware)
+})
+setupListeners(store.dispatch)
+
 
 export default store

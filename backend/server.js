@@ -8,6 +8,7 @@ import cors from 'cors'
 import path from 'path'
 
 import { fileURLToPath } from "url";
+import createSuperAdmin from './superAdmin.js'
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 dotenv.config()
@@ -15,8 +16,16 @@ const app = express()
 connectDB()
 
 const PORT = process.env.PORT || 8080
+
+const corsOptions ={
+    origin:`http://localhost:3000`, 
+    credentials:true,            //access-control-allow-credentials:true
+    optionSuccessStatus:200
+}
+
+
 app.use(express.json())
-app.use(cors())
+app.use(cors(corsOptions))
 app.use(fileUpload({}))
 app.use('/api/v1', router)
 
@@ -26,9 +35,12 @@ if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(path.resolve(), '/frontend/build')))
 }
 
+
+
 app.use(notFound)
 app.use(errorHandler)
-
+const {SU_EMAIL, SU_PASSWORD, SU_ROLE} = process.env
+createSuperAdmin(SU_EMAIL, SU_PASSWORD, SU_ROLE)
 
 
 app.listen(PORT, () => {

@@ -10,9 +10,12 @@ import {useDispatch, useSelector} from "react-redux";
 import {MenuItem} from "@material-ui/core";
 import Menu from "@material-ui/core/Menu";
 import {logout} from "../../redux/actions/userAction";
+import { removeUser } from '../../redux/auth/userLogin.slice';
 
 const Header = () => {
-    const {userInfo} = useSelector(s => s.user)
+    const userInfo = useSelector(s => s.auth)
+    // const a = useSelector(s => s.auth)
+
     const dispatch = useDispatch()
     const [anchorEl, setAnchorEl] = React.useState(null);
     const handleClick = (event) => {
@@ -23,6 +26,7 @@ const Header = () => {
         setAnchorEl(null);
     };
 
+    // console.log(a)
     return (
         <>
             <div className="header">

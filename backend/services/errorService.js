@@ -13,8 +13,8 @@ class ErrorService extends Error{
     static ForbiddenError = (message) =>{
         return new ErrorService(403, message);
     }
-    static ServerInternalError = () =>{
-        return new ErrorService(500, "Something went wrong")
+    static ServerInternalError = (message) =>{
+        return new ErrorService(500, message)
     }
 }
 

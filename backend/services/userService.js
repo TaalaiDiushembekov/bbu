@@ -1,6 +1,6 @@
 import UserModel from "../models/userModel.js";
 import ErrorService from "./errorService.js";
-import TokenService from './tokenService.js'
+import TokenService from "./tokenService.js";
 import { compare, hash } from "bcrypt";
 
 const registration = async (email, password, role) => {
@@ -31,7 +31,7 @@ const registration = async (email, password, role) => {
 };
 
 const login = async (email, password) => {
-    const user = await UserModel.findOne({email});
+    const user = await UserModel.findOne({ email });
 
     if (!user) {
         throw ErrorService.BadRequest("Wrong email or password");
@@ -43,23 +43,32 @@ const login = async (email, password) => {
     }
     const tokens = TokenService.generateTokens({
         id: user.id,
+        role: user.role,
         email,
-        password
-      });
-      return {
-        ...tokens,
+        password,
+    });
+    return {
+        refreshToken: tokens.refreshToken,
         user: {
-          email,
-          password,
-          id: user.id,
+            accessToken: tokens.accessToken,
+            id: user.id,
+            email,
+            password,
+            role: user.role,
         },
-      };
+    };
 };
 
 const getUsers = async () => {
     const usersData = await UserModel.find();
 
-    return usersData
-}
+    return usersData;
+};
 
-export { registration, login, getUsers };
+const getOneUser = async (_id) => {
+    const userData = await UserModel.findOne({ _id });
+
+    return userData;
+};
+
+export { registration, login, getUsers, getOneUser };

@@ -1,62 +1,81 @@
 import asyncHandler from "express-async-handler";
 import User from "../models/userModel.js";
-import { registration as registrationService, login as loginService, getUsers as getUsersService} from "../services/userService.js";
+import {
+    registration as registrationService,
+    login as loginService,
+    getUsers as getUsersService,
+    getOneUser as getOneUserService
+} from "../services/userService.js";
 import TokenService from "../services/tokenService.js";
+import cookie from 'cookie'
 
-
-const registration = asyncHandler(async (req, res, next) => {
+const registration = async (req, res, next) => {
     try {
         const { email, password, role } = req.body;
-        const userData = await registrationService(email, password, role)
+        const userData = await registrationService(email, password, role);
+
+        res.json(userData);
+    } catch (error) {
+        next(error);
+    }
+};
+
+const login = async (req, res, next) => {
+    try {
+        const { email, password } = req.body;
+
+        const userData = await loginService(email, password);
+        
+        res.setHeader(
+            'Set-Cookie',
+            cookie.serialize('refreshToken', userData.refreshToken, {
+                httpOnly: true,
+                maxAge: 60*60*24*30
+            })
+        )
+
+        return res.json(userData.user);
+    } catch (error) {
+        next(error);
+    }
+};
+
+const logout = async(req,res,next) => {
+    try {
+        res.setHeader(
+            'Set-Cookie',
+            cookie.serialize('refreshToken', '', {
+                httpOnly: true,
+                maxAge: 0
+            })
+        )
+        res.send('Logout Succeed')
+    } catch (error) {
+        next(error)
+    }
+}
+
+const getUsers = async (req, res, next) => {
+    try {
+        const usersData = await getUsersService();
+        res.json(usersData);
+    } catch (error) {
+        next(error);
+    }
+};
+
+const getOneUser = async(req,res,next) => {
+    try {
+        const {id} = req.params;
+
+        const userData =  await getOneUserService(id)
 
         res.json(userData)
+
     } catch (error) {
         next(error)
     }
-});
-
-const login = asyncHandler(async (req,res,next) => {
-    try {
-        const {email, password} = req.body;
-
-        const userData = await loginService(email, password)
-
-        return res.json(userData)
-    } catch (error) {
-        next(error)
-    }
-})
-
-
-
-const getUsers = asyncHandler(async (req, res, next) => {
-    try {
-        const users = await getUsersService()
-        res.json(users);
-    } catch (error) {
-        next(error)
-    }
-
-});
-const getUsersById = asyncHandler(async (req, res) => {
-    const user = await User.findById(req.params.id);
-    if (user) {
-        User.aggregate([
-            {
-                $lookup: {
-                    from: "products",
-                    localField: "organization",
-                    foreignField: "organization",
-                    as: "department_manager",
-                },
-            },
-            { $match: { organization: "1" } },
-        ]);
-        res.json(user);
-    } else {
-        res.status(404);
-    }
-});
+}
 
 const updateUser = asyncHandler(async (req, res) => {
     const { cart } = req.body;
@@ -75,10 +94,4 @@ const updateUser = asyncHandler(async (req, res) => {
     }
 });
 
-export {
-    registration,
-    login,
-    getUsers,
-    getUsersById,
-    updateUser,
-};
+export { registration, login, logout, getUsers, getOneUser, updateUser };
