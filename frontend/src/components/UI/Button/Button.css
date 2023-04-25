@@ -28,3 +28,9 @@ button{
 .register-btn:hover{
     background: rgb(240, 36, 6);
 }
+
+@media (max-width: 420px) {
+    .register-btn{
+        width: 90%;
+    }
+}

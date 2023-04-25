@@ -122,36 +122,42 @@ const RegisterUser = () => {
                     <div className="input-wrapper">
                         <p className="label-text">Паспортные данные руководителя</p>
                         <div className="passport-input-wrapper">
-                            <TextField
-                                className="passport-input"
-                                type="text" 
-                                name="series_dir" 
-                                id="series_dir"
-                                value={registerData.org_director_passport.series_dir}
-                                onChange={(e) => inputChangeHandlerPassport(e, 'org_director_passport')}
-                                label="номер"
-                                labelClass="passport-label"
-                            />
-                            <TextField
-                                className="passport-input"
-                                type="text" 
-                                name="authority_dir" 
-                                id="authority_dir"
-                                value={registerData.org_director_passport.authority_dir}
-                                onChange={(e) => inputChangeHandlerPassport(e, 'org_director_passport')}
-                                label="выдан"
-                                labelClass="passport-label"
-                            />
-                            <TextField
-                                className="passport-input"
-                                type="date" 
-                                name="date_director" 
-                                id="date_dir"
-                                value={date_director}
-                                onChange={(e) => setDate_director(e.target.value)}
-                                label="от"
-                                labelClass="passport-label"
-                            />
+                            <div className="passport-input-wrapper-inner">
+                                <TextField
+                                    className="passport-input"
+                                    type="text" 
+                                    name="series_dir" 
+                                    id="series_dir"
+                                    value={registerData.org_director_passport.series_dir}
+                                    onChange={(e) => inputChangeHandlerPassport(e, 'org_director_passport')}
+                                    label="номер"
+                                    labelClass="passport-label"
+                                />
+                            </div>
+                            <div className="passport-input-wrapper-inner">
+                                <TextField
+                                    className="passport-input"
+                                    type="text" 
+                                    name="authority_dir" 
+                                    id="authority_dir"
+                                    value={registerData.org_director_passport.authority_dir}
+                                    onChange={(e) => inputChangeHandlerPassport(e, 'org_director_passport')}
+                                    label="выдан"
+                                    labelClass="passport-label"
+                                />
+                            </div>
+                            <div className="passport-input-wrapper-inner">
+                                <TextField
+                                    className="date-input"
+                                    type="date" 
+                                    name="date_director" 
+                                    id="date_dir"
+                                    value={date_director}
+                                    onChange={(e) => setDate_director(e.target.value)}
+                                    label="от"
+                                    labelClass="passport-label"
+                                />
+                            </div>
                         </div>
                     </div>
                     <div className="input-wrapper">
@@ -167,36 +173,42 @@ const RegisterUser = () => {
                     <div className="input-wrapper">
                         <p className="label-text">Паспортные данные гл. бухгалтера</p>
                         <div className="passport-input-wrapper">
-                            <TextField
-                                className="passport-input"
-                                type="text" 
-                                name="series_acc" 
-                                id="series_acc"
-                                value={registerData.org_accountant_passport.series_acc}
-                                onChange={(e) => inputChangeHandlerPassport(e, 'org_accountant_passport')}
-                                label="номер"
-                                labelClass="passport-label"
-                            />
-                            <TextField
-                                className="passport-input"
-                                type="text" 
-                                name="authority_acc" 
-                                id="authority_acc"
-                                value={registerData.org_accountant_passport.authority_acc}
-                                onChange={(e) => inputChangeHandlerPassport(e, 'org_accountant_passport')}
-                                label="выдан"
-                                labelClass="passport-label"
-                            />
-                            <TextField
-                                className="passport-input"
-                                type="date" 
-                                name="date_accountant" 
-                                id="date_acc"
-                                value={date_accountant}
-                                onChange={(e) => setDate_accountant(e.target.value)}
-                                label="от"
-                                labelClass="passport-label"
-                            />
+                            <div className="passport-input-wrapper-inner">
+                                <TextField
+                                    className="passport-input"
+                                    type="text" 
+                                    name="series_acc" 
+                                    id="series_acc"
+                                    value={registerData.org_accountant_passport.series_acc}
+                                    onChange={(e) => inputChangeHandlerPassport(e, 'org_accountant_passport')}
+                                    label="номер"
+                                    labelClass="passport-label"
+                                />
+                            </div>
+                            <div className="passport-input-wrapper-inner">
+                                <TextField
+                                    className="passport-input"
+                                    type="text" 
+                                    name="authority_acc" 
+                                    id="authority_acc"
+                                    value={registerData.org_accountant_passport.authority_acc}
+                                    onChange={(e) => inputChangeHandlerPassport(e, 'org_accountant_passport')}
+                                    label="выдан"
+                                    labelClass="passport-label"
+                                />
+                            </div>
+                            <div className="passport-input-wrapper-inner">
+                                <TextField
+                                    className="date-input"
+                                    type="date" 
+                                    name="date_accountant" 
+                                    id="date_acc"
+                                    value={date_accountant}
+                                    onChange={(e) => setDate_accountant(e.target.value)}
+                                    label="от"
+                                    labelClass="passport-label"
+                                />
+                            </div>
                         </div>
                     </div>
                     <div className="input-wrapper">

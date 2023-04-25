@@ -20,6 +20,20 @@
     padding: 0;
 }
 
-.input-wrapper:last-child{
-   text-align: right;
+.passport-input-wrapper{
+    display: flex;
+    margin-left: auto;
+}
+
+@media (max-width: 569px){
+    .passport-input-wrapper{
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 400px) {
+    .passport-input-wrapper{
+        margin: 0 auto;
+    } 
 }
