@@ -7,6 +7,7 @@ import {
     getOneUser as getOneUserService
 } from "../services/userService.js";
 import TokenService from "../services/tokenService.js";
+import cookie from 'cookie'
 
 const registration = async (req, res, next) => {
     try {
@@ -24,12 +25,35 @@ const login = async (req, res, next) => {
         const { email, password } = req.body;
 
         const userData = await loginService(email, password);
+        
+        res.setHeader(
+            'Set-Cookie',
+            cookie.serialize('refreshToken', userData.refreshToken, {
+                httpOnly: true,
+                maxAge: 60*60*24*30
+            })
+        )
 
-        return res.json(userData);
+        return res.json(userData.user);
     } catch (error) {
         next(error);
     }
 };
+
+const logout = async(req,res,next) => {
+    try {
+        res.setHeader(
+            'Set-Cookie',
+            cookie.serialize('refreshToken', '', {
+                httpOnly: true,
+                maxAge: 0
+            })
+        )
+        res.send('Logout Succeed')
+    } catch (error) {
+        next(error)
+    }
+}
 
 const getUsers = async (req, res, next) => {
     try {
@@ -70,4 +94,4 @@ const updateUser = asyncHandler(async (req, res) => {
     }
 });
 
-export { registration, login, getUsers, getOneUser, updateUser };
+export { registration, login, logout, getUsers, getOneUser, updateUser };

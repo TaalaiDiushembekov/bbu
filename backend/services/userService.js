@@ -43,12 +43,14 @@ const login = async (email, password) => {
     }
     const tokens = TokenService.generateTokens({
         id: user.id,
+        role: user.role,
         email,
         password,
     });
     return {
-        ...tokens,
+        refreshToken: tokens.refreshToken,
         user: {
+            accessToken: tokens.accessToken,
             id: user.id,
             email,
             password,
