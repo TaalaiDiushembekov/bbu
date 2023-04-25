@@ -7,8 +7,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import PersonIcon from "@material-ui/icons/Person";
 import AssessmentIcon from "@material-ui/icons/Assessment";
 import {useDispatch, useSelector} from "react-redux";
-import {Box, MenuItem} from "@material-ui/core";
-import Button from "@material-ui/core/Button";
+import {MenuItem} from "@material-ui/core";
 import Menu from "@material-ui/core/Menu";
 import {logout} from "../../actions/userAction";
 
@@ -43,34 +42,30 @@ const Header = () => {
                             <MenuIcon/>
                         </IconButton>
                     </Link>
-                    <Link>
-
-                        {userInfo ? (
-                            <Box>
-                                <IconButton color="inherit" aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
-                                    {userInfo.name}
-                                </IconButton>
-                                <Menu
-                                    id="simple-menu"
-                                    anchorEl={anchorEl}
-                                    keepMounted
-                                    open={Boolean(anchorEl)}
-                                    onClose={handleClose}
-                                >
-                                    <MenuItem onClick={handleClose} component={Link} to="/profile">Profile</MenuItem>
-                                    <MenuItem onClick={() => dispatch(logout())}
-                                              component={Link} to='/'>Logout</MenuItem>
-                                </Menu>
-                            </Box>
-                            ):
-                            <Link to='/login'>
-                                <IconButton>
-                                    <PersonIcon/>
-                                </IconButton>
-                            </Link>
-
-                        }
-                    </Link>
+                    {userInfo ? (
+                        <Link>
+                            <IconButton color="inherit" aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+                                {userInfo.name}
+                            </IconButton>
+                            <Menu
+                                id="simple-menu"
+                                anchorEl={anchorEl}
+                                keepMounted
+                                open={Boolean(anchorEl)}
+                                onClose={handleClose}
+                            >
+                                <MenuItem onClick={handleClose} component={Link} to="/profile">Profile</MenuItem>
+                                <MenuItem onClick={() => dispatch(logout())}
+                                            component={Link} to='/'>Logout</MenuItem>
+                            </Menu>
+                        </Link>
+                        ):
+                        <Link to='/login'>
+                            <IconButton>
+                                <PersonIcon/>
+                            </IconButton>
+                        </Link>
+                    }
                 </div>
             </div>
         </>

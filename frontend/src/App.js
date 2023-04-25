@@ -11,10 +11,8 @@ import Tariffs from "./screens/Tariffs/Tariffs.js";
 import Services from "./screens/Services/Services.js";
 import Login from "./screens/Login/Login.js";
 import Profile from "./screens/Profile/Profile.js";
-import NotFoundPage from "./screens/NotFoundPage.js";
-import Register from "./screens/register.js"
-import Header from "./components/header.js";
-import Footer from "./components/footer.js";
+// import NotFoundPage from "./screens/NotFoundPage.js";
+// import Register from "./screens/register.js"
 import Layout from './components/UI/Layout/Layout.js';
 import RegisterUser from './screens/RegisterUser/RegisterUser.js';
 

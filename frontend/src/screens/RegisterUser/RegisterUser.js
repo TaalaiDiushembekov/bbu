@@ -67,7 +67,7 @@ const RegisterUser = () => {
             }
         }));
 
-        // history.push('/');
+        history.push('/');
     };
 
     return (

@@ -26,10 +26,6 @@
 }
 
 @media (max-width: 569px){
-    .register-user{
-        margin-top: 40px;
-    }
-
     .passport-input-wrapper{
         display: flex;
         flex-direction: column;
