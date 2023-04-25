@@ -18,6 +18,11 @@ body {
   /*-moz-osx-font-smoothing: grayscale;*/
 }
 
+.container{
+  padding: 70px 24px;
+  margin: 0 auto;
+}
+
 /*code {*/
 /*  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',*/
 /*    monospace;*/
@@ -32,4 +37,26 @@ body {
 /*  height: 30px;*/
 /*  border-radius: 10px;*/
 /*}*/
+
+.title {
+  font-size: 34px;
+  color: #FE3E19;
+  text-align: center;
+}
+
+@media (max-width: 560px) {
+  .container{
+    padding: 100px 15px;
+  }
+
+  .title{
+    font-size: 25px;
+  }
+}
+
+@media (max-width: 400px) {
+  .title{
+    font-size: 20px;
+  }
+}
 

@@ -1,0 +1,39 @@
+.register-user{
+    max-width: 950px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.input-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: #eee;
+    margin: 5px 0;
+    padding: 4px;
+    border-radius: 3px;
+    align-items: center;
+}
+
+.label-text{
+    margin: 0;
+    padding: 0;
+}
+
+.passport-input-wrapper{
+    display: flex;
+    margin-left: auto;
+}
+
+@media (max-width: 569px){
+    .passport-input-wrapper{
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 400px) {
+    .passport-input-wrapper{
+        margin: 0 auto;
+    } 
+}
