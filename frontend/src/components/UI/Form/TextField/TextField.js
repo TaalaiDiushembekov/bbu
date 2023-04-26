@@ -2,14 +2,14 @@ import React from "react";
 import PropTypes from 'prop-types';
 import './TextField.css';
 
-const TextField = ({name, id, onChange, label, value, required, type, className, labelClass, pattern, placeholder}) => {
+const TextField = ({name, onChange, label, value, required, type, className, labelClass, pattern, placeholder}) => {
     return (
         <>
-            <label className={labelClass} htmlFor={id}>{label}</label>
+            <label className={labelClass} htmlFor={name}>{label}</label>
             <input 
                 type={type} 
                 name={name}
-                id={id}
+                id={name}
                 value={value}
                 required={required}
                 onChange={onChange}
@@ -23,7 +23,6 @@ const TextField = ({name, id, onChange, label, value, required, type, className,
 
 TextField.propTypes = {
     name: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
     label: PropTypes.string.isRequired,
     value: PropTypes.string.isRequired,
