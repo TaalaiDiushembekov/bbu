@@ -1,0 +1,23 @@
+select {
+    outline: none;
+    width: 306px;
+    max-width: 306px;
+    border: 1px solid #eee;
+    padding: 8px 0;
+    border-radius: 3px;
+    font-size: 16px;
+    margin-left: auto;
+    background-color: white;
+}
+
+@media (max-width: 400px) {
+    select {
+        width: 95%;
+        margin: 5px auto;
+        padding: 4px 2px;
+    } 
+}
+
+select:focus{
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+}
