@@ -1,45 +1,29 @@
 .ExpertTeam{
     width: 100%;
     height: fit-content;
-    padding: 50px 0;
     z-index: 2;
     /*background: mintcream;*/
-
-
 }
-.ExpertTeam h2{
-    font-family: 'Rubik', sans-serif;
-    color: #FE3E19;
-    font-size: 34px;
-    display: flex;
-    justify-content: center;
-    margin: 0 0 60px 0;
-}
+
 .ExpertTeam p{
-    font-family: 'Rubik', sans-serif;
     color: #2D2D2D;
     font-size: 18px;
+    text-align: justify;
 }
-.ExpertTeam-two{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: minmax(100px, auto);
-    margin-top: 60px;
-}
-.ExpertTeam-box{
-    width: 80%;
+
+.ExpertTeam_box{
     margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
+
 .ExpertTeam-box h4, p{
     display: flex;
     justify-content: center;
     padding: 0 10px;
 }
-.ExpertTeam-two h4{
-    font-family: 'Rubik', sans-serif;
-    color: #2D2D2D;
-    font-size: 20px;
-}
+
 .ExpertTeam-icon{
     width: 200px;
     height: 200px;
@@ -49,41 +33,26 @@
     justify-content: center;
     display: flex;
 }
-.ExpertTeam-two{
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    grid-auto-rows: minmax(100px, auto);
-    margin-top: 80px;
-}
+
 .ExpertTeam-icon{
     width: 200px;
     text-align: center;
     margin: 0 auto;
 }
-.ExpertTeam-two h4{
-    display: flex;
-    justify-content: center;
-}
 
-.ExpertTeam_box{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-}
 .ExpertTeam_box h3{
-    font-family: 'Rubik', sans-serif;
     text-transform: uppercase;
     font-size: 16px;
     color: white;
 }
 
 .ExpertTeam_box h4{
-    font-family: 'Rubik', sans-serif;
     text-transform: uppercase;
     font-size: 14px;
     color: white;
 }
+
 .ExpertTeam_box p{
-    font-family: 'Rubik', sans-serif;
     text-transform: uppercase;
     font-size: 12px;
     color: white;
@@ -100,10 +69,8 @@
     border-bottom: 3px solid #C8C8C8;
     box-shadow: 0 0 30px rgb(1 41 112 / 30%);
     background-position: center;
-
-
-
 }
+
 .four2{
     background: url("../../images/bbu_5200.jpg");
     width: 300px;
@@ -115,10 +82,8 @@
     border-bottom: 3px solid #C8C8C8;
     box-shadow: 0 0 30px rgb(1 41 112 / 30%);
     background-position: center;
-
-
-
 }
+
 .four3{
     background: url("../../images/bbu-126.jpg");
     width: 300px;
@@ -130,10 +95,8 @@
     border-bottom: 3px solid #C8C8C8;
     box-shadow: 0 0 30px rgb(1 41 112 / 30%);
     background-position: center;
-
-
-
 }
+
 .four4{
     background: url("../../images/bbu_5354.jpg");
     width: 300px;
@@ -145,10 +108,8 @@
     border-bottom: 3px solid #C8C8C8;
     box-shadow: 0 0 30px rgb(1 41 112 / 30%);
     background-position: center;
-
-
-
 }
+
 .four5{
     background: url("../../images/bbu_5544.jpg");
     width: 300px;
@@ -160,10 +121,8 @@
     border-bottom: 3px solid #C8C8C8;
     box-shadow: 0 0 30px rgb(1 41 112 / 30%);
     background-position: center;
-
-
-
 }
+
 .four6{
     background: url("../../images/bbu_5475.jpg");
     width: 300px;
@@ -175,10 +134,8 @@
     border-bottom: 3px solid #C8C8C8;
     box-shadow: 0 0 30px rgb(1 41 112 / 30%);
     background-position: center;
-
-
-
 }
+
 .four7{
     background: url("../../images/bbu_5611.jpg");
     width: 300px;
@@ -190,10 +147,8 @@
     border-bottom: 3px solid #C8C8C8;
     box-shadow: 0 0 30px rgb(1 41 112 / 30%);
     background-position: center;
-
-
-
 }
+
 .four8{
     /*background: url("../../images/bbu_5611.jpg");*/
     background: rgba(0, 0, 0, .5);
@@ -206,43 +161,38 @@
     border-bottom: 3px solid #C8C8C8;
     box-shadow: 0 0 30px rgb(1 41 112 / 30%);
     background-position: center;
-
-
-
 }
+
 .four1{
     width: 300px;
     height: 300px;
     position: absolute;
-
     text-align: center;
-
     opacity: 0;
     transform: scale(5);
     transition: 0.5s;
 }
+
 .four2_1{
     width: 300px;
     height: 300px;
     position: absolute;
-
     text-align: center;
-
     opacity: 0;
     transform: scale(5);
     transition: 0.5s;
 }
+
 .four3_1{
     width: 300px;
     height: 300px;
     position: absolute;
-
     text-align: center;
-
     opacity: 0;
     transform: scale(5);
     transition: 0.5s;
 }
+
 .four4_1{
     width: 300px;
     height: 300px;
@@ -530,45 +480,26 @@
     .ExpertTeam{
         width: 100%;
         height: fit-content;
-        padding: 50px 0;
         z-index: 2;
         /*background: mintcream;*/
-
-
     }
-    .ExpertTeam h2{
-        font-family: 'Rubik', sans-serif;
-        color: #FE3E19;
-        font-size: 34px;
-        display: flex;
-        justify-content: center;
-        margin: 20px 0 60px 0;
-    }
+
     .ExpertTeam p{
-        font-family: 'Rubik', sans-serif;
         color: #2D2D2D;
-        font-size: 18px;
+        font-size: 16px;
     }
-    .ExpertTeam-two{
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-auto-rows: minmax(100px, auto);
-        margin-top: 60px;
-    }
+
     .ExpertTeam-box{
         width: 80%;
         margin: 0 auto;
     }
+
     .ExpertTeam-box h4, p{
         display: flex;
         justify-content: center;
         padding: 0 10px;
     }
-    .ExpertTeam-two h4{
-        font-family: 'Rubik', sans-serif;
-        color: #2D2D2D;
-        font-size: 20px;
-    }
+    
     .ExpertTeam-icon{
         width: 200px;
         height: 200px;
@@ -578,26 +509,17 @@
         justify-content: center;
         display: flex;
     }
-    .ExpertTeam-two{
-        display: grid;
-        grid-template-columns: repeat(1, 1fr);
-        grid-auto-rows: minmax(100px, auto);
-        margin-top: 80px;
-    }
+    
     .ExpertTeam-icon{
         width: 200px;
         text-align: center;
         margin: 0 auto;
     }
-    .ExpertTeam-two h4{
-        display: flex;
-        justify-content: center;
-    }
+    
     .ExpertTeam_box{
         display: block;
     }
     .ExpertTeam_box p{
-
         font-size: 12px;
         color: white;
     }
@@ -637,3 +559,9 @@
 
 }
 @media (min-width: 1200px) {}
+
+
+.team{
+    min-width: 150px;
+    max-width: 300px;
+}

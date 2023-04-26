@@ -3,15 +3,14 @@ import './Team.css';
 
 const Team = () => {
     return (
-        <>
-            <div className="ExpertTeam" id="team">
+        <div className="ExpertTeam" id="team">
             <div className='container'>
                 <div>
-                    <h2>Команда профессионалов</h2>
+                    <h2 className='title'>Команда профессионалов</h2>
                     <p>Специалисты команды "Точка Бюро Бухгалтерских услуг"- это опытные профессионалы в своей сфере, которые выполняют работу под ключ. Помощь опытного бухгалтера на сегодняшний день востребована среди тысяч компаний. Каждая организация нуждается в правильном ведении бухучета. Но только профессиональный бухгалтер сможет правильно вести учет, что является залогом отсутствия проблем с налоговой службой.</p>
                 </div>
                 <div className="ExpertTeam_box">
-                    <div className="four">
+                    <div className="four team">
                         <div className="four1">
                             <h3>Насрединова Валентина Михайловна</h3>
                             <h4>Руководитель</h4>
@@ -21,7 +20,7 @@ const Team = () => {
                             {/*<button>Read more</button>*/}
                         </div>
                     </div>
-                    <div className="four2">
+                    <div className="four2 team">
                         <div className="four2_1">
                             <h3>Бабунова Н. С.</h3>
                             <h4>Бухгалтер</h4>
@@ -31,7 +30,7 @@ const Team = () => {
                             {/*<button>Read more</button>*/}
                         </div>
                     </div>
-                    <div className="four3">
+                    <div className="four3 team">
                         <div className="four3_1">
                             <h3>Абдирашитова Эльмира Каримовна</h3>
                             <h4>главный бухгалтер</h4>
@@ -41,7 +40,7 @@ const Team = () => {
                             {/*<button>Read more</button>*/}
                         </div>
                     </div>
-                    <div className="four4">
+                    <div className="four4 team">
                         <div className="four4_1">
                             <h3>Войцеховская Евгения Юрьевна</h3>
                             <h4>Юрист</h4>
@@ -51,7 +50,7 @@ const Team = () => {
                             {/*<button>Read more</button>*/}
                         </div>
                     </div>
-                    <div className="four5">
+                    <div className="four5 team">
                         <div className="four5_1">
                             <h3>Мадалинова Л. Ф.</h3>
                             <h4>бухгалтер</h4>
@@ -61,7 +60,7 @@ const Team = () => {
                             {/*<button>Read more</button>*/}
                         </div>
                     </div>
-                    <div className="four6">
+                    <div className="four6 team">
                         <div className="four6_1">
                             <h3>Газаева О.М</h3>
                             <h4>бухгалтер</h4>
@@ -71,7 +70,7 @@ const Team = () => {
                             {/*<button>Read more</button>*/}
                         </div>
                     </div>
-                    <div className="four7">
+                    <div className="four7 team">
                         <div className="four7_1">
                             <h3>Болоцких Е.С.</h3>
                             <h4>бухгалтер</h4>
@@ -81,7 +80,7 @@ const Team = () => {
                             {/*<button>Read more</button>*/}
                         </div>
                     </div>
-                    <div className="four8">
+                    <div className="four8 team">
                         <div className="four8_1">
                             <h3>Исакова Е.Ю</h3>
                             <h4>бухгалтер</h4>
@@ -89,9 +88,8 @@ const Team = () => {
                    </div>
                     </div>
                 </div>
-           </div>
+            </div>
         </div>
-        </>
     );
 };
 

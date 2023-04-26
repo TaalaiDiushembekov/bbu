@@ -45,8 +45,8 @@
     padding: 0 20px 0 0;
 }
 
-.our-partners-img1 img{
-}
+/* .our-partners-img1 img{
+} */
 
 .our-partners-img2{
     padding: 0 20px;
@@ -93,9 +93,9 @@
 }
 
 @media (max-width: 768px) {
-    .our-partners{
+    /* .our-partners{ */
         /*padding: 20px 10px;*/
-    }
+    /* } */
 
     .our-partners-text{
         display: flex;
@@ -126,7 +126,7 @@
         justify-content: center;
     }
     .menuList_box{
-        width: 350px;
+        width: 320px;
         height: fit-content;
     }
     .menuList-item{
