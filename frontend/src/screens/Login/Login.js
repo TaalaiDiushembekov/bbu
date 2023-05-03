@@ -12,8 +12,9 @@ import Container from "@material-ui/core/Container";
 import { userLoginAction } from "../../redux/actions/userAction";
 import { useHistory, useLocation, Link } from "react-router-dom";
 import Message from "../../components/message";
-import { useLoginMutation } from "../../redux/auth/User.api";
-import { setUser } from "../../redux/auth/userLogin.slice";
+import { useLoginMutation } from "../../redux/auth/auth.api.js";
+import { setUser } from "../../redux/auth/auth.slice";
+import { setOrganization } from "../../redux/organization/org.slice";
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -36,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Login = () => {
-    const [login] = useLoginMutation();
+    const [login, {isError}] = useLoginMutation();
     const classes = useStyles();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -46,22 +47,20 @@ const Login = () => {
     const { userInfo, error } = useSelector((s) => s.auth);
     const redirect = location.search ? location.search.split("=")[1] : "/";
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        login({ email, password })
-            .unwrap()
-            .then((res) => {
-                dispatch(
-                    setUser({
-                        id: res.user.id,
-                        email: res.user.email,
-                        accessToken: res.accessToken,
-                    })
-                ) && console.log(res)
-            })
-            .then((error) => {
-                console.log(error);
-            });
+        try {
+            const userData = await login({ email, password }).unwrap()
+            console.log(userData)
+            const {org} = userData
+            dispatch(setUser({...userData}))
+            dispatch(setOrganization({...org}))
+            if(!isError){
+                history.push('/profile')
+            }
+        } catch (error) {
+            console.log(error)            
+        }
     };
 
     useEffect(() => {

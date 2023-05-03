@@ -9,21 +9,28 @@ import {useDispatch, useSelector} from "react-redux";
 import {MenuItem} from "@material-ui/core";
 import Menu from "@material-ui/core/Menu";
 import {logout} from "../../redux/actions/userAction";
-import { removeUser } from '../../redux/auth/userLogin.slice';
-import './Header.css'
-
+import { removeUser } from '../../redux/auth/auth.slice';
+import { useLogoutMutation } from '../../redux/auth/auth.api';
 const Header = () => {
     const userInfo = useSelector(s => s.auth)
-
+    
     const dispatch = useDispatch()
     const [anchorEl, setAnchorEl] = React.useState(null);
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
+        console.log(anchorEl)
     };
 
     const handleClose = () => {
         setAnchorEl(null);
     };
+
+
+    const [logout] = useLogoutMutation();
+    const handleLogout = async () => {
+        dispatch(removeUser())
+        await logout().unwrap();
+    }
 
     return (
         <div className="header">
@@ -66,7 +73,31 @@ const Header = () => {
                             <PersonIcon/>
                         </IconButton>
                     </Link>
-                }
+                    {userInfo && userInfo?.accessToken ? (
+                        <>
+                            <IconButton color="inherit" aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+                                {userInfo.email}
+                            </IconButton>
+                            <Menu
+                                id="simple-menu"
+                                anchorEl={anchorEl}
+                                keepMounted
+                                open={Boolean(anchorEl)}
+                                onClose={handleClose}
+                            >
+                                <MenuItem onClick={handleClose} component={Link} to="/profile">Profile</MenuItem>
+                                <MenuItem onClick={handleLogout}
+                                            component={Link} to='/'>Logout</MenuItem>
+                            </Menu>
+                        </>
+                        ):
+                        <Link to='/login'>
+                            <IconButton>
+                                <PersonIcon/>
+                            </IconButton>
+                        </Link>
+                    }
+                </div>
             </div>
         </div>
     );

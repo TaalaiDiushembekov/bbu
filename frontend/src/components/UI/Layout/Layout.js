@@ -4,11 +4,13 @@ import Header from '../../Header/Header';
 
 const Layout = ({children}) => {
     return (
-        <div>
+        <>
             <Logo/>
+            <div>
+                {children}
+            </div>
             <Header/>
-            {children}
-        </div>
+        </>
     );
 };
 
