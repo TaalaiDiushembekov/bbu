@@ -9,7 +9,7 @@ import './About.css';
 
 const About = () => {
     return (
-        <div className='container'>
+        <div className="container">
             <div className="menuList">
                 <div className="menuList_box">
                     <div className="menuList_social"></div>

@@ -1,6 +1,5 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import './Header.css'
 import IconButton from "@material-ui/core/IconButton";
 import HomeIcon from "@material-ui/icons/Home";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -12,7 +11,6 @@ import Menu from "@material-ui/core/Menu";
 import {logout} from "../../redux/actions/userAction";
 import { removeUser } from '../../redux/auth/auth.slice';
 import { useLogoutMutation } from '../../redux/auth/auth.api';
-
 const Header = () => {
     const userInfo = useSelector(s => s.auth)
     
@@ -27,6 +25,7 @@ const Header = () => {
         setAnchorEl(null);
     };
 
+
     const [logout] = useLogoutMutation();
     const handleLogout = async () => {
         dispatch(removeUser())
@@ -34,22 +33,44 @@ const Header = () => {
     }
 
     return (
-        <>
-            <div className="header">
-                <div className="header_box">
-                    <Link to='/'>
-                        <IconButton>
-                            <HomeIcon/>
+        <div className="header">
+            <div className="header_box">
+                <Link to='/'>
+                    <IconButton>
+                        <HomeIcon/>
+                    </IconButton>
+                </Link>
+                <Link  to='/about'>
+                    <IconButton>
+                        <AssessmentIcon/>
+                    </IconButton>
+                </Link>
+                <Link  to='/team'>
+                    <IconButton>
+                        <MenuIcon/>
+                    </IconButton>
+                </Link>
+                {userInfo?.id ? (
+                    <Link>
+                        <IconButton color="inherit" aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+                            {userInfo.name}
                         </IconButton>
+                        <Menu
+                            id="simple-menu"
+                            anchorEl={anchorEl}
+                            keepMounted
+                            open={Boolean(anchorEl)}
+                            onClose={handleClose}
+                        >
+                            <MenuItem onClick={handleClose} component={Link} to="/profile">Profile</MenuItem>
+                            <MenuItem onClick={() => dispatch(logout())}
+                                        component={Link} to='/'>Logout</MenuItem>
+                        </Menu>
                     </Link>
-                    <Link  to='/about'>
+                    ):
+                    <Link to='/login'>
                         <IconButton>
-                            <AssessmentIcon/>
-                        </IconButton>
-                    </Link>
-                    <Link  to='/team'>
-                        <IconButton>
-                            <MenuIcon/>
+                            <PersonIcon/>
                         </IconButton>
                     </Link>
                     {userInfo && userInfo?.accessToken ? (
@@ -78,7 +99,7 @@ const Header = () => {
                     }
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import { useHistory } from 'react-router-dom';
-import TextField from "../../components/UI/TextField/TextField";
+import TextField from "../../components/UI/Form/TextField/TextField";
 import Button from "../../components/UI/Button/Button";
 import './RegisterUser.css';
+import FormSelect from "../../components/UI/Form/FormSelect/FormSelect";
+
+const property = ['Государственная', 'Муниципальная', 'Частная', 'Иная'];
+const civil = ['Физическое лицо', 'Юридическое лицо', 'Юридическое лицо (дочернее)', 'Юридическое лицо (зависимое)'];
 
 const RegisterUser = () => {
     const history = useHistory();
@@ -29,7 +33,7 @@ const RegisterUser = () => {
         property_type: '',
         org_legal: '',
         org_civil_status: '',
-        email: ''
+        org_email: ''
     });
 
     const [date_director, setDate_director] = useState('');
@@ -37,7 +41,8 @@ const RegisterUser = () => {
 
     const inputChangeHandler = (e) => {
         const {name, value} = e.target;
-        setRegisterData(prev => ({...prev, [name]: value}))
+        setRegisterData(prev => ({...prev, [name]: value}));
+        console.log(registerData);
     };
 
     const inputChangeHandlerPassport = (e, title) => {
@@ -79,19 +84,17 @@ const RegisterUser = () => {
                         <TextField
                             type="text" 
                             name="org_name" 
-                            id="org_name"
                             value={registerData.org_name}
-                            required={true}
                             onChange={inputChangeHandler}
                             label="Наименование"
+                            required={true}
                         />
                     </div>
                     <div className="input-wrapper">
                         <TextField
-                            type="email" 
-                            name="email" 
-                            id="email"
-                            value={registerData.email}
+                            type="org_email" 
+                            name="org_email" 
+                            value={registerData.org_email}
                             required={true}
                             onChange={inputChangeHandler}
                             label="Почтовый адрес"
@@ -101,7 +104,6 @@ const RegisterUser = () => {
                         <TextField
                             type="text" 
                             name="PIN" 
-                            id="PIN"
                             value={registerData.PIN}
                             required={true}
                             onChange={inputChangeHandler}
@@ -112,7 +114,6 @@ const RegisterUser = () => {
                         <TextField
                             type="text" 
                             name="org_director" 
-                            id="org_director"
                             value={registerData.org_director}
                             required={true}
                             onChange={inputChangeHandler}
@@ -127,7 +128,6 @@ const RegisterUser = () => {
                                     className="passport-input"
                                     type="text" 
                                     name="series_dir" 
-                                    id="series_dir"
                                     value={registerData.org_director_passport.series_dir}
                                     onChange={(e) => inputChangeHandlerPassport(e, 'org_director_passport')}
                                     label="номер"
@@ -139,7 +139,6 @@ const RegisterUser = () => {
                                     className="passport-input"
                                     type="text" 
                                     name="authority_dir" 
-                                    id="authority_dir"
                                     value={registerData.org_director_passport.authority_dir}
                                     onChange={(e) => inputChangeHandlerPassport(e, 'org_director_passport')}
                                     label="выдан"
@@ -151,7 +150,6 @@ const RegisterUser = () => {
                                     className="date-input"
                                     type="date" 
                                     name="date_director" 
-                                    id="date_dir"
                                     value={date_director}
                                     onChange={(e) => setDate_director(e.target.value)}
                                     label="от"
@@ -164,7 +162,6 @@ const RegisterUser = () => {
                         <TextField
                             type="text" 
                             name="org_accountant" 
-                            id="org_accountant"
                             value={registerData.org_accountant}
                             onChange={inputChangeHandler}
                             label="Главный бухгалтер"
@@ -178,7 +175,6 @@ const RegisterUser = () => {
                                     className="passport-input"
                                     type="text" 
                                     name="series_acc" 
-                                    id="series_acc"
                                     value={registerData.org_accountant_passport.series_acc}
                                     onChange={(e) => inputChangeHandlerPassport(e, 'org_accountant_passport')}
                                     label="номер"
@@ -190,7 +186,6 @@ const RegisterUser = () => {
                                     className="passport-input"
                                     type="text" 
                                     name="authority_acc" 
-                                    id="authority_acc"
                                     value={registerData.org_accountant_passport.authority_acc}
                                     onChange={(e) => inputChangeHandlerPassport(e, 'org_accountant_passport')}
                                     label="выдан"
@@ -202,7 +197,6 @@ const RegisterUser = () => {
                                     className="date-input"
                                     type="date" 
                                     name="date_accountant" 
-                                    id="date_acc"
                                     value={date_accountant}
                                     onChange={(e) => setDate_accountant(e.target.value)}
                                     label="от"
@@ -215,77 +209,70 @@ const RegisterUser = () => {
                         <TextField
                             type="text" 
                             name="responsible_person" 
-                            id="responsible_person"
                             value={registerData.responsible_person}
-                            required={true}
                             onChange={inputChangeHandler}
                             label="Лицо ответственное за использование"
+                            required={true}
                         />
                     </div>
                     <div className="input-wrapper">
                         <TextField
                             type="text" 
                             name="org_phone" 
-                            id="org_phone"
                             value={registerData.org_phone}
-                            required={true}
                             onChange={inputChangeHandler}
                             label="Контактные телефоны"
+                            required={true}
                         />
                     </div>
                     <div className="input-wrapper">
                         <TextField
                             type="text" 
                             name="org_social_number" 
-                            id="org_social_number"
                             value={registerData.org_social_number}
-                            required={true}
                             onChange={inputChangeHandler}
                             label="Регистрационный номер Социального Фонда"
+                            required={true}
                         />
                     </div>
                     <div className="input-wrapper">
                         <TextField
                             type="text" 
                             name="org_activity" 
-                            id="org_activity"
                             value={registerData.org_activity}
-                            required={true}
                             onChange={inputChangeHandler}
                             label="Основной вид деятельности"
+                            required={true}
                         />
                     </div>
                     <div className="input-wrapper">
-                        <TextField
-                            type="text" 
+                        <FormSelect
+                            array={property}
                             name="property_type" 
-                            id="property_type"
                             value={registerData.property_type}
-                            required={true}
                             onChange={inputChangeHandler}
                             label="Форма собственности"
+                            required={true}
                         />
                     </div>
                     <div className="input-wrapper">
                         <TextField
                             type="text" 
                             name="org_legal" 
-                            id="org_legal"
                             value={registerData.org_legal}
-                            required={true}
                             onChange={inputChangeHandler}
                             label="Организационно-правовая форма"
+                            required={true}
                         />
                     </div>
                     <div className="input-wrapper">
-                        <TextField
-                            type="text" 
+                    <FormSelect
+                            array={civil}
                             name="org_civil_status" 
-                            id="org_civil_status"
                             value={registerData.org_civil_status}
-                            required={true}
                             onChange={inputChangeHandler}
                             label="Гражданско-правовой статус"
+                            required={true}
                         />
                     </div>
                     <Button

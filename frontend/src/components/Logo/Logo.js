@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 import logo from "../../images/logo.png";
 import './Logo.css'
 import Container from "@material-ui/core/Container";
@@ -13,9 +14,9 @@ const Logo = () => {
             
         <>
             <div className="logo_box">
-                <div className="logo">
-                    <img alt="" src={logo} />
-                </div>
+                <Link to='/' className="logo">
+                    <img alt="logo" src={logo} />
+                </Link>
 
                 <div className="logo_text">
                     <div className="social">
