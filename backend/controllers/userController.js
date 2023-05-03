@@ -4,15 +4,16 @@ import {
     registration as registrationService,
     login as loginService,
     getUsers as getUsersService,
-    getOneUser as getOneUserService
+    getOneUser as getOneUserService,
+    refreshUser as refreshUserService,
 } from "../services/userService.js";
 import TokenService from "../services/tokenService.js";
-import cookie from 'cookie'
+import UserModel from "../models/userModel.js";
 
 const registration = async (req, res, next) => {
     try {
-        const { email, password, role } = req.body;
-        const userData = await registrationService(email, password, role);
+        const { email, password, role, org } = req.body;
+        const userData = await registrationService(email, password, role, org);
 
         res.json(userData);
     } catch (error) {
@@ -25,14 +26,11 @@ const login = async (req, res, next) => {
         const { email, password } = req.body;
 
         const userData = await loginService(email, password);
-        
-        res.setHeader(
-            'Set-Cookie',
-            cookie.serialize('refreshToken', userData.refreshToken, {
-                httpOnly: true,
-                maxAge: 60*60*24*30
-            })
-        )
+
+        res.cookie("refreshToken", userData.refreshToken, {
+            httpOnly: true,
+            maxAge: 1000 * 60 * 60 * 72,
+        });
 
         return res.json(userData.user);
     } catch (error) {
@@ -40,20 +38,33 @@ const login = async (req, res, next) => {
     }
 };
 
-const logout = async(req,res,next) => {
+const refreshUser = async (req, res, next) => {
     try {
-        res.setHeader(
-            'Set-Cookie',
-            cookie.serialize('refreshToken', '', {
-                httpOnly: true,
-                maxAge: 0
-            })
-        )
-        res.send('Logout Succeed')
+        const { id } = req.user;
+
+        const data = await refreshUserService(id)
+
+        res.cookie("refreshToken", data.refreshToken, {
+            httpOnly: true,
+            maxAge: 1000 * 60 * 60 * 72,
+        })
+        res.json(data.user)
+        
     } catch (error) {
-        next(error)
+        console.log(error);
     }
-}
+};
+const logout = async (req, res, next) => {
+    try {
+        res.cookie("refreshToken", "", {
+            maxAge: 0,
+            httpOnly: true,
+        });
+        res.send("Logout Succeed");
+    } catch (error) {
+        next(error);
+    }
+};
 
 const getUsers = async (req, res, next) => {
     try {
@@ -64,18 +75,17 @@ const getUsers = async (req, res, next) => {
     }
 };
 
-const getOneUser = async(req,res,next) => {
+const getOneUser = async (req, res, next) => {
     try {
-        const {id} = req.params;
+        const { id } = req.params;
 
-        const userData =  await getOneUserService(id)
+        const userData = await getOneUserService(id);
 
-        res.json(userData)
-
+        res.json(userData);
     } catch (error) {
-        next(error)
+        next(error);
     }
-}
+};
 
 const updateUser = asyncHandler(async (req, res) => {
     const { cart } = req.body;
@@ -94,4 +104,12 @@ const updateUser = asyncHandler(async (req, res) => {
     }
 });
 
-export { registration, login, logout, getUsers, getOneUser, updateUser };
+export {
+    registration,
+    login,
+    refreshUser,
+    logout,
+    getUsers,
+    getOneUser,
+    updateUser,
+};

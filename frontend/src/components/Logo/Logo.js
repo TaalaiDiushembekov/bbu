@@ -9,7 +9,9 @@ import WhatsAppIcon from "@material-ui/icons/WhatsApp";
 
 const Logo = () => {
     return (
-        <Container>
+        <div>
+            
+        <>
             <div className="logo_box">
                 <div className="logo">
                     <img alt="" src={logo} />
@@ -38,7 +40,9 @@ const Logo = () => {
                     <p>+996 707 807 507</p>
                 </div>
             </div>
-        </Container>
+        </>
+    
+        </div>
     );
 };
 

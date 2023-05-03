@@ -6,6 +6,7 @@ import  { notFound, errorHandler } from "./middleware/errorMiddleware.js"
 import fileUpload from 'express-fileupload';
 import cors from 'cors'
 import path from 'path'
+import cookieParser from 'cookie-parser'
 
 import { fileURLToPath } from "url";
 import createSuperAdmin from './superAdmin.js'
@@ -19,6 +20,7 @@ const PORT = process.env.PORT || 8080
 
 const corsOptions ={
     origin:`http://localhost:3000`, 
+    
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200
 }
@@ -27,20 +29,20 @@ const corsOptions ={
 app.use(express.json())
 app.use(cors(corsOptions))
 app.use(fileUpload({}))
+app.use(cookieParser())
 app.use('/api/v1', router)
 
 app.use('/api/v1', express.static(path.resolve(__dirname, 'public/assets/img/products')))
 
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(path.resolve(), '/frontend/build')))
-}
-
-
-
-app.use(notFound)
-app.use(errorHandler)
-const {SU_EMAIL, SU_PASSWORD, SU_ROLE} = process.env
-createSuperAdmin(SU_EMAIL, SU_PASSWORD, SU_ROLE)
+// if (process.env.NODE_ENV === 'production') {
+    //     app.use(express.static(path.join(path.resolve(), '/frontend/build')))
+    // }
+    
+    
+    app.use(notFound)
+    app.use(errorHandler)
+// const {SU_EMAIL, SU_PASSWORD, SU_ROLE} = process.env
+// createSuperAdmin(SU_EMAIL, SU_PASSWORD, SU_ROLE)
 
 
 app.listen(PORT, () => {

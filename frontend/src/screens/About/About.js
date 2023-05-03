@@ -85,7 +85,7 @@ const About = () => {
                                 {/*</SwiperSlide>*/}
                                 {/*<SwiperSlide><img alt="" src={partners3} /></SwiperSlide>*/}
                             </Swiper>
-                            <Partners/>
+                            {/* <Partners/> */}
                         </div>
                     </div>
                 </div>

@@ -10,23 +10,29 @@ import {useDispatch, useSelector} from "react-redux";
 import {MenuItem} from "@material-ui/core";
 import Menu from "@material-ui/core/Menu";
 import {logout} from "../../redux/actions/userAction";
-import { removeUser } from '../../redux/auth/userLogin.slice';
+import { removeUser } from '../../redux/auth/auth.slice';
+import { useLogoutMutation } from '../../redux/auth/auth.api';
 
 const Header = () => {
     const userInfo = useSelector(s => s.auth)
-    // const a = useSelector(s => s.auth)
-
+    
     const dispatch = useDispatch()
     const [anchorEl, setAnchorEl] = React.useState(null);
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
+        console.log(anchorEl)
     };
 
     const handleClose = () => {
         setAnchorEl(null);
     };
 
-    // console.log(a)
+    const [logout] = useLogoutMutation();
+    const handleLogout = async () => {
+        dispatch(removeUser())
+        await logout().unwrap();
+    }
+
     return (
         <>
             <div className="header">
@@ -46,10 +52,10 @@ const Header = () => {
                             <MenuIcon/>
                         </IconButton>
                     </Link>
-                    {userInfo ? (
-                        <Link>
+                    {userInfo && userInfo?.accessToken ? (
+                        <>
                             <IconButton color="inherit" aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
-                                {userInfo.name}
+                                {userInfo.email}
                             </IconButton>
                             <Menu
                                 id="simple-menu"
@@ -59,10 +65,10 @@ const Header = () => {
                                 onClose={handleClose}
                             >
                                 <MenuItem onClick={handleClose} component={Link} to="/profile">Profile</MenuItem>
-                                <MenuItem onClick={() => dispatch(logout())}
+                                <MenuItem onClick={handleLogout}
                                             component={Link} to='/'>Logout</MenuItem>
                             </Menu>
-                        </Link>
+                        </>
                         ):
                         <Link to='/login'>
                             <IconButton>

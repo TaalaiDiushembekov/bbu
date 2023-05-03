@@ -18,7 +18,8 @@ const userModel = new Schema({
     },
     org: {
         type: Schema.Types.ObjectId,
-        ref: 'organization'
+        ref: 'organization',
+        default: null
     }
 })
 
