@@ -20,6 +20,9 @@ const Logo = () => {
 
                 <div className="logo_text">
                     <div className="social">
+                    <Link to='/user-registration'>
+                        Подать заявку
+                    </Link>
                         <div className="social-box">
                             <div className="social_icons">
                                 <a href="https://t.me/+996707807507">

@@ -1,7 +1,5 @@
+import { createSlice } from "@reduxjs/toolkit"
 
-
-import { createSlice } from "@reduxjs/toolkit";
-import { authApi } from "./auth.api";
 
 const initialState = {
     id: null,
@@ -40,14 +38,6 @@ export const authSlice = createSlice({
 export const {setUser, removeUser} = authSlice.actions;
 export const authReducer = authSlice.reducer;
 
-export const fetchRefreshToken = async (dispatch) => {
-    try {
-        const response = await authApi.endpoints.refreshToken()
-        console.log(response)
-    } catch (error) {
-        
-    }
-}
 
 // export const githubActions = githubSlice.actions;
 // export const githubReducer = githubSlice.reducer;

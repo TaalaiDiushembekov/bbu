@@ -96,13 +96,18 @@ const refreshUser = async (_id) => {
 }
 
 const getUsers = async () => {
-    const usersData = await UserModel.find();
+    const usersData = await UserModel.find().populate('org').exec();
 
     return usersData;
 };
 
 const getOneUser = async (_id) => {
-    const userData = await UserModel.findOne({ _id });
+    const userData = await UserModel.findOne({ _id }).populate({
+        path: 'org',
+        populate: {
+            path: 'org_document'
+        }
+    }).exec();;
 
     return userData;
 };

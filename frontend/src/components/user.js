@@ -16,18 +16,15 @@ import Manager from "./manager";
 const useStyles = makeStyles({
     root: {
         maxWidth: 345,
+        marginTop: '20px'
     },
     productImage: {
         objectFit: 'contain'
     }
 })
 const User = ({user}) => {
-    // const dispatch = useDispatch()
-    // useEffect(() => {
-    //     dispatch(usersListAction())
-    //
-    // },[])
-    // const {department_manager} = useSelector((s) => s.usersList)
+
+    const org = user?.org;
     const classes = useStyles()
     return (
         <Grid item sm={12} md={6} lg={3} xl={3} key={user._id}>
@@ -37,12 +34,9 @@ const User = ({user}) => {
 
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="h2">
-                                {user.name}
+                                {user.email} <br/> {org?.org_name}
                             </Typography>
-                            <Typography gutterBottom variant="h5" component="h2">
-                               {user?.department_manager.map((manager) => (<Manager manager={manager} />))}
-                               {/*<Manager />*/}
-                            </Typography>
+
 
                         </CardContent>
                     </CardActionArea>

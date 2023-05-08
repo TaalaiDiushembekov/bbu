@@ -1,10 +1,9 @@
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./screens/Home/Home.js";
-import ProductDetails from "./screens/product-details.js";
-import Cart from "./screens/cart.js";
+
 import Admin from "./screens/admin.js";
-import UserDetails from "./screens/user-details.js";
+import UserDetails from "./screens/user-details";
 import About from "./screens/About/About.js";
 import Team from "./screens/Team/Team.js";
 import Tariffs from "./screens/Tariffs/Tariffs.js";
@@ -19,9 +18,11 @@ import { useDispatch } from "react-redux";
 import { useRefreshTokenQuery } from "./redux/auth/auth.api.js";
 import { setUser } from "./redux/auth/auth.slice.js";
 import { setOrganization } from "./redux/organization/org.slice.js";
+import PrivateRoute from "./components/PrivateRoute.jsx";
+import Organizations from "./screens/organizations.jsx";
+import OrgDetails from "./screens/org-details.jsx";
 
 function App() {
-
     const dispatch = useDispatch();
     const { data, isLoading } = useRefreshTokenQuery();
 
@@ -51,26 +52,39 @@ function App() {
                     />
                     <Route exact path="/team" component={() => <Team />} />
                     <Route exact path="/login" component={() => <Login />} />
-                    <Route exact path="/admin" component={() => <Admin />} />
-                    <Route
+                    <PrivateRoute
+                        exact
+                        path="/admin"
+                        role="admin"
+                        component={() => <Admin />}
+                    />
+                    <PrivateRoute
                         exact
                         path="/profile"
+                        role="user"
                         component={() => <Profile />}
-                    />
+                    ></PrivateRoute>
                     <Route
                         exact
                         path="/user-registration"
                         component={() => <RegisterUser />}
                     />
-
-                    <Route
+                    <PrivateRoute
                         exact
-                        path="/product/:id"
-                        component={() => <ProductDetails />}
+                        role="admin"
+                        path="/organizations"
+                        component={() => <Organizations />}
                     />
-                    <Route exact path="/cart/:id?" component={() => <Cart />} />
-                    <Route
+                    <PrivateRoute
                         exact
+                        role="admin"
+                        path="/organizations/:id"
+                        component={() => <OrgDetails />}
+                    />
+
+                    <PrivateRoute
+                        exact
+                        role="admin"
                         path="/admin/:id"
                         component={() => <UserDetails />}
                     />
