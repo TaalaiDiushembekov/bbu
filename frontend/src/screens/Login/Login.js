@@ -55,8 +55,11 @@ const Login = () => {
             const {org} = userData
             dispatch(setUser({...userData}))
             dispatch(setOrganization({...org}))
-            if(!isError){
+            if(!isError && userData?.role === 'user'){
                 history.push('/profile')
+            }
+            if(!isError && userData?.role === 'admin'){
+                history.push('/admin')
             }
         } catch (error) {
             console.log(error)            

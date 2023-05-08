@@ -134,7 +134,6 @@ const UploadInfo = () => {
             <Box mt={5}>
                 {/*<Copyright />*/}
             </Box>
-            <UploadInfoTwo />
         </Container>
     );
 };

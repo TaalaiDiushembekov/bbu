@@ -15,7 +15,7 @@ import {makeStyles} from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
     paper: {
-        marginTop: theme.spacing(8),
+        
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -48,11 +48,8 @@ const UploadInfoTwo = () => {
         <Container component="main" maxWidth="xs">
             <CssBaseline />
             <div className={classes.paper}>
-                <Avatar className={classes.avatar}>
-                    <LockOutlinedIcon />
-                </Avatar>
-                <Typography component="h1" variant="h5">
-                    Upload salary
+                <Typography variant="h6">
+                    Добавить документ пользователю
                 </Typography>
                 <form className={classes.form} noValidate onSubmit={handleSubmit}>
                     <Grid container spacing={2}>

@@ -5,9 +5,8 @@ import "./Profile.css";
 import InformationContainer from "./InformationContainer";
 
 const Profile = () => {
-    const accessToken = useSelector((s) => s.auth);
+    const {accessToken} = useSelector((s) => s.auth);
  
-    console.log(accessToken);
     const a = () => {
 
     }
