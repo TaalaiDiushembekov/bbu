@@ -1,5 +1,41 @@
 .addTariff{
-  max-width: 600px;
+  max-width: 800px;
+  min-width: 80%;
   margin: 30px auto 0;
   text-align: center;
+}
+
+.service-input{
+  width: 70%;
+  max-width: 70%;
+  resize: none;
+  outline: none;
+  border: 1px solid #eee;
+  padding: 8px 2px;
+  border-radius: 3px;
+  font-size: 16px;
+  margin-left: auto;
+}
+
+.tariff-small-btn{
+  margin: 0 10px 0 20px;
+  border: none;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+
+.tariff-small-btn:hover{
+  border: 1px solid #eee;
+}
+
+.remove-btn{
+  background: url('../../images/remove.png') no-repeat;
+  background-size: contain;
+}
+
+.add-btn{
+  background: url('../../images/add.png') no-repeat;
+  background-size: contain;
+  width: 23px;
 }
