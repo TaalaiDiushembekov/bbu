@@ -21,6 +21,7 @@ import { setOrganization } from "./redux/organization/org.slice.js";
 import PrivateRoute from "./components/PrivateRoute.jsx";
 import Organizations from "./screens/organizations.jsx";
 import OrgDetails from "./screens/org-details.jsx";
+import AddTariff from "./screens/AddTariff/AddTariff.js";
 
 function App() {
     const dispatch = useDispatch();
@@ -88,6 +89,14 @@ function App() {
                         path="/admin/:id"
                         component={() => <UserDetails />}
                     />
+
+                    {/* <PrivateRoute
+                        exact
+                        role="admin"
+                        path="/add-tariff"
+                        component={() => <AddTariff />}
+                    /> */}
+                    <Route exact path='/add-tariff' component={() => <AddTariff />} />
 
                     {/*<Route exact path='*' component={() => <NotFoundPage />} />*/}
                     {/*<Route exact path='/allUsers' component={() => <AllUsers />} />*/}
