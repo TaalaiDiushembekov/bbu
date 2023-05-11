@@ -10,6 +10,6 @@ router.get('/:id', roleMiddleware(['admin', 'user']), getOneOrg)
 
 
 router.post('/', createOrg)
-router.post('/:id', roleMiddleware(['admin']), updateOrg)
+router.patch('/:id', roleMiddleware(['admin']), updateOrg)
 
 export default router;

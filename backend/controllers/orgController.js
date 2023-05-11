@@ -2,19 +2,25 @@ import {
     createOrg as createOrgService,
     getOneOrg as getOneOrgService,
     getOrgs as getOrgsService,
-    updateOrg as updateOrgService
+    updateOrg as updateOrgService,
 } from "../services/orgService.js";
+import { registration as registrationService} from "../services/userService.js";
 
 const createOrg = async (req, res, next) => {
     try {
         const {
             org_email,
             org_name,
+            org_pin,
             org_director,
             org_director_passport,
+            org_accountant,
+            org_accountant_passport,
+            org_responsible_person,
             org_phone,
             org_social_number,
             org_activity,
+            org_ownership,
             org_legal,
             org_civil_status,
         } = req.body;
@@ -22,11 +28,16 @@ const createOrg = async (req, res, next) => {
         const orgData = await createOrgService(
             org_email,
             org_name,
+            org_pin,
             org_director,
             org_director_passport,
+            org_accountant,
+            org_accountant_passport,
+            org_responsible_person,
             org_phone,
             org_social_number,
             org_activity,
+            org_ownership,
             org_legal,
             org_civil_status
         );
@@ -59,16 +70,52 @@ const getOrgs = async (req, res, next) => {
     }
 };
 
-const updateOrg = async(req,res,next) => {
+const updateOrg = async (req, res, next) => {
     try {
-        const {id} = req.params
-        
-        const orgData = await updateOrgService(id)
+        console.log(req.params)
+        const { id } = req.params;
+        const {
+            is_checked,
+            org_email,
+            org_name,
+            org_pin,
+            org_director,
+            org_director_passport,
+            org_accountant,
+            org_accountant_passport,
+            org_responsible_person,
+            org_phone,
+            org_social_number,
+            org_activity,
+            org_ownership,
+            org_legal,
+            org_civil_status,
+            password,
+        } = req.body;
 
-        res.json(orgData)
+        const orgData = await updateOrgService(
+            id,
+            is_checked,
+            org_email,
+            org_name,
+            org_pin,
+            org_director,
+            org_director_passport,
+            org_accountant,
+            org_accountant_passport,
+            org_responsible_person,
+            org_phone,
+            org_social_number,
+            org_activity,
+            org_ownership,
+            org_legal,
+            org_civil_status
+        );
+        const userData = await registrationService(org_email, password, 'user')
+        res.json({orgData, userData});
     } catch (error) {
-        next(error)
+        next(error);
     }
-}
+};
 
 export { createOrg, getOneOrg, getOrgs, updateOrg };

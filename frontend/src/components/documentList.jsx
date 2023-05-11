@@ -5,9 +5,6 @@ import UploadInfoTwo from "./upload_info_two";
 const DocumentList = ({docs}) => {
     return (
         <>
-            <Typography variant="h4" align="center">
-                Документы пользователя
-            </Typography>
             <Box
                 gridColumn={"span 12"}
                 display={"grid"}

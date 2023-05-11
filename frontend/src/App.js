@@ -27,6 +27,7 @@ function App() {
     const { data, isLoading } = useRefreshTokenQuery();
 
     useEffect(() => {
+        localStorage.clear()
         if (!isLoading) {
             const org = data?.org;
             dispatch(setUser({ ...data }));

@@ -5,7 +5,8 @@ import { Link } from "react-router-dom/cjs/react-router-dom.min";
 const AllOrganizations = ({ org: orgs }) => {
     return (
         <>
-            {orgs.filter(org => !org.is_Active ).map((org) => (
+            <Typography variant="h5">Ожидают проверки</Typography>
+            {orgs.filter(org => !org.is_checked ).map((org) => (
                 <Card style={{maxWidth: '345px'}} key={org._id}> 
                     <CardContent>
                         <Link to={`/organizations/${org._id}`}>

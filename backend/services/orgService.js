@@ -4,11 +4,16 @@ import ErrorService from "./errorService.js";
 const createOrg = async (
     org_email,
     org_name,
+    org_pin,
     org_director,
     org_director_passport,
+    org_accountant,
+    org_accountant_passport,
+    org_responsible_person,
     org_phone,
     org_social_number,
     org_activity,
+    org_ownership,
     org_legal,
     org_civil_status
 ) => {
@@ -23,11 +28,16 @@ const createOrg = async (
     const orgData = await OrgModel.create({
         org_email,
         org_name,
+        org_pin,
         org_director,
         org_director_passport,
+        org_accountant,
+        org_accountant_passport,
+        org_responsible_person,
         org_phone,
         org_social_number,
         org_activity,
+        org_ownership,
         org_legal,
         org_civil_status,
     });
@@ -50,12 +60,42 @@ const getOrgs = async () => {
     return orgData;
 };
 
-const updateOrg = async (_id) => {
-    const org = await OrgModel.findOne({ _id });
-
-    org.is_checked = true;
-
-    org.save();
+const updateOrg = async (
+    _id,
+    is_checked,
+    org_email,
+    org_name,
+    org_pin,
+    org_director,
+    org_director_passport,
+    org_accountant,
+    org_accountant_passport,
+    org_responsible_person,
+    org_phone,
+    org_social_number,
+    org_activity,
+    org_ownership,
+    org_legal,
+    org_civil_status
+) => {
+    // const org = await OrgModel.findOne({ _id });
+    const org = await OrgModel.updateOne({_id}, {is_checked,
+        org_email,
+        org_name,
+        org_pin,
+        org_director,
+        org_director_passport,
+        org_accountant,
+        org_accountant_passport,
+        org_responsible_person,
+        org_phone,
+        org_social_number,
+        org_activity,
+        org_ownership,
+        org_legal,
+        org_civil_status})
+    if (!org) throw ErrorService.BadRequest("Organizations not found");
+    console.log(is_checked)
 
     return org;
 };
