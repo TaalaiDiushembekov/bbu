@@ -4,8 +4,12 @@ import TextField from "../../components/UI/Form/TextField/TextField";
 import Button from "../../components/UI/Button/Button";
 import "./RegisterUser.css";
 import FormSelect from "../../components/UI/Form/FormSelect/FormSelect";
+import {
+    useCreateOrgMutation,
+    useUpdateOrgMutation,
+} from "../../redux/organization/org.api";
 
-const property = ["Государственная", "Муниципальная", "Частная", "Иная"];
+const ownership = ["Государственная", "Муниципальная", "Частная", "Иная"];
 const civil = [
     "Физическое лицо",
     "Юридическое лицо",
@@ -13,12 +17,16 @@ const civil = [
     "Юридическое лицо (зависимое)",
 ];
 
-const RegisterUser = ({ title, ...rest }) => {
+const RegisterUser = ({ id, type, title, ...rest }) => {
+
+    const [createOrg] = useCreateOrgMutation();
+    const [updateOrg, result] = useUpdateOrgMutation();
     const history = useHistory();
 
     const initialState = {
+        is_checked: false,
         org_name: "",
-        PIN: "",
+        org_pin: "",
         org_director: "",
         org_director_passport: {
             series: "",
@@ -27,18 +35,19 @@ const RegisterUser = ({ title, ...rest }) => {
         },
         org_accountant: "",
         org_accountant_passport: {
-            series_acc: "",
-            authority_acc: "",
-            date_acc: "",
+            series: "",
+            authority: "",
+            date: "",
         },
-        responsible_person: "",
+        org_responsible_person: "",
         org_phone: "",
         org_social_number: "",
         org_activity: "",
-        property_type: "",
+        org_ownership: "",
         org_legal: "",
         org_civil_status: "",
         org_email: "",
+        password: "",
     };
     const [registerData, setRegisterData] = useState(initialState);
 
@@ -49,29 +58,33 @@ const RegisterUser = ({ title, ...rest }) => {
 
                 Object.keys(rest).forEach((key) => {
                     if (newState.hasOwnProperty(key)) {
-                        if (key === "org_director_passport") {
-                            newState.org_director_passport = {
-                                ...newState.org_director_passport,
-                                ...rest[key],
-                            };
-                        } else {
-                            newState[key] = rest[key];
-                        }
+                        // if (key === "org_director_passport") {
+                        //     newState.org_director_passport = {
+                        //         ...newState.org_director_passport,
+                        //         ...rest[key],
+                        //     };
+                        // } else {
+                        newState[key] = rest[key];
+                        // }
                     }
                 });
-                console.log(newState);
                 return newState;
             });
         }
     }, []);
 
-    const [date_director, setDate_director] = useState("");
-    const [date_accountant, setDate_accountant] = useState("");
-console.log(date_director)
+    useEffect(() => {
+        console.log(registerData)
+    }, [registerData.is_checked])
+
+    const isActiveHandler = (e) => {
+        
+        setRegisterData((prev) => ({ ...prev, is_checked: !prev.is_checked }));
+    };
+
     const inputChangeHandler = (e) => {
         const { name, value } = e.target;
         setRegisterData((prev) => ({ ...prev, [name]: value }));
-        console.log(registerData);
     };
 
     const inputChangeHandlerPassport = (e, title) => {
@@ -88,21 +101,21 @@ console.log(date_director)
 
     const submitFormHandler = async (e) => {
         e.preventDefault();
-        console.log(date_accountant);
-        setRegisterData((prev) => ({
-            ...prev,
-            org_director_passport: {
-                ...registerData.org_director_passport,
-                date_dir: date_director,
-            },
-            org_accountant_passport: {
-                ...registerData.org_accountant_passport,
-                date_acc: date_accountant,
-            },
-        }));
-
-        history.push("/");
+        if (type === "approve") {
+            
+            const data = await updateOrg({data: registerData, id: id}).unwrap();
+            if(data?.acknowledged){
+                alert('Сохранилось')
+            }
+        } 
+        if (type !== 'approve'){
+            const orgData = await createOrg(registerData).unwrap();
+            console.log(orgData);
+        }
+    
+        // history.push("/organizations");
     };
+    
 
     return (
         <div className="container">
@@ -133,9 +146,9 @@ console.log(date_director)
                     </div>
                     <div className="input-wrapper">
                         <TextField
-                            type="text"
-                            name="PIN"
-                            value={registerData.PIN}
+                            type="number"
+                            name="org_pin"
+                            value={registerData.org_pin}
                             required={true}
                             onChange={inputChangeHandler}
                             label="ИНН"
@@ -160,7 +173,7 @@ console.log(date_director)
                                 <TextField
                                     className="passport-input"
                                     type="text"
-                                    name="series_dir"
+                                    name="series"
                                     value={
                                         registerData.org_director_passport
                                             .series
@@ -179,7 +192,7 @@ console.log(date_director)
                                 <TextField
                                     className="passport-input"
                                     type="text"
-                                    name="authority_dir"
+                                    name="authority"
                                     value={
                                         registerData.org_director_passport
                                             .authority
@@ -198,10 +211,15 @@ console.log(date_director)
                                 <TextField
                                     className="date-input"
                                     type="date"
-                                    name="date_director"
-                                    value={date_director}
+                                    name="date"
+                                    value={
+                                        registerData.org_director_passport.date
+                                    }
                                     onChange={(e) =>
-                                        setDate_director(e.target.value)
+                                        inputChangeHandlerPassport(
+                                            e,
+                                            "org_director_passport"
+                                        )
                                     }
                                     label="от"
                                     labelClass="passport-label"
@@ -227,10 +245,10 @@ console.log(date_director)
                                 <TextField
                                     className="passport-input"
                                     type="text"
-                                    name="series_acc"
+                                    name="series"
                                     value={
                                         registerData.org_accountant_passport
-                                            .series_acc
+                                            .series
                                     }
                                     onChange={(e) =>
                                         inputChangeHandlerPassport(
@@ -246,10 +264,10 @@ console.log(date_director)
                                 <TextField
                                     className="passport-input"
                                     type="text"
-                                    name="authority_acc"
+                                    name="authority"
                                     value={
                                         registerData.org_accountant_passport
-                                            .authority_acc
+                                            .authority
                                     }
                                     onChange={(e) =>
                                         inputChangeHandlerPassport(
@@ -265,10 +283,16 @@ console.log(date_director)
                                 <TextField
                                     className="date-input"
                                     type="date"
-                                    name="date_accountant"
-                                    value={date_accountant}
+                                    name="date"
+                                    value={
+                                        registerData.org_accountant_passport
+                                            .date
+                                    }
                                     onChange={(e) =>
-                                        setDate_accountant(e.target.value)
+                                        inputChangeHandlerPassport(
+                                            e,
+                                            "org_accountant_passport"
+                                        )
                                     }
                                     label="от"
                                     labelClass="passport-label"
@@ -279,8 +303,8 @@ console.log(date_director)
                     <div className="input-wrapper">
                         <TextField
                             type="text"
-                            name="responsible_person"
-                            value={registerData.responsible_person}
+                            name="org_responsible_person"
+                            value={registerData.org_responsible_person}
                             onChange={inputChangeHandler}
                             label="Лицо ответственное за использование"
                             required={true}
@@ -288,7 +312,7 @@ console.log(date_director)
                     </div>
                     <div className="input-wrapper">
                         <TextField
-                            type="text"
+                            type="number"
                             name="org_phone"
                             value={registerData.org_phone}
                             onChange={inputChangeHandler}
@@ -298,7 +322,7 @@ console.log(date_director)
                     </div>
                     <div className="input-wrapper">
                         <TextField
-                            type="text"
+                            type="number"
                             name="org_social_number"
                             value={registerData.org_social_number}
                             onChange={inputChangeHandler}
@@ -318,9 +342,9 @@ console.log(date_director)
                     </div>
                     <div className="input-wrapper">
                         <FormSelect
-                            array={property}
-                            name="property_type"
-                            value={registerData.property_type}
+                            array={ownership}
+                            name="org_ownership"
+                            value={registerData.org_ownership}
                             onChange={inputChangeHandler}
                             label="Форма собственности"
                             required={true}
@@ -346,22 +370,43 @@ console.log(date_director)
                             required={true}
                         />
                     </div>
-                    {rest ? (
-                        <div className="input-wrapper">
-                            <TextField
-                                type="text"
-                                name="password"
-                                onChange={inputChangeHandler}
-                                label="Придумайте пароль для организации"
-                                required={true}
-                            />
-                        </div>
+                    {type === "approve" ? (
+                        <>
+                            <div className="input-wrapper">
+                                <TextField
+                                    type="text"
+                                    name="password"
+                                    value={registerData.password}
+                                    onChange={inputChangeHandler}
+                                    label="Придумайте пароль для организации"
+                                    required={true}
+                                />
+                            </div>
+                            <div className="input-wrapper">
+                                <TextField
+                                    type="checkbox"
+                                    checked={registerData.is_checked}
+                                    name="is_checked"
+                                    onClick={isActiveHandler}
+                                    label="Активация аккаунта"
+                                    // required={true}
+                                />
+                            </div>
+                        </>
                     ) : null}
-                    <Button
-                        type="submit"
-                        title="Отправить"
-                        className="register-btn"
-                    />
+                    {type === "approve" ? (
+                        <Button
+                            type="submit"
+                            title="Актвировать"
+                            className="register-btn"
+                        />
+                    ) : (
+                        <Button
+                            type="submit"
+                            title="Отправить"
+                            className="register-btn"
+                        />
+                    )}
                 </form>
             </div>
         </div>

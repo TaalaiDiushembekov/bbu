@@ -4,7 +4,7 @@ import ErrorService from "./errorService.js";
 import TokenService from "./tokenService.js";
 import { compare, hash } from "bcrypt";
 
-const registration = async (email, password, role, org) => {
+const registration = async (email, password, role) => {
     const oldUser = await UserModel.findOne({ email });
     // console.log(oldUser);
     if (oldUser) {
@@ -15,7 +15,7 @@ const registration = async (email, password, role, org) => {
     const hashedPassword = await hash(password, 3);
 
 
-    const organization = await OrgModel.findOne({org_social_number: org})
+    const organization = await OrgModel.findOne({org_email: email})
     console.log(organization)
     if(!organization){
         throw ErrorService.BadRequest(
@@ -37,7 +37,7 @@ const registration = async (email, password, role, org) => {
         user: {
             id: user.id,
             email,
-            password,
+            password: user.password,
             role,
             org: user.org,
         },
@@ -49,6 +49,11 @@ const login = async (email, password) => {
 
     if (!user) {
         throw ErrorService.BadRequest("Wrong email or password");
+    }
+
+    console.log(user)
+    if (!user?.org?.is_checked && user.role === 'user') {
+        throw ErrorService.ForbiddenError("Вы не активны");
     }
 
     const comparedPassword = await compare(password, user.password);

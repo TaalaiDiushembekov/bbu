@@ -16,7 +16,7 @@ const OrgDetails = () => {
 
     return (
         <div>
-            <RegisterUser {...data} title={'Подтверждение пользователя'}/>
+            <RegisterUser {...data} title={'Подтверждение пользователя'} type={'approve'} id={id}/>
         </div>
     );
 };
