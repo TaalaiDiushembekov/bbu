@@ -3,28 +3,42 @@ import { Container, Tab, Tabs } from "@material-ui/core";
 import { useSelector } from "react-redux";
 import "./Profile.css";
 import InformationContainer from "./InformationContainer";
+import Requisite from "../../components/Customer/Requisite/requisite";
+import Documents from "../../components/Customer/Documents/documents";
+
+const SelectedComponent = ({tab}) => {
+    const org = useSelector(s => s.org)
+    const docs = useSelector(s => s.document)
+    if(tab === 'one'){
+        return(
+            <Requisite org={org}/>
+        )
+    }
+    if(tab === 'two'){
+        return(
+            <Documents docs={docs}/>
+        )
+    }
+}
 
 const Profile = () => {
     const {accessToken} = useSelector((s) => s.auth);
  
-    const a = () => {
+    const [tab, setTab] = useState('one')
 
-    }
-    // useEffect(()=> {
-
-    // }, [org])
-    const [value, setValue] = React.useState("one");
-    // const [org, setOrg] = useState()
     const handleChange = (event, newValue) => {
-        setValue(newValue);
+        setTab(newValue);
     };
+
+    
+
     return (
         <div className="profile">
             {accessToken && (
                 <>
                     <Container>
                         <Tabs
-                            value={value}
+                            value={tab}
                             onChange={handleChange}
                             textColor="secondary"
                             indicatorColor="secondary"
@@ -35,8 +49,8 @@ const Profile = () => {
                             <Tab value="two" label="Документы" />
                             <Tab value="three" label="Акты сверки" />
                         </Tabs>
+                        <SelectedComponent tab={tab}/>
                     </Container>
-                    <InformationContainer />
                 </>
             )}
         </div>

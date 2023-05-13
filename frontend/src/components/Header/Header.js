@@ -26,6 +26,18 @@ const CustomMenuItem = forwardRef(({role , ...rest}, ref) => {
             </div>
         );
     }
+
+    if(role === 'moderator'){
+        return (
+            <div ref={ref}>
+                        
+             <MenuItem {...rest} to='/add-tariff'>
+                Добавить тариф
+            </MenuItem>
+            </div>
+        );
+    }
+
     if(role === 'user'){
         return (
             <MenuItem {...rest} to='/profile' ref={ref}>

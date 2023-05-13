@@ -1,0 +1,8 @@
+p{
+    padding: 15px;
+    margin: 0;
+}
+p:nth-child(even) {
+    background-color: #f4f4f4;
+    /* Другие стили, такие как цвет текста, отступы, границы и т.д. */
+  }

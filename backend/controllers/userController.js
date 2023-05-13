@@ -6,6 +6,7 @@ import {
     getUsers as getUsersService,
     getOneUser as getOneUserService,
     refreshUser as refreshUserService,
+    updateUser as updateUserService,
 } from "../services/userService.js";
 import TokenService from "../services/tokenService.js";
 import UserModel from "../models/userModel.js";
@@ -42,14 +43,13 @@ const refreshUser = async (req, res, next) => {
     try {
         const { id } = req.user;
 
-        const data = await refreshUserService(id)
+        const data = await refreshUserService(id);
 
         res.cookie("refreshToken", data.refreshToken, {
             httpOnly: true,
             maxAge: 1000 * 60 * 60 * 72,
-        })
-        res.json(data.user)
-        
+        });
+        res.json(data.user);
     } catch (error) {
         console.log(error);
     }
@@ -87,22 +87,19 @@ const getOneUser = async (req, res, next) => {
     }
 };
 
-const updateUser = asyncHandler(async (req, res) => {
-    const { cart } = req.body;
-    let user = await User.updateOne(req.user._id, { cart }, { new: true });
-    if (user) {
-        res.status(200).json({
-            _id: user._id,
-            name: user.name,
-            email: user.email,
-            isAdmin: user.isAdmin,
-            token: TokenService.generateTokens(user._id),
-        });
-    } else {
-        res.status(400);
-        throw new Error("Invalid user data)");
+const updateUser = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+
+        const {password} = req.body;
+        
+        const userData = await updateUserService(id, password)
+
+        res.json(userData)
+    } catch (error) {
+        next(error)
     }
-});
+};
 
 export {
     registration,

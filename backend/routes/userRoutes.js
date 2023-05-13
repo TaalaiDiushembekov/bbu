@@ -23,6 +23,6 @@ router.get("/", roleMiddleware(['admin']), getUsers);
 router.post("/login", login);
 router.post('/logout', logout);
 router.post("/", roleMiddleware(['admin']) ,registration);
-router.post("/uploadInfo", updateUser);
+router.patch("/:id", roleMiddleware(['admin']), updateUser);
 
 export default router;

@@ -44,14 +44,15 @@ const Login = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const location = useLocation();
-    const { userInfo, error } = useSelector((s) => s.auth);
+    const { userInfo } = useSelector((s) => s.auth);
+
+    const [errorMsg, setErrorMsg] =  useState('')
     const redirect = location.search ? location.search.split("=")[1] : "/";
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
             const userData = await login({ email, password }).unwrap()
-            console.log(userData)
             const {org} = userData
             dispatch(setUser({...userData}))
             dispatch(setOrganization({...org}))
@@ -62,7 +63,12 @@ const Login = () => {
                 history.push('/admin')
             }
         } catch (error) {
-            console.log(error)            
+            if(error.status === 403){
+                setErrorMsg('Вы не активны');
+            } 
+            if(error.status === 400){
+                setErrorMsg('Неверный адрес электронной почты или пароль.');
+            }                     
         }
     };
 
@@ -81,7 +87,7 @@ const Login = () => {
                     <Typography component="h1" variant="h5">
                         Sign in
                     </Typography>
-                    {error && <Message type="warning">{error}</Message>}
+                    {errorMsg && <Message type="warning">{errorMsg}</Message>}
                     <form
                         className={classes.form}
                         noValidate

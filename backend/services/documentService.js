@@ -2,10 +2,10 @@ import DocumentModel from "../models/documentModel.js";
 import OrgModel from "../models/orgModel.js";
 import ErrorService from "./errorService.js";
 
-const createDocument = async (name, link, org_social_number) => {
+const createDocument = async (name, link, _id) => {
     const doc = await DocumentModel.create({ name, link });
 
-    const org = await OrgModel.findOne({org_social_number})
+    const org = await OrgModel.findOne({_id})
     if(!org){
         throw ErrorService.ServerInternalError('No organization with this social number')
     }

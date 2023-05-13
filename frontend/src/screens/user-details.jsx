@@ -30,6 +30,8 @@ const UserDetails = () => {
                     <Box gridColumn={"span 4"}>
                         <RegisterUser
                             type={"patch"}
+                            userId = {id}
+                            userPassword = {user.password}
                             id={org._id}
                             title={"Данные пользователя"}
                             {...org}
@@ -47,7 +49,7 @@ const UserDetails = () => {
                         >
                             назад
                         </Button>
-                        <DocumentList docs={docs} />
+                        <DocumentList docs={docs} org_id={org._id} />
                     </Box>
                 </Box>
             </Box>

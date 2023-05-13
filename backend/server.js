@@ -9,7 +9,7 @@ import path from 'path'
 import cookieParser from 'cookie-parser'
 
 import { fileURLToPath } from "url";
-import createSuperAdmin from './superAdmin.js'
+import {createSuperAdmin, createModerator} from './superAdmin.js'
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 dotenv.config()
@@ -31,7 +31,7 @@ app.use(fileUpload({}))
 app.use(cookieParser())
 app.use('/api/v1', router)
 
-app.use('/api/v1', express.static(path.resolve(__dirname, 'public/assets/img/products')))
+app.use('/api/v1', express.static(path.resolve(__dirname, 'public/assets/img/team')))
 
 // if (process.env.NODE_ENV === 'production') {
     //     app.use(express.static(path.join(path.resolve(), '/frontend/build')))
@@ -40,8 +40,9 @@ app.use('/api/v1', express.static(path.resolve(__dirname, 'public/assets/img/pro
     
     app.use(notFound)
     app.use(errorHandler)
-// const {SU_EMAIL, SU_PASSWORD, SU_ROLE} = process.env
+// const {SU_EMAIL, SU_PASSWORD, SU_ROLE, MD_EMAIL, MD_PASSWORD, MD_ROLE} = process.env
 // createSuperAdmin(SU_EMAIL, SU_PASSWORD, SU_ROLE)
+// createModerator(MD_EMAIL, MD_PASSWORD, MD_ROLE)
 
 
 app.listen(PORT, () => {

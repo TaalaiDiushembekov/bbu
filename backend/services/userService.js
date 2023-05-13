@@ -45,7 +45,12 @@ const registration = async (email, password, role) => {
 };
 
 const login = async (email, password) => {
-    const user = await UserModel.findOne({ email }).populate('org').exec();
+    const user = await UserModel.findOne({ email }).populate({
+        path: 'org',
+        populate: {
+            path: 'org_document'
+        }
+    }).exec();
 
     if (!user) {
         throw ErrorService.BadRequest("Wrong email or password");
@@ -79,7 +84,12 @@ const login = async (email, password) => {
 };
 
 const refreshUser = async (_id) => {
-    const user  = await UserModel.findOne({_id}).populate('org').exec();
+    const user  = await UserModel.findOne({_id}).populate({
+        path: 'org',
+        populate: {
+            path: 'org_document'
+        }
+    }).exec();
 
     const tokens = TokenService.generateTokens({
         id: user._id,
@@ -117,4 +127,18 @@ const getOneUser = async (_id) => {
     return userData;
 };
 
-export { registration, login, refreshUser, getUsers, getOneUser };
+const updateUser = async(_id, password) => {
+
+    const hashedPassword = await hash(password, 3);
+    const user = await UserModel.findOne({_id})
+    if(user.password !== password){
+        const userData = await UserModel.updateOne({_id}, {password: hashedPassword})
+        return userData;
+    }
+    else{
+        return {msg: 'User is no changed'}
+    }
+}
+
+
+export { registration, login, refreshUser, getUsers, getOneUser, updateUser };

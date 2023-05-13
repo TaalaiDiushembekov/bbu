@@ -6,8 +6,8 @@ import {
 
 const createDocument = async (req, res, next) => {
     try {
-        const { name, link, org_social_number } = req.body;
-        const doc = await createDocumentService(name, link, org_social_number);
+        const { name, link, org_id } = req.body;
+        const doc = await createDocumentService(name, link, org_id);
 
         res.json(doc);
     } catch (error) {
