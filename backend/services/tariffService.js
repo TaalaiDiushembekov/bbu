@@ -20,4 +20,10 @@ const deleteTariff = async(_id) => {
     return await TariffModel.deleteOne({_id})
 }
 
-export { createTariff, getAllTariffs, getOneTariff, deleteTariff}
+const updateTariff = async(_id, name, services) => {
+    const tariff = await TariffModel.updateOne({_id}, {name, services})
+
+    return tariff
+}
+
+export { createTariff, getAllTariffs, getOneTariff, deleteTariff, updateTariff}

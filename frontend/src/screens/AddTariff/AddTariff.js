@@ -1,12 +1,32 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import TextField from "../../components/UI/Form/TextField/TextField";
 import Button from "../../components/UI/Button/Button";
 import './AddTariff.css';
+import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min";
+import { useDispatch, useSelector } from "react-redux";
+import { useGetOneTariffQuery, useUpdateTariffMutation, useUploadTariffMutation } from "../../redux/tariffs/tariff.api";
+import { setTariff } from "../../redux/tariffs/tariff.slice";
 
 const AddTariff = () => {
+  
+  const { id } = useParams();   
   const [name, setName] = useState('');
-
   const [services, setServices] = useState(['']);
+
+  const {data, isLoading} = useGetOneTariffQuery(id)
+
+  const [uploadTariff, response] = useUploadTariffMutation()
+  const [updateTariff] = useUpdateTariffMutation()
+
+  
+  const history = useHistory()
+  useEffect(() => {
+    if(!isLoading && id !== undefined){
+      setName(data.name)
+      setServices(data.services)
+    }
+      
+  }, [isLoading])
 
   const addServiceInput = () => {
     console.log(services);
@@ -36,13 +56,20 @@ const AddTariff = () => {
   const submitFormHandler = async e => {
     e.preventDefault();
     const filledServices = services.filter(item => item !== "");
-    console.log({name, services: filledServices});
+    console.log(filledServices)
+    if(id !== undefined)
+      await updateTariff({id, data: {name, services: filledServices}})
+
+    else{
+      await uploadTariff({name, services: filledServices})
+    }
+    history.push('/tariffs')
   };
 
   return (
     <div className="container">
       <div className="addTariff">
-        <h3 className="title">Добавление тарифа</h3>
+        <h3 className="title">{id === undefined ? 'Добавление тарифа' : 'Изменение тарифа'}</h3>
         <form onSubmit={submitFormHandler}>
           <div className="input-wrapper">
             <TextField

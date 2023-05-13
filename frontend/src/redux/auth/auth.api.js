@@ -1,4 +1,5 @@
 import { apiSlice } from "../api";
+import { setAuthError } from "./auth.slice";
 
 
 export const authApi = apiSlice.injectEndpoints({
@@ -12,7 +13,12 @@ export const authApi = apiSlice.injectEndpoints({
                     "Content-type": "application/json; charset=UTF-8",
                 },
                 responseType: 'json',
-            })
+            }),
+            onError: (error, { dispatch }) => {
+                if (error.status === 401) {
+                  dispatch(setAuthError('Invalid credentials')); // передайте сообщение об ошибке в поле error
+                }
+            },
         }),
         
         logout: builder.mutation({

@@ -22,18 +22,22 @@ import PrivateRoute from "./components/PrivateRoute.jsx";
 import Organizations from "./screens/organizations.jsx";
 import OrgDetails from "./screens/org-details.jsx";
 import AddTariff from "./screens/AddTariff/AddTariff.js";
+import Member from "./screens/Team/Member.jsx";
+import { setDocument } from "./redux/documents/docs.slice.js";
 
 function App() {
     const dispatch = useDispatch();
     const { data, isLoading } = useRefreshTokenQuery();
-
+    console.log(data)
     useEffect(() => {
-        localStorage.clear()
-        if (!isLoading) {
+        if (!isLoading && data !== undefined) {
             const org = data?.org;
+            const documents = org?.org_document;
             dispatch(setUser({ ...data }));
             dispatch(setOrganization({ ...org }));
+            dispatch(setDocument(documents))
         }
+        
     }, [isLoading]);
 
     return (
@@ -42,6 +46,12 @@ function App() {
                 <Switch>
                     <Route exact path="/" component={() => <Home />} />
                     <Route exact path="/about" component={() => <About />} />
+                    <PrivateRoute
+                        exact
+                        path="/tariffs/:id"
+                        role="moderator"
+                        component={() => <AddTariff />}
+                    />
                     <Route
                         exact
                         path="/tariffs"
@@ -90,18 +100,18 @@ function App() {
                         path="/admin/:id"
                         component={() => <UserDetails />}
                     />
-
-                    {/* <PrivateRoute
+                    <PrivateRoute
                         exact
-                        role="admin"
-                        path="/add-tariff"
-                        component={() => <AddTariff />}
-                    /> */}
-                    <Route exact path='/add-tariff' component={() => <AddTariff />} />
-
-                    {/*<Route exact path='*' component={() => <NotFoundPage />} />*/}
-                    {/*<Route exact path='/allUsers' component={() => <AllUsers />} />*/}
-                    {/*<Route exact path='/register' component={() => <Register />} />*/}
+                        path='/add-tariff'
+                        role="moderator"
+                        component={() =>  <AddTariff />}
+                    ></PrivateRoute>    
+                    <PrivateRoute
+                        exact
+                        path='/moderator/teams'
+                        role="moderator"
+                        component={() =>  <Member />}
+                    ></PrivateRoute>  
                 </Switch>
             </Layout>
         </Router>

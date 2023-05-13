@@ -9,14 +9,15 @@ import User from "../components/user.js"
 import { useGetAllUsersQuery } from '../redux/users/users.api';
 
 const AllUsers = () => {
-    const {role} = useSelector(s => s.auth)
 
     const {data, isLoading, error} = useGetAllUsersQuery();
     console.log(data)
 
     if (isLoading) return <div>Loading...</div>
     if (error) return <div>Error: {error.message}</div>
-  
+    
+
+    
 
     return (
         <>
@@ -31,7 +32,7 @@ const AllUsers = () => {
 
                         <Grid container>
                             {
-                                data?.map((user) => (
+                                data?.filter(el => el.org !== null).map((user) => (
                                     <User key={user._id} user={user} />))
                             }
                         </Grid>

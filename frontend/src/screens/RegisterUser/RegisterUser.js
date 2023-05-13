@@ -17,13 +17,15 @@ const civil = [
     "Юридическое лицо (зависимое)",
 ];
 
-const RegisterUser = ({ id, type, title, ...rest }) => {
-
+const RegisterUser = ({ userId, userPassword, id, type, title, ...rest }) => {
     const [createOrg] = useCreateOrgMutation();
     const [updateOrg, result] = useUpdateOrgMutation();
     const history = useHistory();
 
+    const update = type === 'patch' ? true : false
+
     const initialState = {
+        userId: userId || '',
         is_checked: false,
         org_name: "",
         org_pin: "",
@@ -47,7 +49,8 @@ const RegisterUser = ({ id, type, title, ...rest }) => {
         org_legal: "",
         org_civil_status: "",
         org_email: "",
-        password: "",
+        password: userPassword || "",
+        update
     };
     const [registerData, setRegisterData] = useState(initialState);
 
@@ -74,11 +77,10 @@ const RegisterUser = ({ id, type, title, ...rest }) => {
     }, []);
 
     useEffect(() => {
-        console.log(registerData)
-    }, [registerData.is_checked])
+        console.log(registerData);
+    }, [registerData.is_checked]);
 
     const isActiveHandler = (e) => {
-        
         setRegisterData((prev) => ({ ...prev, is_checked: !prev.is_checked }));
     };
 
@@ -102,20 +104,31 @@ const RegisterUser = ({ id, type, title, ...rest }) => {
     const submitFormHandler = async (e) => {
         e.preventDefault();
         if (type === "approve") {
-            
-            const data = await updateOrg({data: registerData, id: id}).unwrap();
-            if(data?.acknowledged){
-                alert('Сохранилось')
+            const data = await updateOrg({
+                data: registerData,
+                id: id,
+            }).unwrap();
+            if (data?.orgData?.acknowledged) {
+                alert("Пользователь сохранен");
             }
-        } 
-        if (type !== 'approve'){
+        }
+        else if (type === "patch") {
+            const data = await updateOrg({
+                data: registerData,
+                id: id,
+            }).unwrap();
+            console.log(data)
+            if (data?.orgData?.acknowledged) {
+                alert("Пользователь сохранен");
+            } 
+        }
+        else {
             const orgData = await createOrg(registerData).unwrap();
             console.log(orgData);
         }
-    
+
         // history.push("/organizations");
     };
-    
 
     return (
         <div className="container">
@@ -370,7 +383,7 @@ const RegisterUser = ({ id, type, title, ...rest }) => {
                             required={true}
                         />
                     </div>
-                    {type === "approve" ? (
+                    {(type === "approve" || type === 'patch') ? (
                         <>
                             <div className="input-wrapper">
                                 <TextField
@@ -387,7 +400,7 @@ const RegisterUser = ({ id, type, title, ...rest }) => {
                                     type="checkbox"
                                     checked={registerData.is_checked}
                                     name="is_checked"
-                                    onClick={isActiveHandler}
+                                    onChange={isActiveHandler}
                                     label="Активация аккаунта"
                                     // required={true}
                                 />
@@ -398,6 +411,12 @@ const RegisterUser = ({ id, type, title, ...rest }) => {
                         <Button
                             type="submit"
                             title="Актвировать"
+                            className="register-btn"
+                        />
+                    ) : type === "patch" ? (
+                        <Button
+                            type="submit"
+                            title="Обновить данные"
                             className="register-btn"
                         />
                     ) : (

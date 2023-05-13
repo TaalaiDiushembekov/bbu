@@ -5,7 +5,8 @@ const initialState = {
     id: null,
     email: null,
     accessToken: null,
-    role: null
+    role: null,
+    error: null
 }
 
 export const authSlice = createSlice({
@@ -31,11 +32,14 @@ export const authSlice = createSlice({
             localStorage.removeItem('email')
             localStorage.removeItem('accessToken')
             localStorage.removeItem('role')
+        },
+        setAuthError: (state, action) => {
+            state.error = action.payload
         }
     }
 })
 
-export const {setUser, removeUser} = authSlice.actions;
+export const {setUser, removeUser, setAuthError} = authSlice.actions;
 export const authReducer = authSlice.reducer;
 
 

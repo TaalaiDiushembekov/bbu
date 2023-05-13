@@ -1,0 +1,13 @@
+.link-container{
+    padding: 15px;
+}
+
+.link-container:nth-child(odd){
+    background-color: #f4f4f4;
+}
+
+.link{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}

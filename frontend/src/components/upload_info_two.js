@@ -11,6 +11,7 @@ import Box from "@material-ui/core/Box";
 import {userUploadInfoTwoAction} from "../redux/actions/userAction";
 import {useDispatch} from "react-redux";
 import {makeStyles} from "@material-ui/core/styles";
+import { useUploadDocMutation } from '../redux/documents/docs.api';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -32,17 +33,24 @@ const useStyles = makeStyles((theme) => ({
         margin: theme.spacing(3, 0, 2),
     },
 }));
-const UploadInfoTwo = () => {
+const UploadInfoTwo = ({org_id}) => {
 
     const classes = useStyles();
-    const [salary, setSalary] = useState('')
+    const [uploadDoc, response] = useUploadDocMutation()
+    const [document, setDocument] = useState({
+        name: '',
+        link: '',
+        org_id
+    })
+    const inputChangeHandler = (e) => {
+       const {name, value} = e.target;
+       setDocument((prev) => ({ ...prev, [name]: value }));
+       console.log(document)
+    }
     const dispatch = useDispatch()
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        setSalary('')
-
-        dispatch(userUploadInfoTwoAction(salary))
-
+        await uploadDoc(document)
     }
     return (
         <Container component="main" maxWidth="xs">
@@ -57,49 +65,29 @@ const UploadInfoTwo = () => {
                             <TextField
                                 autoComplete="fname"
                                 salary="salary"
-                                value={salary}
+                                value={document.name}
                                 variant="outlined"
                                 required
                                 fullWidth
                                 id="salary"
-                                label="salary"
-                                autoFocus
-                                onChange={(e) => setSalary(e.target.value)}
+                                label="Имя"
+                                name='name'
+                                onChange={inputChangeHandler}
+                            />
+                        </Grid><Grid item xs={12}>
+                            <TextField
+                                autoComplete="fname"
+                                salary="salary"
+                                value={document.link}
+                                variant="outlined"
+                                required
+                                fullWidth
+                                id="salary"
+                                label="Ссылка"
+                                name='link'
+                                onChange={inputChangeHandler}
                             />
                         </Grid>
-                        {/*<Grid item xs={12}>*/}
-                        {/*    <TextField*/}
-                        {/*        variant="outlined"*/}
-                        {/*        required*/}
-                        {/*        fullWidth*/}
-                        {/*        id="email"*/}
-                        {/*        value={email}*/}
-                        {/*        label="Email Address"*/}
-                        {/*        name="email"*/}
-                        {/*        autoComplete="email"*/}
-                        {/*        onChange={(e) => setEmail(e.target.value)}*/}
-                        {/*    />*/}
-                        {/*</Grid>*/}
-                        {/*<Grid item xs={12}>*/}
-                        {/*    <TextField*/}
-                        {/*        variant="outlined"*/}
-                        {/*        required*/}
-                        {/*        fullWidth*/}
-                        {/*        name="password"*/}
-                        {/*        value={password}*/}
-                        {/*        label="Password"*/}
-                        {/*        type="password"*/}
-                        {/*        id="password"*/}
-                        {/*        autoComplete="current-password"*/}
-                        {/*        onChange={(e) => setPassword(e.target.value)}*/}
-                        {/*    />*/}
-                        {/*</Grid>*/}
-                        {/*<Grid item xs={12}>*/}
-                        {/*    <FormControlLabel*/}
-                        {/*       control={<Checkbox value="allowExtraEmails" color="primary" />}*/}
-                        {/*       label="I want to receive inspiration, marketing promotions and updates via email."*/}
-                        {/*   />*/}
-                        {/*</Grid>*/}
                     </Grid>
                     <Button
                         type="submit"
@@ -109,7 +97,7 @@ const UploadInfoTwo = () => {
                         className={classes.submit}
 
                     >
-                        Upload
+                        Добавить документ
                     </Button>
                     {/*<Grid container justify="flex-end">*/}
                     {/*    <Grid item>*/}

@@ -25,7 +25,7 @@ export const orgApi = apiSlice.injectEndpoints({
             })
         }),
         updateOrg: builder.mutation({
-            query: ({data, id}) => ({
+            query: ({id, data}) => ({
                 url: `/org/${id}`,
                 method: "PATCH",
                 body: data,

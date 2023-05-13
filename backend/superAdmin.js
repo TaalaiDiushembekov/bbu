@@ -20,5 +20,23 @@ const createSuperAdmin = async (email, password, role) => {
 
 }
 
-export default createSuperAdmin
+const createModerator = async (email, password, role) => {
+    const oldUser = await UserModel.findOne({ email });
+        if (!oldUser) {
+            const hashedPassword = await hash(password, 3);
+        
+            const user = await UserModel.create({
+                email,
+                password: hashedPassword,
+                role,
+            });
+            await user.save();
+        }
+
+}
+
+export {
+    createSuperAdmin,
+    createModerator
+}
 

@@ -4,7 +4,10 @@ import {
     getOrgs as getOrgsService,
     updateOrg as updateOrgService,
 } from "../services/orgService.js";
-import { registration as registrationService} from "../services/userService.js";
+import { 
+    registration as registrationService,
+    updateUser as updateUserService    
+} from "../services/userService.js";
 
 const createOrg = async (req, res, next) => {
     try {
@@ -72,7 +75,7 @@ const getOrgs = async (req, res, next) => {
 
 const updateOrg = async (req, res, next) => {
     try {
-        console.log(req.params)
+        
         const { id } = req.params;
         const {
             is_checked,
@@ -91,8 +94,10 @@ const updateOrg = async (req, res, next) => {
             org_legal,
             org_civil_status,
             password,
+            update,
+            userId, 
         } = req.body;
-
+        console.log('update', update)
         const orgData = await updateOrgService(
             id,
             is_checked,
@@ -111,8 +116,19 @@ const updateOrg = async (req, res, next) => {
             org_legal,
             org_civil_status
         );
-        const userData = await registrationService(org_email, password, 'user')
-        res.json({orgData, userData});
+        if (!update) {
+            const userData = await registrationService(
+                org_email,
+                password,
+                "user"
+            );
+            res.json({ orgData, userData });
+        }
+        if(update && userId) {
+            const userData = await updateUserService(userId, password)
+
+            res.json({ orgData, userData });
+        }
     } catch (error) {
         next(error);
     }
