@@ -24,6 +24,7 @@ import OrgDetails from "./screens/org-details.jsx";
 import AddTariff from "./screens/AddTariff/AddTariff.js";
 import Member from "./screens/Team/Member.jsx";
 import { setDocument } from "./redux/documents/docs.slice.js";
+import AddPartner from "./screens/AddPartner/AddPartner.js";
 
 function App() {
     const dispatch = useDispatch();
@@ -105,7 +106,8 @@ function App() {
                         path='/add-tariff'
                         role="moderator"
                         component={() =>  <AddTariff />}
-                    ></PrivateRoute>    
+                    ></PrivateRoute>  
+                    <Route exact path="/add-partner" component={() => <AddPartner />} />  
                     <PrivateRoute
                         exact
                         path='/moderator/teams'

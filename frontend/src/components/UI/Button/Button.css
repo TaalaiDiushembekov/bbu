@@ -41,6 +41,22 @@ button{
     background: rgb(240, 36, 6);
 }
 
+.file-input-btn{
+    background: rgb(103, 104, 175);
+    border-radius: 8px;
+    color: white;
+    width: auto;
+    border: none;
+    padding: 8px 10px;
+    text-transform: uppercase;
+    font-size: 14px;
+    margin: 15px;
+}
+
+.file-input-btn:hover{
+    background: rgb(44, 45, 102);
+}
+
 @media (max-width: 420px) {
     .register-btn{
         width: 90%;
