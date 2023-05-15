@@ -1,11 +1,9 @@
 import React, {useEffect, useRef, useState} from "react";
 import Button from "../../Button/Button";
-import TextField from "../TextField/TextField";
 import './FileInput.css';
 
-const FileInput = ({onChange, name, label, required, value, disabled, accept}) => {
+const FileInput = ({onChange, name, label, required, value, accept}) => {
   const inputRef = useRef();
-
   const [filename, setFilename] = useState('');
 
   useEffect(() => {
@@ -34,36 +32,25 @@ const FileInput = ({onChange, name, label, required, value, disabled, accept}) =
         className='disabled-input'
         onChange={onFileChange}
         ref={inputRef}
-        disabled={disabled}
         accept={accept}
       />
-      <label className='file-input-label' htmlFor={name}>{label}</label>
-      <input
-        required={required}
-        disabled
-        label={label}
-        value={filename}
-        onClick={activateInput}
-        
-       
-       
-        
-        
-      />
-      {/* <TextField
-        required={required}
-        disabled
-        label={label}
-        value={filename}
-        onClick={activateInput}
-      /> */}
-      <Button
-        type="button"
-        title="Добавить"
-        className="file-input-btn"
-        onClick={activateInput} 
-        disabled={disabled}
-      />
+      <div>
+        <label className='file-input-label' htmlFor={name}>{label}</label>
+        <input
+          required={required}
+          disabled
+          name={name}
+          label={label}
+          value={filename}
+          onClick={activateInput}
+        />
+        <Button
+          type="button"
+          title="Добавить"
+          className="file-input-btn"
+          onClick={activateInput} 
+        />
+      </div>
     </>
   );
 };
