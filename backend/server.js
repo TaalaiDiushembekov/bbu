@@ -19,7 +19,6 @@ connectDB()
 const PORT = process.env.PORT || 8080
 
 const corsOptions ={
-    origin:`http://localhost:3000`, 
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200
 }
@@ -40,9 +39,9 @@ app.use('/api/v1', express.static(path.resolve(__dirname, 'public/assets/img/tea
     
     app.use(notFound)
     app.use(errorHandler)
-// const {SU_EMAIL, SU_PASSWORD, SU_ROLE, MD_EMAIL, MD_PASSWORD, MD_ROLE} = process.env
-// createSuperAdmin(SU_EMAIL, SU_PASSWORD, SU_ROLE)
-// createModerator(MD_EMAIL, MD_PASSWORD, MD_ROLE)
+const {SU_EMAIL, SU_PASSWORD, SU_ROLE, MD_EMAIL, MD_PASSWORD, MD_ROLE} = process.env
+createSuperAdmin(SU_EMAIL, SU_PASSWORD, SU_ROLE)
+createModerator(MD_EMAIL, MD_PASSWORD, MD_ROLE)
 
 
 app.listen(PORT, () => {
