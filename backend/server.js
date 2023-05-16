@@ -34,15 +34,15 @@ app.use('/api/v1', router)
 app.use('/api/v1', express.static(path.resolve(__dirname, 'public/assets/img/team')))
 
 // if (process.env.NODE_ENV === 'production') {
-    //     app.use(express.static(path.join(path.resolve(), '/frontend/build')))
-    // }
+//         app.use(express.static(path.join(path.resolve(), '/frontend/build')))
+//     }
     
     
     app.use(notFound)
     app.use(errorHandler)
-// const {SU_EMAIL, SU_PASSWORD, SU_ROLE, MD_EMAIL, MD_PASSWORD, MD_ROLE} = process.env
-// createSuperAdmin(SU_EMAIL, SU_PASSWORD, SU_ROLE)
-// createModerator(MD_EMAIL, MD_PASSWORD, MD_ROLE)
+const {SU_EMAIL, SU_PASSWORD, SU_ROLE, MD_EMAIL, MD_PASSWORD, MD_ROLE} = process.env
+createSuperAdmin(SU_EMAIL, SU_PASSWORD, SU_ROLE)
+createModerator(MD_EMAIL, MD_PASSWORD, MD_ROLE)
 
 
 app.listen(PORT, () => {

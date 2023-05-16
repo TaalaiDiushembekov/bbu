@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./screens/Home/Home.js";
 
-import Admin from "./screens/admin.js";
+import Admin from "./screens//Admin/Admin.js";
 import UserDetails from "./screens/user-details";
 import About from "./screens/About/About.js";
 import Team from "./screens/Team/Team.js";
