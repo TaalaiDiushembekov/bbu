@@ -4,7 +4,7 @@ import './requisite.css'
 
 const Requisite = forwardRef(({ org }, ref) => {
     return (
-        <div ref={ref}>
+        <div ref={ref} className="requisite">
             <h2>Organization Profile</h2>
             <p>Название: {org.org_name}</p>
             <p>ПИН: {org.org_pin}</p>
