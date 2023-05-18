@@ -10,42 +10,33 @@ import WhatsAppIcon from "@material-ui/icons/WhatsApp";
 
 const Logo = () => {
     return (
-        <div>
-            
-        <>
-            <div className="logo_box">
-                <Link to='/' className="logo">
-                    <img alt="logo" src={logo} />
+        <div className="logo_box">
+            <Link to='/' className="logo">
+                <img alt="logo" src={logo} />
+            </Link>
+            <div className="logo_text">
+                <Link className="apply-link logo-item" to='/user-registration'>
+                    Подать заявку
                 </Link>
-
-                <div className="logo_text">
-                    <div className="social">
-                    <Link to='/user-registration'>
-                        Подать заявку
-                    </Link>
-                        <div className="social-box">
-                            <div className="social_icons">
-                                <a href="https://t.me/+996707807507">
-                                    <TelegramIcon/>
-                                </a>
-                            </div>
-                            <div className="social_icons">
-                                <a href="https://www.instagram.com/bbutochka/">
-                                    <InstagramIcon/>
-                                </a>
-                            </div>
-                            <div className="social_icons">
-                                <a  href="https://wa.me/+996707807507">
-                                    <WhatsAppIcon/>
-                                </a>
-                            </div>
-                        </div>
+                <div className="social logo-item">
+                    <div className="social_icons">
+                        <a href="https://t.me/+996707807507">
+                            <TelegramIcon/>
+                        </a>
                     </div>
-                    <p>+996 707 807 507</p>
+                    <div className="social_icons">
+                        <a href="https://www.instagram.com/bbutochka/">
+                            <InstagramIcon/>
+                        </a>
+                    </div>
+                    <div className="social_icons">
+                        <a  href="https://wa.me/+996707807507">
+                            <WhatsAppIcon/>
+                        </a>
+                    </div>
                 </div>
+                <p className='phone logo-item'>+996 707 807 507</p>
             </div>
-        </>
-    
         </div>
     );
 };

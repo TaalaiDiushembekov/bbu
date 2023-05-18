@@ -15,10 +15,10 @@
     display: flex;
     justify-content: space-between;
     position: absolute;
+    align-items: flex-end;
     top: 0;
     left: 24px;
     width: 95%;
-    /*background: url("../../images/bbu-124.jpg");*/
 }
 
 .logo{
@@ -33,40 +33,53 @@
 
 .logo_text{
     display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: end;
 }
 
-.logo_text p, .logo_text a{
+.phone, .apply-link{
     font-family: 'Rubik', sans-serif;
-    /*width: 350px;*/
-    /*color: #2D2D2D;*/
     color: #FF2E06;
     font-size: 20px;
     font-weight: bold;
     text-decoration: none;
+    /* padding: 0; */
+}
+.apply-link{
+    position: relative;
+}
+
+.apply-link::before {
+    content: '';
+    background: #FF2E06;
+    display: block;
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    transition: all 0.3s ease-in-out;
+} 
+
+.apply-link:hover::before,
+.apply-link:active::before{
+    width: 100%;
 }
 
 .social {
     display: flex;
-    /*width: 100%;*/
     align-items: center;
-    justify-content: center;
-}
-
-.social-box{
-    /*width: 600px;*/
-    display: flex;
     justify-content: center;
 }
 
 .social_icons {
     width: 50px;
     height: 50px;
-    /*border: white 1px solid;*/
     border-radius: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
-    /*margin: 0 10px;*/
 }
 
 .social_icons a{
@@ -94,6 +107,10 @@
     animation: animate 1s ease-in-out infinite;
 }
 
+.logo-item{
+    margin-left: 20px;
+}
+
 @keyframes animate {
     0%, 100% {
         width: 30px;
@@ -105,6 +122,12 @@
     }
 }
 
+@media (max-width: 700px) {
+    .phone{
+        margin: 0;
+    }
+}
+
 @media (max-width: 520px) {
     .logo_box{
         left: 0px;
@@ -112,17 +135,30 @@
 
     .logo_text{
         flex-direction: column;
+        align-items: end;
     }
 
-    .logo_text p{
+    .apply-link{
+        font-size: 18px;
+        order: 99;
+        padding-right: 10px;
+    }
+
+    .phone {
         font-size: 18px;
         order: -1;
-        margin-bottom: 0;
+        margin-top: 15px;
+    }
+
+    .social_icons{
+        height: 30px;
+        width: 40px;
     }
 }
 
 @media (max-width: 400px) {
-    .logo_text p{
+    .phone ,
+    .apply-link {
         font-size: 15px;
     }
 }

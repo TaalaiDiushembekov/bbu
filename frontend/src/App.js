@@ -94,7 +94,7 @@ function App() {
                         path="/organizations/:id"
                         component={() => <OrgDetails />}
                     />
-
+                    {/* <Route exact path="/organizations/:id" component={() => <OrgDetails />} />   */}
                     <PrivateRoute
                         exact
                         role="admin"
