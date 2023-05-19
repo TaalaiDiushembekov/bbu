@@ -395,22 +395,25 @@ const RegisterUser = ({ userId, userPassword, id, type, title, ...rest }) => {
                                     required={true}
                                 />
                             </div>
-                            <div className="input-wrapper">
-                                <TextField
+                            <div className="checkbox-wrapper">
+                                <input 
                                     type="checkbox"
                                     checked={registerData.is_checked}
                                     name="is_checked"
+                                    id="is_checked"
                                     onChange={isActiveHandler}
                                     label="Активация аккаунта"
+                                    className="is-checked-input"
                                     // required={true}
                                 />
+                                <label className="is-checked-label" htmlFor="is_checked">Активация аккаунта</label>
                             </div>
                         </>
                     ) : null}
                     {type === "approve" ? (
                         <Button
                             type="submit"
-                            title="Актвировать"
+                            title="Активировать"
                             className="register-btn"
                         />
                     ) : type === "patch" ? (

@@ -9,8 +9,7 @@ import Checkbox from "@material-ui/core/Checkbox";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import { userLoginAction } from "../../redux/actions/userAction";
-import { useHistory, useLocation, Link } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import Message from "../../components/message";
 import { useLoginMutation } from "../../redux/auth/auth.api.js";
 import { setUser } from "../../redux/auth/auth.slice";
@@ -18,7 +17,7 @@ import { setOrganization } from "../../redux/organization/org.slice";
 
 const useStyles = makeStyles((theme) => ({
     paper: {
-        marginTop: theme.spacing(8),
+        marginTop: theme.spacing(12),
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
