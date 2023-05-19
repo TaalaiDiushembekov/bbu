@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./screens/Home/Home.js";
-
 import Admin from "./screens//Admin/Admin.js";
 import UserDetails from "./screens/user-details";
 import About from "./screens/About/About.js";
@@ -19,7 +18,7 @@ import { useRefreshTokenQuery } from "./redux/auth/auth.api.js";
 import { setUser } from "./redux/auth/auth.slice.js";
 import { setOrganization } from "./redux/organization/org.slice.js";
 import PrivateRoute from "./components/PrivateRoute.jsx";
-import Organizations from "./screens/organizations.jsx";
+import Organizations from "./screens/Organizations/Organizations.jsx";
 import OrgDetails from "./screens/org-details.jsx";
 import AddTariff from "./screens/AddTariff/AddTariff.js";
 import Member from "./screens/Team/Member.jsx";
@@ -94,7 +93,6 @@ function App() {
                         path="/organizations/:id"
                         component={() => <OrgDetails />}
                     />
-                    {/* <Route exact path="/organizations/:id" component={() => <OrgDetails />} />   */}
                     <PrivateRoute
                         exact
                         role="admin"
@@ -106,14 +104,14 @@ function App() {
                         path='/add-tariff'
                         role="moderator"
                         component={() =>  <AddTariff />}
-                    ></PrivateRoute>  
+                    />  
                     <Route exact path="/add-partner" component={() => <AddPartner />} />  
                     <PrivateRoute
                         exact
                         path='/moderator/teams'
                         role="moderator"
                         component={() =>  <Member />}
-                    ></PrivateRoute>  
+                    />  
                 </Switch>
             </Layout>
         </Router>

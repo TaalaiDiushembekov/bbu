@@ -1,0 +1,22 @@
+.org-wrapper{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.org-wrapper a {
+  text-decoration: none;
+  color: #2D2D2D;
+}
+
+.org-card{
+  max-width: 345px;
+  min-width: 300px;
+  margin: 10px;
+  box-shadow: 0 0 5px rgb(1 41 112 / 30%);
+  border-radius: 5px;
+}
+
+.org-card:hover{
+  background: rgba(254, 62, 25, .7);
+}

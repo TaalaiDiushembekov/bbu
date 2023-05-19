@@ -25,6 +25,76 @@
     margin-left: auto;
 }
 
+.checkbox-wrapper{
+    margin: 20px 0;
+}
+
+.is-checked-input:checked, 
+.is-checked-input:not(:checked){
+    position: absolute;
+    left: -9999px;
+}
+
+.is-checked-input:checked + .is-checked-label, 
+.is-checked-input:not(:checked) + .is-checked-label {
+    display: inline-block;
+    position: relative;
+    padding-left: 28px;
+    line-height: 20px;
+    cursor: pointer;
+}
+
+.is-checked-input:checked + .is-checked-label:before, 
+.is-checked-input:not(:checked) + .is-checked-label:before {
+    content: "";
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #dddddd;
+    background-color: #ffffff;
+}
+
+.is-checked-input:checked + .is-checked-label:before, 
+.is-checked-input:not(:checked) + .is-checked-label:before {
+    border-radius: 5px;
+}
+
+.is-checked-input:checked + .is-checked-label:after, 
+.is-checked-input:not(:checked) + .is-checked-label:after {
+    content: "";
+    position: absolute;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+.is-checked-input:checked + .is-checked-label:after, 
+.is-checked-input:not(:checked) + .is-checked-label:after {
+    left: 3px;
+    top: 4px;
+    width: 10px;
+    height: 5px;
+    border-radius: 1px;
+    border-left: 4px solid rgb(240, 36, 6);;
+    border-bottom: 4px solid rgb(240, 36, 6);;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+.is-checked-input:not(:checked) + .is-checked-label:after {
+    opacity: 0;
+}
+
+.is-checked-input:checked + .is-checked-label:after {
+    opacity: 1;
+}
+
 @media (max-width: 569px){
     .passport-input-wrapper{
         display: flex;

@@ -1,12 +1,10 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import logo from "../../images/logo.png";
-import './Logo.css'
-import Container from "@material-ui/core/Container";
 import TelegramIcon from "@material-ui/icons/Telegram";
 import InstagramIcon from "@material-ui/icons/Instagram";
 import WhatsAppIcon from "@material-ui/icons/WhatsApp";
-
+import './Logo.css'
 
 const Logo = () => {
     return (
