@@ -19,7 +19,7 @@ connectDB()
 const PORT = process.env.PORT || 8080
 
 const corsOptions ={
-    origin: 'http://localhost:3000',
+    // origin: 'http://localhost:3000',
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200
 }
@@ -32,6 +32,7 @@ app.use(cookieParser())
 app.use('/api/v1', router)
 
 app.use('/api/v1', express.static(path.resolve(__dirname, 'public/assets/img/team')))
+app.use('/api/v1', express.static(path.resolve(__dirname, 'public/assets/img/partner')))
 
 // if (process.env.NODE_ENV === 'production') {
 //         app.use(express.static(path.join(path.resolve(), '/frontend/build')))

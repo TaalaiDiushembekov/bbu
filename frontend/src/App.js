@@ -4,7 +4,7 @@ import Home from "./screens/Home/Home.js";
 import Admin from "./screens//Admin/Admin.js";
 import UserDetails from "./screens/user-details";
 import About from "./screens/About/About.js";
-import Team from "./screens/Team/Team.js";
+import Team from "./screens/Team/Team";
 import Tariffs from "./screens/Tariffs/Tariffs.js";
 import Services from "./screens/Services/Services.js";
 import Login from "./screens/Login/Login.js";
@@ -28,16 +28,15 @@ import AddPartner from "./screens/AddPartner/AddPartner.js";
 function App() {
     const dispatch = useDispatch();
     const { data, isLoading } = useRefreshTokenQuery();
-    console.log(data)
+    console.log(data);
     useEffect(() => {
         if (!isLoading && data !== undefined) {
             const org = data?.org;
             const documents = org?.org_document;
             dispatch(setUser({ ...data }));
             dispatch(setOrganization({ ...org }));
-            dispatch(setDocument(documents))
+            dispatch(setDocument(documents));
         }
-        
     }, [isLoading]);
 
     return (
@@ -46,41 +45,66 @@ function App() {
                 <Switch>
                     <Route exact path="/" component={() => <Home />} />
                     <Route exact path="/about" component={() => <About />} />
+
+                    <Route
+                        exact
+                        path="/services"
+                        component={() => <Services />}
+                    />
+
+                    <Route exact path="/team" component={() => <Team />} />
+
+                    <Route
+                        exact
+                        path="/tariffs"
+                        component={() => <Tariffs />}
+                    />
+
+                    <Route exact path="/login" component={() => <Login />} />
+
+                    <Route
+                        exact
+                        path="/user-registration"
+                        component={() => <RegisterUser />}
+                    />
+
+                    <PrivateRoute
+                        exact
+                        path="/partner/add"
+                        role="moderator"
+                        component={() => <AddPartner />}
+                    />
+                    <PrivateRoute
+                        exact
+                        path="/team/add"
+                        role="moderator"
+                        component={() => <Member type={"create"} />}
+                    />
+                    <PrivateRoute
+                        exact
+                        path="/team/:id"
+                        role="moderator"
+                        component={() => <Member type={"update"} />}
+                    />
                     <PrivateRoute
                         exact
                         path="/tariffs/:id"
                         role="moderator"
                         component={() => <AddTariff />}
                     />
-                    <Route
+                    <PrivateRoute
                         exact
-                        path="/tariffs"
-                        component={() => <Tariffs />}
+                        path="/add-tariff"
+                        role="moderator"
+                        component={() => <AddTariff />}
                     />
-                    <Route
-                        exact
-                        path="/services"
-                        component={() => <Services />}
-                    />
-                    <Route exact path="/team" component={() => <Team />} />
-                    <Route exact path="/login" component={() => <Login />} />
                     <PrivateRoute
                         exact
                         path="/admin"
                         role="admin"
                         component={() => <Admin />}
                     />
-                    <PrivateRoute
-                        exact
-                        path="/profile"
-                        role="user"
-                        component={() => <Profile />}
-                    ></PrivateRoute>
-                    <Route
-                        exact
-                        path="/user-registration"
-                        component={() => <RegisterUser />}
-                    />
+
                     <PrivateRoute
                         exact
                         role="admin"
@@ -101,17 +125,10 @@ function App() {
                     />
                     <PrivateRoute
                         exact
-                        path='/add-tariff'
-                        role="moderator"
-                        component={() =>  <AddTariff />}
-                    />  
-                    <Route exact path="/add-partner" component={() => <AddPartner />} />  
-                    <PrivateRoute
-                        exact
-                        path='/moderator/teams'
-                        role="moderator"
-                        component={() =>  <Member />}
-                    />  
+                        path="/profile"
+                        role="user"
+                        component={() => <Profile />}
+                    ></PrivateRoute>
                 </Switch>
             </Layout>
         </Router>

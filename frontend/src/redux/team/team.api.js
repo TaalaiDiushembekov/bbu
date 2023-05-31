@@ -1,16 +1,48 @@
 import { apiSlice } from "../api";
 
-
 export const teamApi = apiSlice.injectEndpoints({
-    endpoints: builder => ({
+    endpoints: (builder) => ({
         getTeam: builder.query({
             query: () => ({
                 url: "/team",
                 method: "GET",
-                responseType: 'json'
+                responseType: "json",
+            }),
+        }),
+        getOneMember: builder.query({
+            query: (id) => ({
+                url: `/team/${id}`,
+                method: "GET",
+                responseType: "json",
+            }),
+        }),
+        updateMember: builder.mutation({
+            query: ({ id, data }) => ({
+                url: `/team/${id}`,
+                method: "PATCH",
+                body: data,
+            }),
+        }),
+        createMember: builder.mutation({
+            query: (payload) => ({
+                url: "/team/create",
+                method: "POST",
+                body: payload,
+            }),
+        }),
+        deleteMember: builder.mutation({
+            query: (id) => ({
+                url: `/team/${id}`,
+                method: "DELETE",
             }),
         }),
     }),
 });
 
-export const { useGetTeamQuery} = teamApi;
+export const {
+    useGetTeamQuery,
+    useGetOneMemberQuery,
+    useUpdateMemberMutation,
+    useCreateMemberMutation,
+    useDeleteMemberMutation,
+} = teamApi;

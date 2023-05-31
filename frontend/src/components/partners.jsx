@@ -7,25 +7,20 @@ import Spinner from "./spinner";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import Partner from "./Partner/Partner";
+import { useGetPartnersQuery } from '../redux/partners/partner.api';
 
-const Partners = () => {
-
-    const dispatch = useDispatch()
-    useEffect(() => {
-        dispatch(partnersListAction())
-
-    },[])
-    const {partners, loading} = useSelector((s) => s.partner)
+const Partners = () => {    
+    const { data, isLoading } = useGetPartnersQuery();
     return (
         <>
             {/*<Typography variant="h4" component="h3">*/}
             {/*    all partners*/}
             {/*</Typography>*/}
-            {loading ? <Spinner /> : (
+            {isLoading ? <Spinner /> : (
                 <Box mt={3}>
                     <Grid container spacing={3}>
                         {
-                            partners?.map((partner) => (
+                            data?.map((partner) => (
                                 <Partner
                                     key={partner._id}
                                     partner={partner} 

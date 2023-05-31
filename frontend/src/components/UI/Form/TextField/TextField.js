@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import "./TextField.css";
 
 const TextField = ({
+    field,
     name,
     onChange,
     onClick,
@@ -14,26 +15,39 @@ const TextField = ({
     labelClass,
     pattern,
     placeholder,
-    checked
+    checked,
 }) => {
     return (
         <>
             <label className={labelClass} htmlFor={name}>
                 {label}
             </label>
-            <input
-                type={type}
-                name={name}
-                id={name}
-                value={value}
-                required={required}
-                onChange={onChange}
-                onClick={onClick}
+            {field ? (
+                <textarea 
+                
                 className={className}
-                pattern={pattern}
-                placeholder={placeholder}
-                checked={checked}
-            />
+
+                onChange={onChange}
+                name={name}
+                value={value}/>
+
+                
+                
+            ) : (
+                <input
+                    type={type}
+                    name={name}
+                    id={name}
+                    value={value}
+                    required={required}
+                    onChange={onChange}
+                    onClick={onClick}
+                    className={className}
+                    pattern={pattern}
+                    placeholder={placeholder}
+                    checked={checked}
+                />
+            )}
         </>
     );
 };

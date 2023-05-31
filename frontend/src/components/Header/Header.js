@@ -18,10 +18,10 @@ const CustomMenuItem = forwardRef(({role , ...rest}, ref) => {
             <div ref={ref}>
                         
              <MenuItem {...rest} to='/organizations'>
-                Register User
+                Активировать клиентов
             </MenuItem>
             <MenuItem {...rest} to='/admin'>
-                Dashboard
+                Клиенты
             </MenuItem>
             </div>
         );
@@ -34,6 +34,12 @@ const CustomMenuItem = forwardRef(({role , ...rest}, ref) => {
              <MenuItem {...rest} to='/add-tariff'>
                 Добавить тариф
             </MenuItem>
+            <MenuItem {...rest} to='/partner/add'>
+                Добавить партнера
+            </MenuItem>
+            <MenuItem {...rest} to='/team/add'>
+                Добавить сотрудника
+            </MenuItem>
             </div>
         );
     }
@@ -41,7 +47,7 @@ const CustomMenuItem = forwardRef(({role , ...rest}, ref) => {
     if(role === 'user'){
         return (
             <MenuItem {...rest} to='/profile' ref={ref}>
-                Profile
+                Перейти в профиль
             </MenuItem>
         );
     }
@@ -114,7 +120,7 @@ const Header = () => {
                                     component={Link}
                                     to="/"
                                 >
-                                    Logout
+                                    Выйти
                                 </MenuItem>
                             </Menu>
                         </>

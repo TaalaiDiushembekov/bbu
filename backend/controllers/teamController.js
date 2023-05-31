@@ -14,6 +14,7 @@ const __dirname = path.dirname(__filename);
 
 const createMember = async (req, res, next) => {
     try {
+        console.log(req.body)
         const { name, position, description, order } = req.body;
         const { image } = req.files;
         let imgName = v4() + ".jpg";
@@ -36,21 +37,26 @@ const createMember = async (req, res, next) => {
 
 const updateMember = async(req,res,next) => {
     try {
-        const {id} = req.params
-        const { name, position, description, order, currentImg } = req.body;
-        const { image } = req.files;
+        const {id} = req.params;
+        const { name, position, description, order } = req.body;
+        let image;
+        image = req.files?.image ?? 'asd';
+
         let imgName = v4() + ".jpg";
         image.mv(
             path.resolve(__dirname, "..", "public/assets/img/team", imgName)
         );
-        const memberData = await createMemberService({
+        // console.log(`=====${imgName}=====`)
+        // console.log(req.body)
+        const memberData = await updateMemberSerive({
+            _id: id,
             image: imgName,
             name,
             position,
             description,
             order,
         });
-        res.json(member)
+        res.json(memberData)
 
     } catch (error) {
         next(error)
@@ -87,4 +93,4 @@ const deleteMember = async (req, res, next) => {
     }
 };
 
-export { createMember, getTeam };
+export { createMember, getTeam, getOneMember, deleteMember, updateMember };

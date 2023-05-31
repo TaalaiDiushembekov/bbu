@@ -60,7 +60,7 @@ const logout = async (req, res, next) => {
             maxAge: 0,
             httpOnly: true,
         });
-        res.send("Logout Succeed");
+        res.send({msg: "Logout Succeed"});
     } catch (error) {
         next(error);
     }

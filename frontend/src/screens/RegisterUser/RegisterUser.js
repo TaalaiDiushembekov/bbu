@@ -76,10 +76,6 @@ const RegisterUser = ({ userId, userPassword, id, type, title, ...rest }) => {
         }
     }, []);
 
-    useEffect(() => {
-        console.log(registerData);
-    }, [registerData.is_checked]);
-
     const isActiveHandler = (e) => {
         setRegisterData((prev) => ({ ...prev, is_checked: !prev.is_checked }));
     };
