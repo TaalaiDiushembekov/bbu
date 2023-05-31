@@ -4,7 +4,7 @@ import Button from "../../components/UI/Button/Button";
 import './AddTariff.css';
 import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { useDispatch, useSelector } from "react-redux";
-import { useGetOneTariffQuery, useUpdateTariffMutation, useUploadTariffMutation } from "../../redux/tariffs/tariff.api";
+import { useDeleteTariffMutation, useGetOneTariffQuery, useUpdateTariffMutation, useUploadTariffMutation } from "../../redux/tariffs/tariff.api";
 import { setTariff } from "../../redux/tariffs/tariff.slice";
 
 const AddTariff = () => {
@@ -14,6 +14,9 @@ const AddTariff = () => {
   const [services, setServices] = useState(['']);
 
   const {data, isLoading} = useGetOneTariffQuery(id)
+
+  const [deleteTariff] = useDeleteTariffMutation();
+
 
   const [uploadTariff, response] = useUploadTariffMutation()
   const [updateTariff] = useUpdateTariffMutation()
@@ -66,6 +69,11 @@ const AddTariff = () => {
     history.push('/tariffs')
   };
 
+  const deleteHandler = (id) => {
+    deleteTariff(id)
+    history.push('/tariffs')
+  }
+
   return (
     <div className="container">
       <div className="addTariff">
@@ -109,6 +117,13 @@ const AddTariff = () => {
             title="Сохранить"
             className="register-btn"
           />
+          {
+            id ? <Button
+            onClick={() => deleteHandler(id)}
+            title="Удалить"
+            className="register-btn"
+          /> : null
+          }
         </form>
       </div>
     </div>

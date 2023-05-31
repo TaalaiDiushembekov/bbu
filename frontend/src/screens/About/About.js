@@ -6,8 +6,13 @@ import {Swiper, SwiperSlide} from "swiper/react";
 import Partners from "../../components/partners";
 import Button from "../../components/UI/Button/Button";
 import './About.css';
+import { useGetPartnersQuery } from '../../redux/partners/partner.api';
+import { API } from '../../consts';
 
 const About = () => {
+
+
+
     return (
         <div className="container">
             <div className="menuList">
@@ -36,56 +41,7 @@ const About = () => {
                             <h2>Наши партнеры</h2>
                         </div>
                         <div className="our-partners-box">
-                            <Swiper
-                                /*    // spaceBetween={20}*/
-                                /*    slidesPerView={1}*/
-                                /*    centeredSlides={true}*/
-                                /*    onSlideChange={() => console.log('slide change')}*/
-                                /*    onSwiper={(swiper) => console.log(swiper)}*/
-                                /*    autoplay={{*/
-                                /*        delay: 2500,*/
-                                /*        disableOnInteraction: false,*/
-                                /*    }}*/
-                                /*    loop={true}*/
-                                /*    pagination={{*/
-                                /*        dynamicBullets: true,*/
-                                /*    }}*/
-                                /*    modules={[Pagination, Autoplay]}*/
-                                /**/
-                                /**/
-                            >
-                                <SwiperSlide>
-                                    {/*<img*/}
-                                    {/*    alt=""*/}
-                                    {/*    src={partners1}*/}
-                                    {/*/>*/}
-                                    <Card>
-                                        <CardActionArea>
-                                            {/*<CardMedia*/}
-                                            {/*    component="img"*/}
-                                            {/*    // alt="Contemplative Reptile"*/}
-                                            {/*    height="140"*/}
-                                            {/*    image={partners.image}*/}
-                                            {/**/}
-                                            {/*    // title="Contemplative Reptile"*/}
-                                            {/*/>*/}
-
-                                            {/*<>*/}
-                                            {/*    {*/}
-                                            {/*        // partners.map((partner) => (*/}
-                                            {/*        //     <Partner partner={partner}/>*/}
-                                            {/*        // ))*/}
-                                            {/*}*/}
-                                            {/*</>*/}
-                                        </CardActionArea>
-                                    </Card>
-                                </SwiperSlide>
-                                {/*<SwiperSlide>*/}
-                                {/*    <img alt="" src={partners2} />*/}
-                                {/*</SwiperSlide>*/}
-                                {/*<SwiperSlide><img alt="" src={partners3} /></SwiperSlide>*/}
-                            </Swiper>
-                            {/* <Partners/> */}
+                            <Partners/>
                         </div>
                     </div>
                 </div>

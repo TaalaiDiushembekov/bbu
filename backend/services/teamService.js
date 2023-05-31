@@ -14,8 +14,10 @@ const createMember = async ({ image, name, position, description, order }) => {
     return { member: {id: member.id, image, name, position, description, order } };
 };
 
-const updateMember = async (_id, image, name, position, description, order) => {
-    const member = TeamModel.updateOne({_id}, {image, name, position, description, order})
+const updateMember = async ({_id, image, name, position, description, order}) => {
+    console.log(_id)
+    console.log({_id}, {image, name, position, description, order})
+    const member = await TeamModel.updateOne({_id}, {image, name, position, description, order})
 
     return member
 }

@@ -19,9 +19,16 @@ const useStyles = makeStyles({
     }
 });
 
-const User = ({user}) => {
-    const classes = useStyles();
 
+
+const User = ({user}) => {
+    console.log(user)
+    const classes = useStyles();
+    // const renderedData = Object.keys(user).map(k => (
+    //     <div>
+            
+    //     </div>
+    // ))
     return (
         <Card className={classes.root}>
             <Link to={`/admin/${user._id}`} sx={{textDecoration: 'none'}} className={classes.text}>
@@ -29,7 +36,7 @@ const User = ({user}) => {
                     {user.role}
                 </Typography>
                 <Typography variant="body2" gutterBottom>
-                    {user.org}
+                    {user.org.org_name}
                 </Typography>
                 <Typography gutterBottom>
                     {user.email}

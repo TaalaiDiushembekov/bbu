@@ -47,7 +47,7 @@ const Profile = () => {
                         >
                             <Tab value="one" label="Реквизиты" />
                             <Tab value="two" label="Документы" />
-                            <Tab value="three" label="Акты сверки" />
+                            {/* <Tab value="three" label="Акты сверки" /> */}
                         </Tabs>
                         <SelectedComponent tab={tab}/>
                     </Container>

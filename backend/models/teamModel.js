@@ -17,7 +17,8 @@ const teamModel = new Schema({
         type: String
     },
     order:{
-        type: Number
+        type: Number,
+        default: null
     }
 })
 

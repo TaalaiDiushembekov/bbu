@@ -7,6 +7,7 @@ import CardContent from "@material-ui/core/CardContent";
 import {makeStyles} from "@material-ui/core/styles";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Autoplay, Pagination} from "swiper";
+import { API } from '../../consts';
 
 
 const useStyles = makeStyles({
@@ -49,7 +50,7 @@ const Partner = ({partner}) => {
                                 <CardMedia
                                     component="img"
                                     image=
-                                        {partner.image}
+                                        {`${API}/${partner.image}`}
 
                                     alt=""
                                     height="140"

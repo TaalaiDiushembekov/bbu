@@ -1,4 +1,4 @@
-input {
+input, textarea {
     outline: none;
     width: 300px;
     max-width: 300px;
@@ -8,6 +8,14 @@ input {
     font-size: 16px;
     margin-left: auto;
 }
+
+textarea{
+    min-height: 100px;
+    resize: none;
+}
+
+
+
 
 @media (max-width: 400px) {
     input {

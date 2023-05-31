@@ -29,8 +29,14 @@ export const tariffApi = apiSlice.injectEndpoints({
             query: (id) => ({
                 url: `/tariff/${id}`
             })
+        }),
+        deleteTariff: builder.mutation({
+            query: (id) => ({
+                url: `/tariff/${id}`,
+                method: 'DELETE'
+            })
         })
     }),
 });
 
-export const { useGetTariffsQuery, useUploadTariffMutation, useUpdateTariffMutation, useGetOneTariffQuery} = tariffApi;
+export const { useGetTariffsQuery, useUploadTariffMutation, useUpdateTariffMutation, useGetOneTariffQuery, useDeleteTariffMutation} = tariffApi;

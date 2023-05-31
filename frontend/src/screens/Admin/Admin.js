@@ -6,7 +6,7 @@ import './Admin.css';
 
 const Admin = () => {
     const {data, isLoading, error} = useGetAllUsersQuery();
-    console.log(data)
+    // console.log(data)
 
     if (error) return <div>Error: {error.message}</div>
 
@@ -15,7 +15,7 @@ const Admin = () => {
             <h4 className='title'>Все пользователи</h4>
             {isLoading ? <Spinner /> : (
                 <div className='users-wrapper'>
-                    {data?.filter(el => el.org !== null).map((user) => (
+                    {data?.filter(el => el?.org !== null).map((user) => (
                         <User key={user._id} user={user} />))
                     }
                 </div>
