@@ -46,6 +46,6 @@ createSuperAdmin(SU_EMAIL, SU_PASSWORD, SU_ROLE)
 createModerator(MD_EMAIL, MD_PASSWORD, MD_ROLE)
 
 
-app.listen(PORT, () => {
-    console.log(`Server is running on ${PORT} port`)
+app.listen(PORT, "0.0.0.0", () => {
+    console.log(`Server is running on ${PORT} portq`)
 })
