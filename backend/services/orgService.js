@@ -17,11 +17,11 @@ const createOrg = async (
     org_legal,
     org_civil_status
 ) => {
-    const oldOrg = await OrgModel.findOne({ org_social_number });
+    const oldOrg = await OrgModel.findOne({ org_pin });
 
     if (oldOrg) {
         throw ErrorService.ServerInternalError(
-            "This organization already registered"
+            "Эта организация уже зарегистрирована"
         );
     }
 

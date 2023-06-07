@@ -59,8 +59,7 @@ function App() {
                         path="/tariffs"
                         component={() => <Tariffs />}
                     />
-
-                    <Route exact path="/login" component={() => <Login />} />
+                    <Route exact path="/login" component={() => <Login data={data}/>} />
 
                     <Route
                         exact
