@@ -9,6 +9,8 @@ import {
     useUpdateOrgMutation,
 } from "../../redux/organization/org.api";
 
+import Message from "../../components/message";
+
 const ownership = ["Государственная", "Муниципальная", "Частная", "Иная"];
 const civil = [
     "Физическое лицо",
@@ -18,8 +20,10 @@ const civil = [
 ];
 
 const RegisterUser = ({ userId, userPassword, id, type, title, ...rest }) => {
-    const [createOrg] = useCreateOrgMutation();
-    const [updateOrg, result] = useUpdateOrgMutation();
+    const [createOrg, result] = useCreateOrgMutation();
+    const [updateOrg] = useUpdateOrgMutation();
+
+    const [errorMsg, setErrorMsg] =  useState('')
     const history = useHistory();
 
     const update = type === 'patch' ? true : false
@@ -99,29 +103,37 @@ const RegisterUser = ({ userId, userPassword, id, type, title, ...rest }) => {
 
     const submitFormHandler = async (e) => {
         e.preventDefault();
-        if (type === "approve") {
-            const data = await updateOrg({
-                data: registerData,
-                id: id,
-            }).unwrap();
-            if (data?.orgData?.acknowledged) {
-                alert("Пользователь сохранен");
+        try {
+            if (type === "approve") {
+                const data = await updateOrg({
+                    data: registerData,
+                    id: id,
+                }).unwrap();
+                if (data?.orgData?.acknowledged) {
+                    alert("Пользователь сохранен");
+                }
             }
-        }
-        else if (type === "patch") {
-            const data = await updateOrg({
-                data: registerData,
-                id: id,
-            }).unwrap();
-            console.log(data)
-            if (data?.orgData?.acknowledged) {
-                alert("Пользователь сохранен");
+            else if (type === "patch") {
+                const data = await updateOrg({
+                    data: registerData,
+                    id: id,
+                }).unwrap();
+                console.log(data)
+                if (data?.orgData?.acknowledged) {
+                    alert("Пользователь сохранен");
+                } 
+            }
+            else {
+                const orgData = await createOrg(registerData).unwrap();
+                console.log(orgData);
+                console.log(result)
+            }
+        } catch (error) {
+            if(error){
+                setErrorMsg(error.data.message)
             } 
         }
-        else {
-            const orgData = await createOrg(registerData).unwrap();
-            console.log(orgData);
-        }
+        
 
         // history.push("/organizations");
     };
@@ -130,7 +142,12 @@ const RegisterUser = ({ userId, userPassword, id, type, title, ...rest }) => {
         <div className="container">
             <div className="register-user">
                 <h3 className="title">
-                    {!title ? "Форма регистрации нового пользователя" : title}
+                    {
+                        errorMsg ?  <Message type="error">{errorMsg}</Message>
+                        :
+                        (!title ? "Форма регистрации нового пользователя" : title)
+                        
+                    }
                 </h3>
                 <form onSubmit={submitFormHandler}>
                     <div className="input-wrapper">
@@ -195,6 +212,7 @@ const RegisterUser = ({ userId, userPassword, id, type, title, ...rest }) => {
                                     }
                                     label="номер"
                                     labelClass="passport-label"
+                                    required={true}
                                 />
                             </div>
                             <div className="passport-input-wrapper-inner">
@@ -214,6 +232,7 @@ const RegisterUser = ({ userId, userPassword, id, type, title, ...rest }) => {
                                     }
                                     label="выдан"
                                     labelClass="passport-label"
+                                    required={true}
                                 />
                             </div>
                             <div className="passport-input-wrapper-inner">
@@ -232,6 +251,7 @@ const RegisterUser = ({ userId, userPassword, id, type, title, ...rest }) => {
                                     }
                                     label="от"
                                     labelClass="passport-label"
+                                    required={true}
                                 />
                             </div>
                         </div>
@@ -243,6 +263,7 @@ const RegisterUser = ({ userId, userPassword, id, type, title, ...rest }) => {
                             value={registerData.org_accountant}
                             onChange={inputChangeHandler}
                             label="Главный бухгалтер"
+                            required={true}
                         />
                     </div>
                     <div className="input-wrapper">
@@ -267,6 +288,7 @@ const RegisterUser = ({ userId, userPassword, id, type, title, ...rest }) => {
                                     }
                                     label="номер"
                                     labelClass="passport-label"
+                                    required={true}
                                 />
                             </div>
                             <div className="passport-input-wrapper-inner">
@@ -286,6 +308,7 @@ const RegisterUser = ({ userId, userPassword, id, type, title, ...rest }) => {
                                     }
                                     label="выдан"
                                     labelClass="passport-label"
+                                    required={true}
                                 />
                             </div>
                             <div className="passport-input-wrapper-inner">
@@ -305,6 +328,7 @@ const RegisterUser = ({ userId, userPassword, id, type, title, ...rest }) => {
                                     }
                                     label="от"
                                     labelClass="passport-label"
+                                    required={true}
                                 />
                             </div>
                         </div>
