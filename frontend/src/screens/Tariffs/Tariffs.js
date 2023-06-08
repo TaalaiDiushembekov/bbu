@@ -30,7 +30,7 @@ const Tariffs = () => {
                         </div>
                         <div  className="tariffs-two">
                             {isLoading ? 'loading...' : (
-                                data.map(tarif => (
+                                data?.map(tarif => (
                                     <div className="tariffs-three" key={tarif._id} onClick={role === 'moderator' ? () => handleClick(tarif._id) : null}>
                                         <h2>{tarif.name}</h2>
                                         {

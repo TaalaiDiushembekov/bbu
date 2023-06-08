@@ -19,7 +19,7 @@ connectDB()
 const PORT = process.env.PORT || 8080
 
 const corsOptions ={
-    // origin: 'http://localhost:3000',
+    origin: 'http://tochka.bbu.kg',
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200
 }
@@ -46,6 +46,6 @@ createSuperAdmin(SU_EMAIL, SU_PASSWORD, SU_ROLE)
 createModerator(MD_EMAIL, MD_PASSWORD, MD_ROLE)
 
 
-app.listen(PORT, () => {
-    console.log(`Server is running on ${PORT} port`)
+app.listen(PORT, "0.0.0.0", () => {
+    console.log(`Server is running on ${PORT} portq`)
 })

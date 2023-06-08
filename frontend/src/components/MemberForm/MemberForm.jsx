@@ -10,6 +10,7 @@ import {
     useUpdateMemberMutation,
 } from "../../redux/team/team.api";
 import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min";
+import { API } from "../../consts";
 
 const MemberForm = ({ id, type, data, isLoading }) => {
 
@@ -183,7 +184,7 @@ const MemberForm = ({ id, type, data, isLoading }) => {
                             <Card style={{ padding: "10px" }}>
                                 <p>Текущая фотография:</p>
                                 <img
-                                    src={`http://localhost/backend/api/v1/${member.image}`}
+                                    src={`${API}/${member.image}`}
                                     width={"300px"}
                                     alt=""
                                 />
@@ -206,7 +207,7 @@ const MemberForm = ({ id, type, data, isLoading }) => {
                                     accept={".png, .jpg, .jpeg, .pdf"}
                                 />
                                 <img
-                                    src={`http://localhost/backend/api/v1/${member.image}`}
+                                    src={`${API}/${member.image}`}
                                     width={"300px"}
                                     alt=""
                                 />

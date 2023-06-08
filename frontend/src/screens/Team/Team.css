@@ -73,9 +73,7 @@
     font-size: 12px;
     color: white;
 }
-
-.four{
-    background: url("../../images/bbu_ceo2.jpg");
+.member_container{
     width: 300px;
     height: 300px;
     position: relative;
@@ -84,7 +82,33 @@
     margin: 5%;
     border-bottom: 3px solid #C8C8C8;
     box-shadow: 0 0 30px rgb(1 41 112 / 30%);
-    background-position: center;
+}
+
+.member_container__inner{
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    text-align: center;
+    opacity: 0;
+    transform: scale(5);
+    transition: 0.5s;
+}
+
+.member_container:hover .member_container__inner {
+    transform: scale(1);
+    opacity: 1;
+    background: rgba(0, 0, 0,.7);
+}
+
+.member_container__inner div h3{
+    margin: 0 auto;
+    background: #858585;
+    width: 200px;
+    height: 2px;
+}
+.four{
+    background: url("../../images/bbu_ceo2.jpg");
+
 }
 
 .four2{
@@ -153,7 +177,7 @@
 }
 
 .four7{
-    background: url("../../images/bbu_5611.jpg");
+    /* background: url("../../images/bbu_5611.jpg"); */
     width: 300px;
     height: 300px;
     position: relative;
