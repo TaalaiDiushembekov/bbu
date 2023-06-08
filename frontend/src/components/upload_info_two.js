@@ -42,6 +42,8 @@ const UploadInfoTwo = ({org_id}) => {
         link: '',
         org_id
     })
+
+    console.log(document)
     const inputChangeHandler = (e) => {
        const {name, value} = e.target;
        setDocument((prev) => ({ ...prev, [name]: value }));

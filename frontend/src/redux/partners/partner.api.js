@@ -5,19 +5,29 @@ export const partnerApi = apiSlice.injectEndpoints({
             query: () => ({
                 url: "/partner",
             }),
+            providesTags: () => [{
+                type: 'partner'
+            }]
+            
         }),
         uploadPartner: builder.mutation({
             query: (payload) => ({
                 url: "/partner",
                 method: 'POST',
                 body: payload
-            })
+            }),
+            invalidatesTags: () => [{
+                type: 'partner'
+            }]
         }),
         deletePartner: builder.mutation({
             query: (id) => ({
                 url: `/partner/${id}`,
                 method: 'DELETE'
-            })
+            }),
+            invalidatesTags: () => [{
+                type: 'partner'
+            }]
         })
     }),
 });

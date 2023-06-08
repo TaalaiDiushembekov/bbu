@@ -13,6 +13,7 @@ import { useDeleteDocMutation } from "../redux/documents/docs.api";
 
 const DocumentList = ({ docs, org_id }) => {
     const [deleteDoc, response] = useDeleteDocMutation();
+    console.log(docs)
     const handleClick = (id) => {
         deleteDoc(id);
         console.log(response);
@@ -35,9 +36,9 @@ const DocumentList = ({ docs, org_id }) => {
                             <div key={doc?._id}>
                                 <ListItem>
                                     <ListItemText primary={doc?.name} />
-                                    <ListItemText>
+                                    <ListItemText style={{}}>
                                         <a href={`http://${doc?.link}`}>
-                                            {doc?.link}
+                                            Перейти к документу
                                         </a>
                                     </ListItemText>
                                 </ListItem>
@@ -53,7 +54,7 @@ const DocumentList = ({ docs, org_id }) => {
                     </List>
                 </Box>
                 <Box gridColumn={"span 4"}>
-                    <UploadInfoTwo org_id={org_id}/>
+                    <UploadInfoTwo org_id={org_id} />
                 </Box>
             </Box>
         </>
