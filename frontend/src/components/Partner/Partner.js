@@ -4,9 +4,9 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import CardContent from "@material-ui/core/CardContent";
-import {makeStyles} from "@material-ui/core/styles";
-import {Swiper, SwiperSlide} from "swiper/react";
-import {Autoplay, Pagination} from "swiper";
+import { makeStyles } from "@material-ui/core/styles";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination } from "swiper";
 import { API } from '../../consts';
 
 
@@ -18,54 +18,27 @@ const useStyles = makeStyles({
         objectFit: 'contain'
     }
 })
-const Partner = ({partner}) => {
+const Partner = ({ partner }) => {
     const classes = useStyles()
     return (
         <div>
             <Card>
+                <Card>
+                    <CardActionArea>
+                        <CardMedia
+                            component="img"
+                            image=
+                            {`${API}/${partner.image}`}
 
-                {/*<Swiper*/}
-                {/*        spaceBetween={20}**/}
-                        {/*slidesPerView={1}*/}
-                        {/*centeredSlides={true}*/}
-                        {/*autoplay={{*/}
-                        {/*    delay: 2500,*/}
-                        {/*    disableOnInteraction: false,*/}
-                        {/*}}*/}
-                        {/*loop={true}*/}
-                        {/*pagination={{*/}
-                        {/*    dynamicBullets: true,*/}
-                        {/*}}*/}
-                        {/*modules={[Pagination, Autoplay]}*/}
-                {/**/}
-                {/**/}
-                {/*>*/}
-                {/*    <SwiperSlide>*/}
+                            alt=""
+                            height="140"
 
-                        <Card
+                            className={classes.productImage}
+                            title=""
+                        />
 
-                        >
-
-                            <CardActionArea>
-                                <CardMedia
-                                    component="img"
-                                    image=
-                                        {`${API}/${partner.image}`}
-
-                                    alt=""
-                                    height="140"
-
-                                    className={classes.productImage}
-                                    title=""
-                                />
-                            {/**/}
-                            {/**/}
-                            </CardActionArea>
-                        </Card>
-                    {/*</SwiperSlide>*/}
-
-
-                {/*</Swiper>*/}
+                    </CardActionArea>
+                </Card>
             </Card>
         </div>
     );

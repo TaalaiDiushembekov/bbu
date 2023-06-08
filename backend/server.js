@@ -19,7 +19,7 @@ connectDB()
 const PORT = process.env.PORT || 8080
 
 const corsOptions ={
-    // origin: 'http://localhost:3000',
+    origin: 'http://tochka.bbu.kg',
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200
 }
