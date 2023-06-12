@@ -74,6 +74,8 @@
     color: white;
 }
 .member_container{
+    background-size: cover;
+    background-position: center;
     width: 300px;
     height: 300px;
     position: relative;

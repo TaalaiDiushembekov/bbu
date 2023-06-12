@@ -31,8 +31,7 @@ const Team = () => {
                 <div className="ExpertTeam_box">
                 {
                     data?.map((mem) => (  
-                        <div onClick={role === 'moderator' ? () => handleClick(mem._id) : null} key={mem._id} className="member_container" style={{background: `url(${API}/${mem.image}) `, 
-                        backgroundPosition: 'center'}}>
+                        <div onClick={role === 'moderator' ? () => handleClick(mem._id) : null} key={mem._id} className="member_container" style={{background: `url(${API}/${mem.image}) `}}>
                             <div className="member_container__inner">
                                 <h3>{mem?.name}</h3>
                                 <h4>{mem?.position}</h4>
