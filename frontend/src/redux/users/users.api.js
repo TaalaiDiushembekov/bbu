@@ -36,6 +36,9 @@ export const usersApi = apiSlice.injectEndpoints({
                 method: "GET",
                 responseType: 'json'
             }),
+            providesTags: () => [{
+                type: 'user'
+            }]
         }),
     }),
 });

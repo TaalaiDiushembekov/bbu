@@ -22,11 +22,11 @@ const AddPartner = () => {
 
     formData.append('image', image);
 
-    uploadPartner(formData)
-    if(!result.isSuccess){
+    if(!image){
       alert('Выберите изображение')
     }
-    if(result.isSuccess){
+    else{
+      uploadPartner(formData)
       history.push('/about')
     }
   };

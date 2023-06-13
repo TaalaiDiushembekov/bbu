@@ -145,7 +145,7 @@ const MemberForm = ({ id, type, data, isLoading }) => {
                             </div>
                             <div className="input-wrapper">
                                 <TextField
-                                    type="text"
+                                    type="number"
                                     name="order"
                                     value={member?.order}
                                     onChange={inputChangeHandler}

@@ -9,7 +9,10 @@ export const docsApi = apiSlice.injectEndpoints({
                 headers: {
                     "Content-Type": "application/json; charset=UTF-8",
                 },
-            })
+            }),
+            invalidatesTags: () => [{
+                type: 'user'
+            }]
         }),
         uploadDoc: builder.mutation({
             query: (payload) => ({
@@ -19,7 +22,10 @@ export const docsApi = apiSlice.injectEndpoints({
                 headers: {
                     'Content-Type': "application/json; charset=UTF-8"
                 }
-            })
+            }),
+            invalidatesTags: () => [{
+                type: 'user'
+            }]
         })
         
     })
