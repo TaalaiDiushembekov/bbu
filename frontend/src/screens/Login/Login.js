@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const Login = () => {
+const Login = ({data}) => {
     const [login, {isError}] = useLoginMutation();
     const classes = useStyles();
     const [email, setEmail] = useState("");
@@ -44,7 +44,7 @@ const Login = () => {
     const history = useHistory();
     const location = useLocation();
     const { userInfo } = useSelector((s) => s.auth);
-
+    console.log(userInfo)
     const [errorMsg, setErrorMsg] =  useState('')
     const redirect = location.search ? location.search.split("=")[1] : "/";
 
@@ -61,6 +61,9 @@ const Login = () => {
             if(!isError && userData?.role === 'admin'){
                 history.push('/admin')
             }
+            if(!isError && userData?.role === 'moderator'){
+                history.push('/')
+            }
         } catch (error) {
             if(error.status === 403){
                 setErrorMsg('Вы не активны');
@@ -70,13 +73,6 @@ const Login = () => {
             }                     
         }
     };
-
-    useEffect(() => {
-        if (userInfo) {
-            history.push(redirect);
-        }
-    }, [userInfo, dispatch, history]);
-
     return (
         <div>
             <Container component="main" maxWidth="xs">

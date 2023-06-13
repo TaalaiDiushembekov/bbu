@@ -8,6 +8,9 @@ export const teamApi = apiSlice.injectEndpoints({
                 method: "GET",
                 responseType: "json",
             }),
+            providesTags: () => [{
+                type: 'team'
+            }]
         }),
         getOneMember: builder.query({
             query: (id) => ({
@@ -22,6 +25,9 @@ export const teamApi = apiSlice.injectEndpoints({
                 method: "PATCH",
                 body: data,
             }),
+            invalidatesTags: () => [{
+                type: 'team'
+            }]
         }),
         createMember: builder.mutation({
             query: (payload) => ({
@@ -29,12 +35,18 @@ export const teamApi = apiSlice.injectEndpoints({
                 method: "POST",
                 body: payload,
             }),
+            invalidatesTags: () => [{
+                type: 'team'
+            }]
         }),
         deleteMember: builder.mutation({
             query: (id) => ({
                 url: `/team/${id}`,
                 method: "DELETE",
             }),
+            invalidatesTags: () => [{
+                type: 'team'
+            }]
         }),
     }),
 });

@@ -10,18 +10,19 @@ import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/dist/query/index.js";
 import { tariffReducer } from "./tariffs/tariff.slice.js";
 import { docReducer } from "./documents/docs.slice.js";
+import { combineReducers } from "redux";
 
-
+const reducers = combineReducers({
+    [apiSlice.reducerPath]: apiSlice.reducer,
+    // [tariffApi.reducerPath]: tariffApi.reducer,
+    auth: authReducer,
+    org: orgReducer,
+    tariff: tariffReducer,
+    document: docReducer,
+})
 
 export const store = configureStore({
-    reducer: {
-        [apiSlice.reducerPath]: apiSlice.reducer,
-        [tariffApi.reducerPath]: tariffApi.reducer,
-        auth: authReducer,
-        org: orgReducer,
-        tariff: tariffReducer,
-        document: docReducer,
-    },
+    reducer: reducers,
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware().concat(apiSlice.middleware, tariffApi.middleware), devTools: true
 });

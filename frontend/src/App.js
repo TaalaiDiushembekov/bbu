@@ -28,7 +28,7 @@ import AddPartner from "./screens/AddPartner/AddPartner.js";
 function App() {
     const dispatch = useDispatch();
     const { data, isLoading } = useRefreshTokenQuery();
-    console.log(data);
+    console.log(data, 'data');
     useEffect(() => {
         if (!isLoading && data !== undefined) {
             const org = data?.org;
@@ -59,8 +59,7 @@ function App() {
                         path="/tariffs"
                         component={() => <Tariffs />}
                     />
-
-                    <Route exact path="/login" component={() => <Login />} />
+                    <Route exact path="/login" component={() => <Login data={data}/>} />
 
                     <Route
                         exact

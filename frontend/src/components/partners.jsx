@@ -1,33 +1,35 @@
 import React from 'react';
-import {useDispatch, useSelector} from "react-redux";
-import {useEffect} from "react";
-import {partnersListAction} from "../redux/actions/partnerAction";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { partnersListAction } from "../redux/actions/partnerAction";
 import Typography from "@material-ui/core/Typography";
 import Spinner from "./spinner";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import Partner from "./Partner/Partner";
-import { useGetPartnersQuery } from '../redux/partners/partner.api';
+import { useDeletePartnerMutation, useGetPartnersQuery } from '../redux/partners/partner.api';
 
-const Partners = () => {    
+const Partners = () => {
     const { data, isLoading } = useGetPartnersQuery();
+    const role = JSON.parse(localStorage.getItem('role'))
+    const [deletePartner, result] = useDeletePartnerMutation()
+    const handleClick = (id) => {
+        deletePartner(id)
+    }
     return (
         <>
-            {/*<Typography variant="h4" component="h3">*/}
-            {/*    all partners*/}
-            {/*</Typography>*/}
             {isLoading ? <Spinner /> : (
-                <Box mt={3}>
-                    <Grid container spacing={3}>
+                    <Grid container spacing={1} >
                         {
                             data?.map((partner) => (
-                                <Partner
-                                    key={partner._id}
-                                    partner={partner} 
-                                />))
+                                <Grid item style={{margin: '20px'}} key={partner._id} onClick={role === 'moderator' ? () => handleClick(partner._id) : null}>
+                                    <Partner
+                                        partner={partner}
+                                    />
+                                </Grid>
+                            ))
                         }
                     </Grid>
-                </Box>
             )}
         </>
     );

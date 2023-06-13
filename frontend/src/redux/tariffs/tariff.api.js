@@ -7,13 +7,19 @@ export const tariffApi = apiSlice.injectEndpoints({
             query: () => ({
                 url: "/tariff",
             }),
+            providesTags: () => [{
+                type: 'tariff'
+            }]
         }),
         uploadTariff: builder.mutation({
             query: (payload) => ({
                 url: "/tariff",
                 method: 'POST',
                 body: payload
-            })
+            }),
+            invalidatesTags: () => [{
+                type: 'tariff'
+            }]
         }),
         updateTariff: builder.mutation({
             query: ({id, data}) => ({
@@ -23,7 +29,10 @@ export const tariffApi = apiSlice.injectEndpoints({
                 headers: {
                     "Content-type": "application/json; charset=UTF-8",
                 },
-            })
+            }),
+            invalidatesTags: () => [{
+                type: 'tariff'
+            }]
         }),
         getOneTariff: builder.query({
             query: (id) => ({
@@ -34,8 +43,11 @@ export const tariffApi = apiSlice.injectEndpoints({
             query: (id) => ({
                 url: `/tariff/${id}`,
                 method: 'DELETE'
-            })
-        })
+            }),
+            invalidatesTags: () => [{
+                type: 'tariff'
+            }]
+        }),
     }),
 });
 
